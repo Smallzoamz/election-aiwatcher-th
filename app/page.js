@@ -189,7 +189,7 @@ export default function Home() {
     }
 
     return (
-        <main className="min-h-screen bg-slate-950 text-white p-4 md:p-6 relative overflow-hidden flex flex-col">
+        <main className="min-h-screen bg-slate-950 text-white p-3 md:p-4 relative overflow-hidden flex flex-col">
             {/* Background Cyber Grid */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
 
@@ -202,7 +202,7 @@ export default function Home() {
             )}
 
             {/* Header */}
-            <header className="relative z-20 flex flex-col md:flex-row justify-between items-start md:items-center mb-4 border-b border-gray-800 pb-3 gap-4">
+            <header className="relative z-20 flex flex-col md:flex-row justify-between items-start md:items-center mb-2 border-b border-gray-800 pb-1 gap-2">
                 <div>
                     <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600">
                         TH ELECTION <span className="text-white">AI WATCH</span>
@@ -239,15 +239,15 @@ export default function Home() {
 
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch flex-1 min-h-0">
                 {/* Left Column: Rankings */}
-                <div className="lg:col-span-1 flex flex-col space-y-4 min-h-0">
+                <div className="lg:col-span-1 flex flex-col space-y-2 min-h-0">
                     <h2 className="text-xl font-bold flex items-center gap-2 text-cyan-400 shrink-0">
                         <Activity className="w-5 h-5" />
                         ดัชนีความนิยมปัจจุบัน
                     </h2>
 
-                    <div className="flex-1 space-y-3 min-h-0">
+                    <div className="flex-1 space-y-2 min-h-0">
                         {data?.parties?.slice(0, 5).map((party, idx) => (
-                            <div key={party.id} className="relative bg-slate-900/40 border border-slate-800 p-3 rounded-xl backdrop-blur-sm hover:border-slate-600 transition-all group overflow-hidden h-[calc((100%-48px)/5)] min-h-[125px] flex flex-col justify-center">
+                            <div key={party.id} className="relative bg-slate-900/40 border border-slate-800 p-3 rounded-xl backdrop-blur-sm hover:border-slate-600 transition-all group overflow-hidden h-[calc((100%-48px)/5)] min-h-[110px] flex flex-col justify-center">
 
                                 {/* Background Watermark Logo */}
                                 {party.logoUrl && (
@@ -348,7 +348,7 @@ export default function Home() {
                 </div>
 
                 {/* Right Column: Visualization & News */}
-                <div className="lg:col-span-2 flex flex-col space-y-4 min-h-0">
+                <div className="lg:col-span-2 flex flex-col space-y-2 min-h-0">
 
                     {/* Balanced Header for Right Column */}
                     <h2 className="text-xl font-bold flex items-center gap-2 text-blue-400 shrink-0">
@@ -356,9 +356,9 @@ export default function Home() {
                         วิเคราะห์และกระแสข้อมูล AI
                     </h2>
 
-                    <div className="flex-1 flex flex-col gap-6 min-h-0">
+                    <div className="flex-1 flex flex-col gap-3 min-h-0">
                         {/* Main Chart */}
-                        <div className="bg-slate-900/50 border border-slate-800 p-6 rounded-2xl backdrop-blur h-[380px] relative overflow-hidden shrink-0">
+                        <div className="bg-slate-900/50 border border-slate-800 p-6 rounded-2xl backdrop-blur h-[280px] relative overflow-hidden shrink-0">
                             <div className="absolute top-0 right-0 p-4 opacity-10">
                                 <Activity className="w-24 h-24 text-slate-500" />
                             </div>
@@ -466,8 +466,8 @@ export default function Home() {
             </div>
 
             {/* Disclaimer Footer */}
-            <footer className="relative z-10 mt-6 pt-4 border-t border-gray-800 shrink-0">
-                <div className="bg-amber-900/20 border border-amber-700/50 rounded-lg p-3 mb-4">
+            <footer className="relative z-10 mt-2 shrink-0">
+                <div className="bg-amber-900/20 border border-amber-700/50 rounded-lg p-2 mb-2">
                     <p className="text-amber-200/80 text-xs flex items-start gap-2">
                         <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
                         <span>
