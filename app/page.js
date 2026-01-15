@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
+import { ComposedChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { RefreshCw, TrendingUp, TrendingDown, Activity, Radio, AlertCircle, Info, ExternalLink, Clock, Calendar } from 'lucide-react';
 import Link from 'next/link';
 
@@ -290,6 +290,8 @@ export default function Home() {
                 </div>
             </header>
 
+
+
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch flex-1 min-h-0">
                 {/* Left Column: Rankings */}
                 <div className="lg:col-span-1 flex flex-col space-y-2 min-h-0">
@@ -437,7 +439,7 @@ export default function Home() {
                                 การกระจายความนิยม (Top 5)
                             </h3>
                             <ResponsiveContainer width="100%" height="90%">
-                                <BarChart data={data?.parties?.slice(0, 5) || []} margin={{ bottom: 30, top: 10 }}>
+                                <ComposedChart data={data?.parties?.slice(0, 5) || []} margin={{ bottom: 30, top: 10 }}>
                                     <CartesianGrid strokeDasharray="3 3" stroke="#334155" opacity={0.5} vertical={false} />
                                     <XAxis
                                         dataKey="name"
@@ -449,18 +451,62 @@ export default function Home() {
                                         axisLine={false}
                                         tickLine={false}
                                     />
-                                    <YAxis stroke="#666" domain={[0, 50]} />
+                                    <YAxis stroke="#666" domain={[0, 60]} />
                                     <Tooltip
-                                        contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155' }}
-                                        itemStyle={{ color: '#fff' }}
-                                        formatter={(value, name) => [`${value.toFixed(1)}%`, 'คะแนน']}
+                                        content={({ active, payload, label }) => {
+                                            if (active && payload && payload.length) {
+                                                const data = payload[0].payload;
+                                                return (
+                                                    <div className="bg-slate-900 border border-slate-700 p-3 rounded shadow-xl min-w-[200px] z-50">
+                                                        <p className="font-bold text-white mb-2 text-base">{label}</p>
+                                                        {payload.map((entry, index) => (
+                                                            <div key={index} className="flex justify-between items-center text-sm mb-1">
+                                                                <span style={{ color: entry.stroke || entry.fill }}>
+                                                                    {entry.name === 'score' ? 'คะแนน AI (เน็ต)' : 'นิด้าโพล (จริง)'}
+                                                                </span>
+                                                                <span className="font-mono font-bold text-white ml-4">
+                                                                    {parseFloat(entry.value).toFixed(1)}%
+                                                                </span>
+                                                            </div>
+                                                        ))}
+
+                                                        {/* DIVERGENCE ALERT ON HOVER */}
+                                                        {data.hiddenSupport && (
+                                                            <div className="mt-3 pt-2 border-t border-slate-700 animate-in fade-in slide-in-from-top-1">
+                                                                <div className="flex items-center gap-2 text-amber-500 font-bold text-xs mb-1">
+                                                                    <TrendingUp className="w-4 h-4" />
+                                                                    <span>ตรวจพบฐานเสียงแฝง!</span>
+                                                                </div>
+                                                                <div className="text-[10px] text-amber-200/80 leading-relaxed bg-amber-900/20 p-2 rounded border border-amber-900/50">
+                                                                    คะแนนจริงสูงกว่ากระแสโซเชียล <span className="text-white font-bold">{Math.abs(data.divergence)}%</span>
+                                                                    <br />(Underlying Support)
+                                                                </div>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                );
+                                            }
+                                            return null;
+                                        }}
                                     />
-                                    <Bar dataKey="score" radius={[4, 4, 0, 0]}>
+                                    {/* Main AI Bar */}
+                                    <Bar dataKey="score" radius={[4, 4, 0, 0]} name="score">
                                         {data?.parties?.slice(0, 5).map((entry, index) => (
                                             <Cell key={`cell-${index}`} fill={entry.color} />
                                         ))}
                                     </Bar>
-                                </BarChart>
+
+                                    {/* NIDA Comparison Line */}
+                                    <Line
+                                        type="monotone"
+                                        dataKey="nidaScore"
+                                        stroke="#fbbf24" // Amber/Yellow for contrast
+                                        strokeWidth={2}
+                                        strokeDasharray="5 5"
+                                        dot={{ r: 4, fill: '#fbbf24', strokeWidth: 0 }}
+                                        name="nidaScore"
+                                    />
+                                </ComposedChart>
                             </ResponsiveContainer>
                         </div>
 

@@ -19,26 +19,19 @@
 [16/01/2026 00:40] | File: lib/ai-engine.js | Line: 1 | Keyword: Credibility | Status: Edited | Change: Weighted sentiment analysis, confidence intervals, score history tracking
 [16/01/2026 00:40] | File: app/page.js | Line: 1 | Keyword: UI Enhancement | Status: Edited | Change: Added confidence intervals, feed status, keyword display, disclaimer footer
 [16/01/2026 00:40] | File: app/methodology/page.js | Line: 1 | Keyword: Transparency | Status: Created | Change: Created methodology page explaining data sources, algorithms, and limitations
-
-## 2026-01-16 Session 2
-
 [16/01/2026 01:05] | File: .env.local | Line: 1 | Keyword: Supabase | Status: Created | Change: Added Supabase credentials for PostgreSQL database
 [16/01/2026 01:05] | File: lib/supabase.js | Line: 1 | Keyword: Database | Status: Created | Change: Created Supabase client configuration
 [16/01/2026 01:05] | File: lib/db.js | Line: 1 | Keyword: Database | Status: Rewritten | Change: Migrated from JSON file to Supabase PostgreSQL with in-memory caching
 [16/01/2026 01:05] | File: supabase-schema.sql | Line: 1 | Keyword: Database | Status: Created | Change: SQL schema for consumed_news and score_history tables
-
 [16/01/2026 01:11] | File: app/components/DisclaimerModal.js | Line: 1 | Keyword: UI | Status: Created | Change: Created popup disclaimer with developer message, localStorage persistence
 [16/01/2026 01:11] | File: app/layout.js | Line: 1 | Keyword: UI | Status: Edited | Change: Added DisclaimerModal component, suppressHydrationWarning
-
 [16/01/2026 01:23] | File: lib/ai-engine.js | Line: 25-110 | Keyword: Context Deep Dive | Status: Edited | Change: Added 6 context categories (person, policy, scandal, performance, support, conflict) to keywords
 [16/01/2026 01:23] | File: lib/ai-engine.js | Line: 182-230 | Keyword: Trend Prediction | Status: Created | Change: Implemented linear regression for 24h trend prediction per party
 [16/01/2026 01:25] | File: app/page.js | Line: 170-218 | Keyword: Trend Prediction UI | Status: Created | Change: Added 24h forecast display with color-coded backgrounds
 [16/01/2026 01:25] | File: app/page.js | Line: 276-304 | Keyword: Context Deep Dive UI | Status: Created | Change: Added primary context label in news analysis section
-
 [16/01/2026 01:29] | File: lib/pantip-scraper.js | Line: 1 | Keyword: Social Media | Status: Created | Change: Created Pantip scraper for 3 political rooms (Sinthorn, Rajdumnern, Chalermthai)
 [16/01/2026 01:29] | File: lib/youtube-fetcher.js | Line: 1 | Keyword: Social Media | Status: Created | Change: Created YouTube fetcher for 4 Thai news channels
 [16/01/2026 01:30] | File: lib/rss-fetcher.js | Line: 1 | Keyword: Integration | Status: Edited | Change: Integrated Pantip + YouTube into main data pipeline
-
 [16/01/2026 01:40] | File: app/methodology/page.js | Line: 40-90 | Keyword: Documentation | Status: Edited | Change: Added Pantip and YouTube to data sources section
 [16/01/2026 01:41] | File: lib/rss-fetcher.js | Line: 1-60 | Keyword: CORS Fix | Status: Edited | Change: Added CORS proxy support for blocked RSS feeds (allorigins, corsproxy)
 [16/01/2026 02:50] | File: app/page.js | Line: 1 | Keyword: UI Polish | Status: Edited | Change: Implemented Flex-Stretch for perfect column alignment
@@ -63,4 +56,15 @@
 [16/01/2026 04:06] | File: scripts/pantip_agent.py | Line: 1 | Keyword: AI Agent | Status: Created | Change: Implemented Pantip Scraper with 200-thread limit, budget guardrails, and IO detection structure
 [16/01/2026 04:06] | File: scripts/requirements.txt | Line: 1 | Keyword: Dependencies | Status: Created | Change: Added packages for AI Agent
 [16/01/2026 04:10] | File: scripts/pantip_agent.py | Line: 1 | Keyword: AI Agent | Status: Disabled | Change: Renamed to .py.disabled to prevent execution due to payment/billing issues
-
+[16/01/2026 04:20] | File: lib/ai-engine.js | Line: 426 | Keyword: NIDA Poll | Status: Edited | Change: Integrated NIDA Poll static data as baseline and added Divergence calculation
+[16/01/2026 04:35] | File: lib/ai-engine.js | Line: 369 | Keyword: Ethics | Status: Edited | Change: Implemented Divergence Alert logic and Ethics by Design (News Balancing)
+[16/01/2026 04:35] | File: app/page.js | Line: 290 | Keyword: UI | Status: Edited | Change: Added DivergenceCard component to display Hidden Support alerts
+[16/01/2026 04:40] | File: app/page.js | Line: 460 | Keyword: UI/UX | Status: Refined | Change: Moved Divergence Alert from card to Chart Tooltip (On Hover) for cleaner UI
+[16/01/2026 04:45] | File: lib/ai-engine.js | Line: 450 | Keyword: Algorithm | Status: Edited | Change: Implemented Weighted Hybrid Score (40% NIDA, 60% AI) for precise seat calculation
+[16/01/2026 04:50] | File: app/methodology/page.js | Line: 135 | Keyword: Docs | Status: Updated | Change: Updated Methodology page to explain Hybrid Score formula and remove outdated limitations
+[16/01/2026 04:55] | File: lib/ai-engine.js | Line: 466 | Keyword: ProLevel | Status: Edited | Change: Implemented Split Seat Calculation (List/Const), Volatility Index, and Dark Horse Alert logic.
+[16/01/2026 04:55] | File: app/methodology/page.js | Line: 136 | Keyword: ProLevel | Status: Edited | Change: Documented new Split Seat formula and Special Insights.
+[16/01/2026 04:52] | File: app/page.js | Line: 454 | Keyword: Cleanup | Status: Fixed | Change: Removed duplicate YAxis component in chart.
+[16/01/2026 04:52] | File: app/page.js | Line: 588-600 | Keyword: Cleanup | Status: Fixed | Change: Fixed malformed JSX closing tags with extra whitespace.
+[16/01/2026 04:52] | File: app/globals.css | Line: 62-81 | Keyword: Cleanup | Status: Removed | Change: Removed unused marquee animation CSS (replaced by slide-up switcher).
+[16/01/2026 04:52] | File: test.txt | Line: N/A | Keyword: Cleanup | Status: Deleted | Change: Removed unnecessary test file from project root.

@@ -134,10 +134,36 @@ export default function MethodologyPage() {
                             </div>
 
                             <div>
-                                <h4 className="text-white font-medium mb-2">3. Random Walk</h4>
-                                <p className="text-gray-400 text-sm">
-                                    มีความผันผวนตามธรรมชาติเล็กน้อย (±0.3%) เพื่อจำลองความไม่แน่นอนของตลาดการเมือง
+                                <h4 className="text-white font-medium mb-2">3. Pro-Level Hybrid Calculation (สูตรคำนวณขั้นสูง)</h4>
+                                <p className="text-gray-400 text-sm mb-2">
+                                    ระบบแยกการคำนวณตามประเภทบัญชีรายชื่อและเขต เพื่อสะท้อนพฤติกรรมการเลือกตั้งจริง:
                                 </p>
+                                <ul className="text-gray-400 text-sm list-disc list-inside ml-2">
+                                    <li>
+                                        <strong className="text-cyan-400">ส.ส. บัญชีรายชื่อ (100 ที่นั่ง):</strong> เน้นกระแสพรรค (AI 60% / Poll 40%)
+                                    </li>
+                                    <li>
+                                        <strong className="text-yellow-400">ส.ส. เขต (400 ที่นั่ง):</strong> เน้นตัวบุคคลและความผูกพันพื้นที่ (AI 30% / Poll 70%)
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h4 className="text-white font-medium mb-2">4. ฟีเจอร์พิเศษ (Special Insights)</h4>
+                                <ul className="space-y-2 text-sm">
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-lg">📉</span>
+                                        <span className="text-gray-400">
+                                            <strong className="text-white">Volatility Index:</strong> ตีความกลุ่ม "Neutral News" เป็น "กลุ่มพลังเงียบ/ยังไม่ตัดสินใจ" (Undecided Voter Proxy)
+                                        </span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-lg">🐎</span>
+                                        <span className="text-gray-400">
+                                            <strong className="text-blue-400">Dark Horse Alert:</strong> ระบบเฝ้าระวังพรรคม้ามืดที่คะแนน AI สูงกว่าโพลอย่างมีนัยสำคัญ (Hidden Momentum)
+                                        </span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </section>
@@ -162,7 +188,6 @@ export default function MethodologyPage() {
                         <h2 className="text-xl font-bold text-cyan-400 mb-4">⚠️ ข้อจำกัด</h2>
                         <ul className="text-gray-400 space-y-2 list-disc list-inside">
                             <li>ใช้ Keyword Matching อย่างง่าย ไม่ใช่ Machine Learning ขั้นสูง</li>
-                            <li>ไม่ได้ผสมผสานกับผลสำรวจความคิดเห็น (Poll Data) จริง</li>
                             <li>ไม่ได้พิจารณาบริบทของข่าว (Context) อย่างลึกซึ้ง</li>
                             <li>บาง RSS feeds อาจมี CORS restrictions ทำให้ดึงข้อมูลไม่ได้</li>
                             <li>Pantip ใช้ unofficial API ซึ่งอาจไม่เสถียร</li>
