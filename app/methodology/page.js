@@ -41,9 +41,12 @@ export default function MethodologyPage() {
                     <section className="bg-slate-900/50 border border-slate-800 rounded-lg p-6">
                         <h2 className="text-xl font-bold text-cyan-400 mb-4">📡 แหล่งข้อมูล</h2>
                         <p className="text-gray-300 mb-4">
-                            ระบบดึงข่าวสารจาก RSS feeds ของสื่อออนไลน์ชั้นนำของประเทศไทยแบบ Real-time:
+                            ระบบดึงข้อมูลจากหลายแพลตฟอร์มแบบ Real-time:
                         </p>
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+
+                        {/* RSS Feeds */}
+                        <h3 className="text-white font-medium mb-2 mt-4">📰 RSS Feeds (สื่อข่าว)</h3>
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
                             {[
                                 { name: 'มติชนออนไลน์', weight: '1.0x' },
                                 { name: 'ประชาชาติธุรกิจ', weight: '1.0x' },
@@ -59,6 +62,26 @@ export default function MethodologyPage() {
                                 </div>
                             ))}
                         </div>
+
+                        {/* Social Media */}
+                        <h3 className="text-white font-medium mb-2 mt-6">💬 Social Media</h3>
+                        <div className="grid grid-cols-2 gap-3 mb-4">
+                            <div className="bg-orange-900/30 p-3 rounded border border-orange-700/50">
+                                <div className="font-medium text-orange-300">🌐 Pantip</div>
+                                <div className="text-xs text-gray-400">
+                                    ห้อง: สินธร, ราชดำเนิน, เฉลิมไทย
+                                </div>
+                                <div className="text-xs text-gray-500">น้ำหนัก: 1.5x</div>
+                            </div>
+                            <div className="bg-red-900/30 p-3 rounded border border-red-700/50">
+                                <div className="font-medium text-red-300">▶️ YouTube</div>
+                                <div className="text-xs text-gray-400">
+                                    ช่อง: Thai PBS, PPTV, ไทยรัฐ, ช่อง 3
+                                </div>
+                                <div className="text-xs text-gray-500">น้ำหนัก: 1.3x</div>
+                            </div>
+                        </div>
+
                         <p className="text-gray-500 text-sm mt-4">
                             * น้ำหนักที่สูงกว่าหมายถึงแหล่งข่าวที่มีผลกระทบต่อผลลัพธ์มากกว่า
                         </p>
@@ -143,8 +166,9 @@ export default function MethodologyPage() {
                             <li>ใช้ Keyword Matching อย่างง่าย ไม่ใช่ Machine Learning ขั้นสูง</li>
                             <li>ไม่ได้ผสมผสานกับผลสำรวจความคิดเห็น (Poll Data) จริง</li>
                             <li>ไม่ได้พิจารณาบริบทของข่าว (Context) อย่างลึกซึ้ง</li>
-                            <li>ข้อมูลมาจาก RSS feeds ซึ่งอาจมีความล่าช้าจากข่าวจริง</li>
-                            <li>ไม่รองรับข่าวจาก Social Media (Twitter, Facebook)</li>
+                            <li>บาง RSS feeds อาจมี CORS restrictions ทำให้ดึงข้อมูลไม่ได้</li>
+                            <li>Pantip ใช้ unofficial API ซึ่งอาจไม่เสถียร</li>
+                            <li>YouTube ต้องมี API Key จึงจะทำงานได้ (free tier มี quota จำกัด)</li>
                         </ul>
                     </section>
 
