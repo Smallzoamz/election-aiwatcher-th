@@ -2,10 +2,15 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
-import { RefreshCw, TrendingUp, TrendingDown, Activity, Radio, AlertCircle, Info, ExternalLink } from 'lucide-react';
+import { RefreshCw, TrendingUp, TrendingDown, Activity, Radio, AlertCircle, Info, ExternalLink, Clock, Calendar } from 'lucide-react';
 import Link from 'next/link';
 
-// Custom Axis Tick Component for Logo Display
+// --- CONFIGURATION ---
+const ELECTION_DATE = '2026-02-08T08:00:00'; // Election Date: Feb 8, 2569
+
+// --- COMPONENTS ---
+
+// Custom Axis Tick for Chart
 const CustomAxisTick = ({ x, y, payload, data }) => {
     const party = data && data.find(p => p.name === payload.value);
     return (
@@ -33,6 +38,79 @@ const CustomAxisTick = ({ x, y, payload, data }) => {
                 {payload.value.replace('พรรค', '')}
             </text>
         </g>
+    );
+};
+
+// Countdown Timer Component
+const ElectionCountdown = () => {
+    const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0, totalHours: 0 });
+
+    useEffect(() => {
+        const target = new Date(ELECTION_DATE).getTime();
+
+        const calculateTime = () => {
+            const now = new Date().getTime();
+            const difference = target - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+                // Calculate total hours left for urgent check
+                const totalHoursLeft = (days * 24) + hours;
+
+                setTimeLeft({
+                    days,
+                    hours,
+                    minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+                    seconds: Math.floor((difference % (1000 * 60)) / 1000),
+                    totalHours: totalHoursLeft
+                });
+            } else {
+                setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0, totalHours: 0 });
+            }
+        };
+
+        calculateTime();
+        const timer = setInterval(calculateTime, 1000);
+        return () => clearInterval(timer);
+    }, []);
+
+    const isUrgent = timeLeft.totalHours < 24;
+    const digitColor = isUrgent ? 'text-red-500 animate-pulse shadow-[0_0_15px_rgba(239,68,68,0.5)]' : 'text-white shadow-[0_0_10px_rgba(255,255,255,0.2)]';
+    const separatorColor = isUrgent ? 'text-red-600' : 'text-slate-500';
+    const boxBorder = isUrgent ? 'border-red-900/50 bg-red-950/30' : 'border-slate-700 bg-slate-800';
+
+    const TimeBox = ({ value, label }) => (
+        <div className="flex flex-col items-center mx-1">
+            <div className={`${boxBorder} border font-mono text-xl md:text-2xl font-bold px-2 md:px-3 py-1 rounded min-w-[3rem] text-center transition-colors duration-500 ${digitColor}`}>
+                {String(value).padStart(2, '0')}
+            </div>
+            <span className={`text-[10px] mt-1 uppercase tracking-wider font-semibold ${isUrgent ? 'text-red-400' : 'text-slate-400'}`}>{label}</span>
+        </div>
+    );
+
+    return (
+        <div className={`flex items-center gap-2 p-2 rounded-lg border backdrop-blur-sm transition-colors duration-500 ${isUrgent ? 'bg-red-950/20 border-red-900/30' : 'bg-slate-900/50 border-slate-800/50'}`}>
+            <div className="text-right mr-2 hidden md:block">
+                <div className={`text-xs flex items-center justify-end gap-1 ${isUrgent ? 'text-red-400' : 'text-gray-400'}`}>
+                    <Calendar className="w-3 h-3" />
+                    8 ก.พ. 2569
+                </div>
+                <div className={`text-[10px] font-bold uppercase ${isUrgent ? 'text-red-500 animate-pulse' : 'text-slate-500'}`}>
+                    {isUrgent ? '⚠️ เข้าสู่ช่วงเลือกตั้ง!' : 'นับถอยหลังสู่วันเลือกตั้ง'}
+                </div>
+            </div>
+            <div className="flex">
+                <TimeBox value={timeLeft.days} label="วัน" />
+                <span className={`font-bold text-xl mt-1 ${separatorColor}`}>:</span>
+                <TimeBox value={timeLeft.hours} label="ชม." />
+                <span className={`font-bold text-xl mt-1 ${separatorColor}`}>:</span>
+                <TimeBox value={timeLeft.minutes} label="นาที" />
+                <span className={`font-bold text-xl mt-1 ${separatorColor}`}>:</span>
+                <TimeBox value={timeLeft.seconds} label="วินาที" />
+            </div>
+        </div>
     );
 };
 
@@ -124,7 +202,7 @@ export default function Home() {
             )}
 
             {/* Header */}
-            <header className="relative z-20 flex justify-between items-center mb-8 border-b border-gray-800 pb-4">
+            <header className="relative z-20 flex flex-col md:flex-row justify-between items-start md:items-center mb-8 border-b border-gray-800 pb-4 gap-4">
                 <div>
                     <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600">
                         TH ELECTION <span className="text-white">AI WATCH</span>
@@ -148,9 +226,14 @@ export default function Home() {
                         </Link>
                     </div>
                 </div>
-                <div className="text-right">
-                    <div className="text-xs text-gray-500 font-mono">สถานะระบบ: ออนไลน์</div>
-                    <div className="text-xs text-gray-500 font-mono">เวอร์ชัน: 2.0</div>
+
+                {/* Countdown Timer */}
+                <div className="flex items-center gap-4">
+                    <ElectionCountdown />
+                    <div className="text-right hidden xl:block">
+                        <div className="text-xs text-gray-500 font-mono">สถานะระบบ: ออนไลน์</div>
+                        <div className="text-xs text-gray-500 font-mono">เวอร์ชัน: 2.1</div>
+                    </div>
                 </div>
             </header>
 
@@ -166,8 +249,24 @@ export default function Home() {
                         {data?.parties?.slice(0, 5).map((party, idx) => (
                             <div key={party.id} className="relative bg-slate-900/40 border border-slate-800 p-4 rounded-xl backdrop-blur-sm hover:border-slate-600 transition-all group overflow-hidden">
 
+                                {/* Background Watermark Logo */}
+                                {party.logoUrl && (
+                                    <div className="absolute -right-6 -bottom-10 w-48 h-48 opacity-[0.06] pointer-events-none grayscale group-hover:grayscale-0 group-hover:opacity-[0.08] transition-all duration-500 ease-out z-0">
+                                        <img
+                                            src={party.logoUrl}
+                                            alt=""
+                                            className="w-full h-full object-contain transform -rotate-12"
+                                        />
+                                    </div>
+                                )}
+
+                                {/* Background Watermark Text (Party ID) */}
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[150px] font-black text-white/[0.015] pointer-events-none z-0 whitespace-nowrap font-mono select-none select-none">
+                                    {party.id.toUpperCase()}
+                                </div>
+
                                 {/* Background Gradient Hint */}
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-bl-full -mr-10 -mt-10 pointer-events-none" />
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-bl-full -mr-10 -mt-10 pointer-events-none z-0" />
 
                                 <div className="flex items-start justify-between relative z-10">
                                     <div className="flex items-start gap-4">
