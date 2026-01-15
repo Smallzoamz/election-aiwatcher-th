@@ -43,4 +43,8 @@
 [16/01/2026 01:41] | File: lib/rss-fetcher.js | Line: 1-60 | Keyword: CORS Fix | Status: Edited | Change: Added CORS proxy support for blocked RSS feeds (allorigins, corsproxy)
 [16/01/2026 02:50] | File: app/page.js | Line: 1 | Keyword: UI Polish | Status: Edited | Change: Implemented Flex-Stretch for perfect column alignment
 [16/01/2026 02:57] | File: app/page.js | Line: 1 | Keyword: UI Polish | Status: Edited | Change: Compacted layout for 1080p/FHD (reduced heights, tightened padding)
+[16/01/2026 03:00] | File: app/page.js | Line: 1 | Keyword: UI Polish | Status: Edited | Change: Restored font sizes and news timestamps for readability
+[16/01/2026 03:05] | File: lib/db.js | Line: 1 | Keyword: Supabase | Status: Edited | Change: Added saveScoreHistory and detailed markNewsAsRead
+[16/01/2026 03:06] | File: lib/ai-engine.js | Line: 1 | Keyword: Supabase | Status: Edited | Change: Integrated persistence and initial state rehydration
+[16/01/2026 03:05] | File: app/page.js | Line: 250-327 | Keyword: UI Refinement | Status: Edited | Change: Added "(คาดการณ์)" labels, reduced card height, padding and font size for better compact flow
 

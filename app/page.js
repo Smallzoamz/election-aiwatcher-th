@@ -247,7 +247,7 @@ export default function Home() {
 
                     <div className="flex-1 space-y-3 min-h-0">
                         {data?.parties?.slice(0, 5).map((party, idx) => (
-                            <div key={party.id} className="relative bg-slate-900/40 border border-slate-800 p-4 rounded-xl backdrop-blur-sm hover:border-slate-600 transition-all group overflow-hidden h-[calc((100%-48px)/5)] min-h-[145px] flex flex-col justify-center">
+                            <div key={party.id} className="relative bg-slate-900/40 border border-slate-800 p-3 rounded-xl backdrop-blur-sm hover:border-slate-600 transition-all group overflow-hidden h-[calc((100%-48px)/5)] min-h-[125px] flex flex-col justify-center">
 
                                 {/* Background Watermark Logo */}
                                 {party.logoUrl && (
@@ -307,15 +307,15 @@ export default function Home() {
                                             )}
 
                                             {/* Stats Grid */}
-                                            <div className="grid grid-cols-2 gap-x-6 gap-y-1 mt-3">
+                                            <div className="grid grid-cols-2 gap-x-6 gap-y-1 mt-2">
                                                 <div className="flex items-center gap-2">
                                                     <div className="w-1.5 h-1.5 rounded-full bg-slate-600" />
-                                                    <span className="text-slate-500 text-xs">ส.ส.</span>
+                                                    <span className="text-slate-500 text-xs">ส.ส. (คาดการณ์)</span>
                                                     <span className="text-white font-mono font-bold">{party.projectedSeats ?? Math.round((party.score ?? party.baseScore) / 100 * 500)}</span>
                                                 </div>
                                                 <div className="flex items-center gap-2">
                                                     <div className="w-1.5 h-1.5 rounded-full bg-slate-600" />
-                                                    <span className="text-slate-500 text-xs">คะแนนเสียง</span>
+                                                    <span className="text-slate-500 text-xs">คะแนนเสียง (คาดการณ์)</span>
                                                     <span className="text-white font-mono font-bold">{party.projectedVotes ?? Math.floor((party.score ?? party.baseScore) / 100 * 39000000).toLocaleString('th-TH')}</span>
                                                 </div>
                                             </div>
@@ -324,7 +324,7 @@ export default function Home() {
 
                                     {/* Score Big Display */}
                                     <div className="text-right">
-                                        <div className="text-4xl font-black tracking-tighter" style={{ color: party.color, textShadow: `0 0 30px ${party.color}40` }}>
+                                        <div className="text-3xl font-black tracking-tighter" style={{ color: party.color, textShadow: `0 0 30px ${party.color}40` }}>
                                             {(party.score ?? party.baseScore).toFixed(1)}<span className="text-lg align-top opacity-50 ml-0.5">%</span>
                                         </div>
                                         {/* Delta pill */}
