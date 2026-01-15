@@ -232,7 +232,7 @@ export default function Home() {
     }
 
     return (
-        <main className="min-h-screen bg-slate-950 text-white p-3 md:p-4 relative overflow-hidden flex flex-col">
+        <main className="min-h-screen bg-slate-950 text-white p-2 sm:p-3 md:p-4 lg:p-5 relative overflow-hidden flex flex-col safe-area-padding">
             {/* Background Cyber Grid */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
 
@@ -247,10 +247,10 @@ export default function Home() {
             )}
 
             {/* Header */}
-            <header className="relative z-20 flex items-center justify-between mb-2 border-b border-gray-800 pb-2 gap-4">
+            <header className="relative z-20 flex flex-col lg:flex-row items-start lg:items-center justify-between mb-2 border-b border-gray-800 pb-2 gap-2 lg:gap-4 mobile-stack">
                 {/* Left: Logo & Status Info */}
                 <div className="flex flex-col gap-1 min-w-fit">
-                    <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600 leading-tight">
+                    <h1 className="text-xl sm:text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600 leading-tight">
                         TH ELECTION <span className="text-white">AI WATCH</span>
                     </h1>
                     <div className="flex items-center gap-3 mt-1 flex-wrap">
@@ -277,11 +277,13 @@ export default function Home() {
                     </div>
                 </div>
 
-                {/* Center: Integrated Announcement Switcher (Replaces Marquee) */}
-                <AnnouncementSwitcher />
+                {/* Center: Integrated Announcement Switcher - Hide on mobile */}
+                <div className="hidden md:block flex-grow">
+                    <AnnouncementSwitcher />
+                </div>
 
                 {/* Countdown Timer */}
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2 sm:gap-4 countdown-compact w-full lg:w-auto justify-center lg:justify-end">
                     <ElectionCountdown />
                     <div className="text-right hidden xl:block">
                         <div className="text-xs text-gray-500 font-mono">สถานะระบบ: ออนไลน์</div>
@@ -292,17 +294,17 @@ export default function Home() {
 
 
 
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch flex-1 min-h-0">
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 items-stretch flex-1 min-h-0 responsive-container">
                 {/* Left Column: Rankings */}
-                <div className="lg:col-span-1 flex flex-col space-y-2 min-h-0">
-                    <h2 className="text-xl font-bold flex items-center gap-2 text-cyan-400 shrink-0">
+                <div className="lg:col-span-1 flex flex-col space-y-2 min-h-0 order-2 lg:order-1">
+                    <h2 className="text-lg sm:text-xl font-bold flex items-center gap-2 text-cyan-400 shrink-0">
                         <Activity className="w-5 h-5" />
                         ดัชนีความนิยมปัจจุบัน
                     </h2>
 
                     <div className="flex-1 space-y-2 min-h-0">
                         {data?.parties?.slice(0, 5).map((party, idx) => (
-                            <div key={party.id} className="relative bg-slate-900/40 border border-slate-800 p-3 rounded-xl backdrop-blur-sm hover:border-slate-600 transition-all group overflow-hidden h-[calc((100%-48px)/5)] min-h-[110px] flex flex-col justify-center">
+                            <div key={party.id} className="relative bg-slate-900/40 border border-slate-800 p-2 sm:p-3 rounded-xl backdrop-blur-sm hover:border-slate-600 transition-all group overflow-hidden responsive-card flex flex-col justify-center">
 
                                 {/* Background Watermark Logo */}
                                 {party.logoUrl && (
@@ -324,14 +326,14 @@ export default function Home() {
                                     <div className="flex items-start gap-4">
                                         {/* Rank Number */}
                                         <div className="flex flex-col items-center gap-1 mt-1">
-                                            <div className="text-2xl font-black text-slate-700 font-mono italic">#{idx + 1}</div>
+                                            <div className="text-lg sm:text-2xl font-black text-slate-700 font-mono italic">#{idx + 1}</div>
                                         </div>
 
                                         {/* Logo Container */}
                                         {party.logoUrl && (
                                             <div className="relative">
                                                 <div
-                                                    className="w-14 h-14 md:w-16 md:h-16 bg-white rounded-full p-2 shadow-lg flex items-center justify-center shrink-0 border-4 border-slate-800/50"
+                                                    className="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-white rounded-full p-1.5 sm:p-2 shadow-lg flex items-center justify-center shrink-0 border-2 sm:border-4 border-slate-800/50"
                                                     style={{ borderColor: `${party.color}30`, boxShadow: `0 0 20px ${party.color}20` }}
                                                 >
                                                     <img src={party.logoUrl} alt={party.name} className="w-full h-full object-contain mix-blend-multiply" />
@@ -347,13 +349,12 @@ export default function Home() {
                                         )}
 
                                         <div className="pt-0.5">
-                                            <h3 className="font-bold text-xl text-white group-hover:text-cyan-400 transition-colors tracking-tight leading-tight">
+                                            <h3 className="font-bold text-base sm:text-lg md:text-xl text-white group-hover:text-cyan-400 transition-colors tracking-tight leading-tight">
                                                 {party.name}
                                             </h3>
 
-                                            {/* Candidates */}
                                             {party.candidates && (
-                                                <div className="text-sm text-slate-400 mt-1 flex flex-wrap gap-x-2">
+                                                <div className="text-xs sm:text-sm text-slate-400 mt-1 flex flex-wrap gap-x-2 hidden sm:flex">
                                                     <span className="text-slate-500 font-medium">แคนดิเดต:</span>
                                                     <span className="text-slate-300">
                                                         {party.candidates.join(", ")}
@@ -362,7 +363,7 @@ export default function Home() {
                                             )}
 
                                             {/* Stats Grid */}
-                                            <div className="grid grid-cols-2 gap-x-6 gap-y-1 mt-2">
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-1 mt-1 sm:mt-2">
                                                 <div className="flex items-center gap-2">
                                                     <div className="w-1.5 h-1.5 rounded-full bg-slate-600" />
                                                     <span className="text-slate-500 text-xs">ส.ส. (คาดการณ์)</span>
@@ -379,7 +380,7 @@ export default function Home() {
 
                                     {/* Score Big Display */}
                                     <div className="text-right flex flex-col items-end">
-                                        <div className="text-3xl font-black tracking-tighter" style={{ color: party.color, textShadow: `0 0 30px ${party.color}40` }}>
+                                        <div className="text-xl sm:text-2xl md:text-3xl font-black tracking-tighter" style={{ color: party.color, textShadow: `0 0 30px ${party.color}40` }}>
                                             {(party.score ?? party.baseScore).toFixed(1)}<span className="text-lg align-top opacity-50 ml-0.5">%</span>
                                         </div>
 
@@ -420,17 +421,17 @@ export default function Home() {
                 </div>
 
                 {/* Right Column: Visualization & News */}
-                <div className="lg:col-span-2 flex flex-col space-y-2 min-h-0">
+                <div className="lg:col-span-2 flex flex-col space-y-2 min-h-0 order-1 lg:order-2">
 
                     {/* Balanced Header for Right Column */}
-                    <h2 className="text-xl font-bold flex items-center gap-2 text-blue-400 shrink-0">
+                    <h2 className="text-lg sm:text-xl font-bold flex items-center gap-2 text-blue-400 shrink-0">
                         <TrendingUp className="w-5 h-5" />
                         วิเคราะห์และกระแสข้อมูล AI
                     </h2>
 
                     <div className="flex-1 flex flex-col gap-3 min-h-0">
                         {/* Main Chart */}
-                        <div className="bg-slate-900/50 border border-slate-800 p-6 rounded-2xl backdrop-blur h-[280px] relative overflow-hidden shrink-0">
+                        <div className="bg-slate-900/50 border border-slate-800 p-3 sm:p-4 md:p-6 rounded-2xl backdrop-blur chart-container relative overflow-hidden shrink-0">
                             <div className="absolute top-0 right-0 p-4 opacity-10">
                                 <Activity className="w-24 h-24 text-slate-500" />
                             </div>
@@ -510,8 +511,8 @@ export default function Home() {
                             </ResponsiveContainer>
                         </div>
 
-                        {/* AI Console / News Ticker - FLEX-1 to fill the remaining gap */}
-                        <div className="bg-black border border-green-900/50 rounded-lg p-4 font-mono text-sm flex-1 min-h-[250px] overflow-y-auto relative custom-scrollbar">
+                        {/* AI Console / News Ticker */}
+                        <div className="bg-black border border-green-900/50 rounded-lg p-2 sm:p-3 md:p-4 font-mono text-xs sm:text-sm news-ticker overflow-y-auto relative custom-scrollbar">
                             <div className="absolute top-0 left-0 w-full h-1 bg-green-500 animate-pulse sticky z-10" />
                             <h3 className="text-green-500 mb-2 flex items-center gap-2 sticky top-0 bg-black/90 pb-2 z-10 border-b border-green-900/50 w-full">
                                 <RefreshCw className="w-4 h-4 animate-spin" />
@@ -586,14 +587,77 @@ export default function Home() {
                 </div>
             </div>
 
-            {/* Disclaimer Footer */}
-            <footer className="relative z-10 mt-2 pb-4 shrink-0">
-                <div className="text-center text-xs text-gray-600 flex items-center justify-center gap-4">
-                    <span>© 2026 Bonchon-Studio</span>
-                    <Link href="/methodology" className="text-cyan-600 hover:text-cyan-400 flex items-center gap-1">
-                        <ExternalLink className="w-3 h-3" />
-                        วิธีการคำนวณ
-                    </Link>
+            {/* Professional Footer - Enhanced */}
+            <footer className="relative z-10 mt-4 shrink-0">
+                {/* Gradient Border Top */}
+                <div className="h-[2px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent mb-4" />
+
+                <div className="max-w-7xl mx-auto px-2 sm:px-4">
+                    {/* Disclaimer Box - More Prominent */}
+                    <div className="bg-amber-950/40 border border-amber-700/50 rounded-lg p-3 mb-4">
+                        <p className="text-xs sm:text-sm text-amber-300 leading-relaxed text-center font-medium">
+                            ⚠️ <span className="font-bold">ข้อสงวนสิทธิ์:</span> ข้อมูลนี้เป็นการประมาณการโดยระบบ AI เพื่อการศึกษาและวิจัยเท่านั้น
+                            <br className="hidden sm:block" />
+                            <span className="text-amber-400/80">ไม่ใช่ผลการเลือกตั้งอย่างเป็นทางการ และไม่ได้รับรองโดยคณะกรรมการการเลือกตั้ง (กกต.) หรือองค์กรใดๆ</span>
+                        </p>
+                    </div>
+
+                    {/* Main Footer Content */}
+                    <div className="bg-slate-900/60 border border-slate-700/50 rounded-lg p-3 sm:p-4">
+                        <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
+                            {/* Left: Copyright */}
+                            <div className="flex items-center gap-3">
+                                <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center text-white font-black text-xs">
+                                    AI
+                                </div>
+                                <div>
+                                    <div className="font-bold text-white">© 2026 Bonchon-Studio</div>
+                                    <div className="text-xs text-slate-400">สงวนลิขสิทธิ์ตามกฎหมาย</div>
+                                </div>
+                            </div>
+
+                            {/* Center: Links */}
+                            <div className="flex items-center gap-4 sm:gap-6">
+                                <Link
+                                    href="/methodology"
+                                    className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-medium"
+                                >
+                                    <Info className="w-4 h-4" />
+                                    <span>วิธีการคำนวณ</span>
+                                </Link>
+                                <a
+                                    href="https://github.com/Smallzoamz/election-aiwatcher-th"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors font-medium"
+                                >
+                                    <ExternalLink className="w-4 h-4" />
+                                    <span>GitHub</span>
+                                </a>
+                            </div>
+
+                            {/* Right: Status */}
+                            <div className="flex items-center gap-4 bg-slate-800/50 px-4 py-2 rounded-lg border border-slate-700/50">
+                                <div className="text-center">
+                                    <div className="text-xs text-slate-500 uppercase tracking-wider">Version</div>
+                                    <div className="font-mono font-bold text-white">2.1</div>
+                                </div>
+                                <div className="w-px h-8 bg-slate-700" />
+                                <div className="text-center">
+                                    <div className="text-xs text-slate-500 uppercase tracking-wider">Status</div>
+                                    <div className="flex items-center gap-1.5 text-green-400 font-bold">
+                                        <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
+                                        Online
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Bottom Credit */}
+                    <div className="text-center mt-3 text-xs text-slate-600">
+                        Developed with 💙 for Thai Democracy
+                    </div>
                 </div>
             </footer>
         </main>

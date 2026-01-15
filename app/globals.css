@@ -58,3 +58,162 @@ button:focus-visible {
   outline: 2px solid #22d3ee;
   outline-offset: 2px;
 }
+
+/* ==================== AUTO RESPONSIVE SYSTEM ==================== */
+
+/* Fluid Typography - Auto scales based on viewport */
+html {
+  font-size: clamp(14px, 2vw, 16px);
+}
+
+/* Container Query Support */
+@supports (container-type: inline-size) {
+  .responsive-container {
+    container-type: inline-size;
+  }
+}
+
+/* Auto Grid - Automatically adjusts columns */
+.auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 1rem;
+}
+
+/* Responsive Card Heights */
+.responsive-card {
+  min-height: 100px;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .responsive-card {
+    min-height: 110px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-card {
+    min-height: 120px;
+  }
+}
+
+/* Mobile-First Header */
+@media (max-width: 767px) {
+  .mobile-stack {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.75rem !important;
+  }
+
+  .mobile-hide {
+    display: none !important;
+  }
+
+  .mobile-full {
+    width: 100% !important;
+  }
+
+  .mobile-center {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .mobile-text-sm {
+    font-size: 0.75rem !important;
+  }
+}
+
+/* Tablet Adjustments */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .tablet-2col {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Large Screen Optimizations */
+@media (min-width: 1280px) {
+  .xl-show {
+    display: flex !important;
+  }
+}
+
+/* Ultra-wide Support (2K+) */
+@media (min-width: 1920px) {
+  .container-max {
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+}
+
+/* Safe Area for Notched Devices (iPhone, etc.) */
+@supports (padding: max(0px)) {
+  .safe-area-padding {
+    padding-left: max(0.75rem, env(safe-area-inset-left));
+    padding-right: max(0.75rem, env(safe-area-inset-right));
+    padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* Smooth Resize Transitions */
+* {
+  transition-property: font-size, padding, margin, gap;
+  transition-duration: 0.15s;
+  transition-timing-function: ease-out;
+}
+
+/* Disable transitions on resize to prevent jank */
+.resizing * {
+  transition: none !important;
+}
+
+/* Chart Container - Auto Height */
+.chart-container {
+  height: clamp(200px, 35vh, 350px);
+  min-height: 200px;
+}
+
+/* News Ticker - Flexible Height */
+.news-ticker {
+  min-height: 200px;
+  max-height: 50vh;
+  height: auto;
+  flex: 1;
+}
+
+/* Party Cards - Auto Layout */
+.party-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.party-cards-container>* {
+  flex: 1;
+  min-height: 100px;
+}
+
+/* Countdown Timer - Responsive */
+@media (max-width: 640px) {
+  .countdown-compact .time-box {
+    padding: 0.25rem 0.5rem !important;
+    min-width: 2.5rem !important;
+    font-size: 1rem !important;
+  }
+
+  .countdown-compact .time-label {
+    font-size: 8px !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
