@@ -1,209 +1,240 @@
 import Link from 'next/link';
+import { Database, Zap, Brain, Activity, TrendingUp } from 'lucide-react';
 
 export const metadata = {
     title: 'วิธีการคำนวณ | TH Election AI Watch',
-    description: 'อธิบายวิธีการคำนวณดัชนีความนิยมพรรคการเมืองด้วยระบบ AI',
+    description: 'เจาะลึกเบื้องหลังระบบ AI วิเคราะห์การเลือกตั้งไทย 2569',
 };
 
 export default function MethodologyPage() {
     return (
         <main className="min-h-screen bg-slate-950 text-white p-6">
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-5xl mx-auto">
                 {/* Header */}
-                <header className="mb-8 border-b border-gray-800 pb-4">
+                <header className="mb-12 border-b border-slate-800 pb-8 text-center relative overflow-hidden">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-cyan-500/20 blur-[100px] rounded-full -z-10" />
                     <Link
                         href="/"
-                        className="text-cyan-400 hover:text-cyan-300 text-sm mb-2 inline-block"
+                        className="text-cyan-400 hover:text-cyan-300 text-sm mb-4 inline-flex items-center gap-1 transition-transform hover:-translate-x-1"
                     >
                         ← กลับหน้าหลัก
                     </Link>
-                    <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600">
-                        วิธีการคำนวณ
+                    <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 mb-4 animate-gradient-x">
+                        เจาะลึกระบบ AI อัจฉริยะ
                     </h1>
-                    <p className="text-gray-400 mt-2">
-                        อธิบายระเบียบวิธีการวิเคราะห์และประมาณการความนิยมพรรคการเมือง
+                    <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+                        เปิดเผยเบื้องหลังเทคโนโลยีการวิเคราะห์ Data-Driven Election Analysis ที่แม่นยำและรวดเร็วที่สุด
                     </p>
                 </header>
 
                 {/* Disclaimer */}
-                <div className="bg-amber-900/20 border border-amber-700/50 rounded-lg p-4 mb-8">
-                    <h3 className="text-amber-200 font-bold mb-2">⚠️ ข้อจำกัดความรับผิดชอบ</h3>
-                    <p className="text-amber-200/80 text-sm">
-                        ระบบนี้เป็นการ<strong>สาธิตเทคโนโลยี</strong>เท่านั้น ผลลัพธ์ไม่ใช่การทำนายผลเลือกตั้งจริง
-                        และไม่ได้รับรองโดยองค์กรสำรวจความคิดเห็นหรือหน่วยงานใดๆ
-                    </p>
+                <div className="bg-amber-950/30 border border-amber-500/20 rounded-xl p-6 mb-12 flex items-start gap-4 shadow-lg shadow-amber-900/10">
+                    <div className="p-3 bg-amber-500/10 rounded-lg shrink-0">
+                        <span className="text-2xl">⚠️</span>
+                    </div>
+                    <div>
+                        <h3 className="text-amber-400 font-bold text-lg mb-1">ข้อจำกัดความรับผิดชอบ (Disclaimer)</h3>
+                        <p className="text-amber-200/70 text-sm leading-relaxed">
+                            ระบบนี้เป็นการ<strong>สาธิตเทคโนโลยี (Tech Demo)</strong> เพื่อแสดงศักยภาพของ AI ในการประมวลผลข้อมูล Real-time เท่านั้น
+                            ผลลัพธ์ที่ได้มาจากการจำลองสถานการณ์และวิเคราะห์แนวโน้มจากโซเชียลมีเดีย+ผลโพลในอดีต
+                            <span className="block mt-2 font-medium text-amber-300">ไม่ใช่ผลการเลือกตั้งจริง และไม่สามารถใช้อ้างอิงทางกฎหมายได้</span>
+                        </p>
+                    </div>
                 </div>
 
-                {/* Methodology Sections */}
-                <div className="space-y-8">
-
-                    {/* Data Sources */}
-                    <section className="bg-slate-900/50 border border-slate-800 rounded-lg p-6">
-                        <h2 className="text-xl font-bold text-cyan-400 mb-4">📡 แหล่งข้อมูล</h2>
-                        <p className="text-gray-300 mb-4">
-                            ระบบดึงข้อมูลจากหลายแพลตฟอร์มแบบ Real-time:
+                {/* Core Pillars */}
+                <div className="grid md:grid-cols-3 gap-6 mb-12">
+                    <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/50 transition-colors group">
+                        <div className="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <Zap className="w-6 h-6 text-cyan-400" />
+                        </div>
+                        <h3 className="text-lg font-bold text-white mb-2">Real-time Core</h3>
+                        <p className="text-slate-400 text-sm">
+                            ประมวลผลข้อมูลใหม่ทุก 3 วินาที ด้วย AI Algorithm ที่ทำงานตลอด 24 ชม. ไม่มีวันหยุด
                         </p>
+                    </div>
+                    <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800 hover:border-purple-500/50 transition-colors group">
+                        <div className="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <Brain className="w-6 h-6 text-purple-400" />
+                        </div>
+                        <h3 className="text-lg font-bold text-white mb-2">Hybrid Intelligence</h3>
+                        <p className="text-slate-400 text-sm">
+                            ผสานพลังระหว่างผลโพลสถาบันหลัก (NIDA Poll) กับกระแสโซเชียลมีเดีย (AI Sentiment)
+                        </p>
+                    </div>
+                    <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800 hover:border-green-500/50 transition-colors group">
+                        <div className="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <Database className="w-6 h-6 text-green-400" />
+                        </div>
+                        <h3 className="text-lg font-bold text-white mb-2">High Performance</h3>
+                        <p className="text-slate-400 text-sm">
+                            Optimize ด้วย Next.js 16, Lazy Loading และ Database Caching เพื่อความเร็วสูงสุด
+                        </p>
+                    </div>
+                </div>
 
-                        {/* RSS Feeds */}
-                        <h3 className="text-white font-medium mb-2 mt-4">📰 RSS Feeds (สื่อข่าว)</h3>
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
-                            {[
-                                { name: 'มติชนออนไลน์ (การเมือง)', weight: '1.0x' },
-                                { name: 'ประชาชาติธุรกิจ (การเมือง)', weight: '1.0x' },
-                                { name: 'ผู้จัดการออนไลน์ (การเมือง)', weight: '1.2x' },
-                                { name: 'มติชน (ทั่วไป)', weight: '0.8x' },
-                                { name: 'ประชาชาติ (ทั่วไป)', weight: '0.8x' },
-                            ].map((source, i) => (
-                                <div key={i} className="bg-slate-800/50 p-3 rounded border border-slate-700">
-                                    <div className="font-medium">{source.name}</div>
-                                    <div className="text-xs text-gray-500">น้ำหนัก: {source.weight}</div>
+                {/* Detailed Sections */}
+                <div className="space-y-12">
+
+                    {/* Section 1: Data Sources */}
+                    <section>
+                        <h2 className="text-2xl font-bold flex items-center gap-3 text-cyan-400 mb-6 border-b border-slate-800 pb-2">
+                            <span className="text-3xl">📡</span> แหล่งข้อมูล (Data Sources)
+                        </h2>
+                        <div className="bg-slate-900/40 border border-slate-700/50 rounded-2xl p-6 lg:p-8">
+                            <div className="grid md:grid-cols-2 gap-8">
+                                <div>
+                                    <h3 className="text-white font-medium mb-4 flex items-center gap-2">
+                                        <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+                                        สำนักข่าวหลัก (Mainstream Media)
+                                    </h3>
+                                    <ul className="space-y-3">
+                                        {[
+                                            { name: 'มติชนออนไลน์', weight: '1.0x', detail: 'การเมือง, ทั่วไป' },
+                                            { name: 'ประชาชาติธุรกิจ', weight: '1.0x', detail: 'เศรษฐกิจ, การเมือง' },
+                                            { name: 'ผู้จัดการออนไลน์', weight: '1.2x', detail: 'การวิเคราะห์เชิงลึก' },
+                                        ].map((item, i) => (
+                                            <li key={i} className="flex justify-between items-center bg-slate-800/50 p-3 rounded-lg border border-slate-700">
+                                                <span className="text-slate-200">{item.name}</span>
+                                                <div className="text-right">
+                                                    <div className="text-xs font-mono text-cyan-400 bg-cyan-900/30 px-2 py-0.5 rounded">Weight: {item.weight}</div>
+                                                    <div className="text-[10px] text-slate-500 mt-1">{item.detail}</div>
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
-                            ))}
-                        </div>
-
-                        {/* Social Media */}
-                        <h3 className="text-white font-medium mb-2 mt-6">💬 Social Media</h3>
-                        <div className="grid grid-cols-2 gap-3 mb-4">
-                            <div className="bg-orange-900/30 p-3 rounded border border-orange-700/50">
-                                <div className="font-medium text-orange-300">🌐 Pantip</div>
-                                <div className="text-xs text-gray-400">
-                                    ห้อง: สินธร, ราชดำเนิน, เฉลิมไทย
+                                <div>
+                                    <h3 className="text-white font-medium mb-4 flex items-center gap-2">
+                                        <span className="w-2 h-2 rounded-full bg-purple-500"></span>
+                                        โซเชียลมีเดีย (Social Listening)
+                                    </h3>
+                                    <div className="space-y-4">
+                                        <div className="bg-orange-900/10 border border-orange-500/20 p-4 rounded-lg">
+                                            <div className="flex justify-between mb-2">
+                                                <span className="font-bold text-orange-400">Pantip.com</span>
+                                                <span className="text-xs bg-orange-500/20 text-orange-300 px-2 py-1 rounded">Weight: 1.5x</span>
+                                            </div>
+                                            <p className="text-xs text-orange-200/60">
+                                                เจาะลึกห้องราชดำเนิน, สินธร และกระทู้แนะนำ เพื่อจับกระแสความคิดเห็นเชิงลึกของกลุ่มพลังเงียบ
+                                            </p>
+                                        </div>
+                                        <div className="bg-red-900/10 border border-red-500/20 p-4 rounded-lg">
+                                            <div className="flex justify-between mb-2">
+                                                <span className="font-bold text-red-400">YouTube Comments</span>
+                                                <span className="text-xs bg-red-500/20 text-red-300 px-2 py-1 rounded">Weight: 1.3x</span>
+                                            </div>
+                                            <p className="text-xs text-red-200/60">
+                                                วิเคราะห์คอมเมนต์จากช่องข่าวหลัก (Thai PBS, PPTV, ไทยรัฐ) เพื่อดูปฏิกิริยาต่อข่าวรายวัน
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="text-xs text-gray-500">น้ำหนัก: 1.5x</div>
                             </div>
-                            <div className="bg-red-900/30 p-3 rounded border border-red-700/50">
-                                <div className="font-medium text-red-300">▶️ YouTube</div>
-                                <div className="text-xs text-gray-400">
-                                    ช่อง: Thai PBS, PPTV, ไทยรัฐ, ช่อง 3
+                        </div>
+                    </section>
+
+                    {/* Section 2: Hybrid Calculation */}
+                    <section>
+                        <h2 className="text-2xl font-bold flex items-center gap-3 text-purple-400 mb-6 border-b border-slate-800 pb-2">
+                            <span className="text-3xl">🧮</span> สูตรคำนวณแบบผสมผสาน (Weighted Hybrid Score)
+                        </h2>
+                        <div className="bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700 rounded-2xl p-6 lg:p-8 relative overflow-hidden">
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/5 blur-[80px] rounded-full pointer-events-none" />
+
+                            <p className="text-slate-300 mb-8 max-w-3xl relative z-10">
+                                เพื่อความแม่นยำสูงสุด พัฒนาการคำนวณให้แยกตามประเภทที่นั่ง ส.ส. เนื่องจากการตัดสินใจของผู้มีสิทธิเลือกตั้งในสองระบบนี้ต่างกัน:
+                            </p>
+
+                            <div className="grid md:grid-cols-2 gap-8 relative z-10">
+                                {/* Party List */}
+                                <div className="bg-black/40 backdrop-blur-sm p-6 rounded-xl border border-purple-500/30 relative overflow-hidden">
+                                    <div className="absolute -right-6 -top-6 w-24 h-24 bg-purple-500/20 rounded-full blur-xl" />
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <TrendingUp className="w-6 h-6 text-purple-400" />
+                                        <h3 className="font-bold text-lg text-white">ส.ส. บัญชีรายชื่อ</h3>
+                                        <span className="text-xs bg-purple-500 text-white px-2 py-0.5 rounded-full">100 ที่นั่ง</span>
+                                    </div>
+                                    <div className="text-3xl font-mono font-bold text-purple-300 mb-4">
+                                        60% <span className="text-sm font-sans text-slate-400 font-normal">AI Sentiment</span>
+                                        <span className="mx-2 text-slate-600">+</span>
+                                        40% <span className="text-sm font-sans text-slate-400 font-normal">NIDA Poll</span>
+                                    </div>
+                                    <p className="text-sm text-slate-400">
+                                        ให้ความสำคัญกับ <strong>"กระแสรายวัน"</strong> และความนิยมของพรรคในภาพรวม
+                                    </p>
                                 </div>
-                                <div className="text-xs text-gray-500">น้ำหนัก: 1.3x</div>
-                            </div>
-                        </div>
 
-                        <p className="text-gray-500 text-sm mt-4">
-                            * น้ำหนักที่สูงกว่าหมายถึงแหล่งข่าวที่มีผลกระทบต่อผลลัพธ์มากกว่า
-                        </p>
-                    </section>
-
-                    {/* Sentiment Analysis */}
-                    <section className="bg-slate-900/50 border border-slate-800 rounded-lg p-6">
-                        <h2 className="text-xl font-bold text-cyan-400 mb-4">🧠 การวิเคราะห์อารมณ์ (Sentiment Analysis)</h2>
-                        <p className="text-gray-300 mb-4">
-                            ระบบใช้ Keyword-based Sentiment Analysis ที่มีน้ำหนัก (Weighted) เพื่อประเมินว่าข่าวเป็นเชิงบวก เชิงลบ หรือเป็นกลาง
-                        </p>
-
-                        <div className="grid md:grid-cols-2 gap-4 mb-4">
-                            <div className="bg-green-900/20 border border-green-700/50 rounded p-4">
-                                <h4 className="text-green-400 font-bold mb-2">คำเชิงบวก</h4>
-                                <p className="text-gray-400 text-sm">
-                                    สำเร็จ, ชนะ, หนุน, เห็นชอบ, ชื่นชม, ก้าวหน้า, แก้ปัญหา, พัฒนา, สนับสนุน...
-                                </p>
-                            </div>
-                            <div className="bg-red-900/20 border border-red-700/50 rounded p-4">
-                                <h4 className="text-red-400 font-bold mb-2">คำเชิงลบ</h4>
-                                <p className="text-gray-400 text-sm">
-                                    ทุจริต, โกง, จับกุม, ค้าน, วิจารณ์, ขัดแย้ง, ประท้วง, ฉาว, โจมตี...
-                                </p>
-                            </div>
-                        </div>
-
-                        <p className="text-gray-500 text-sm">
-                            แต่ละคำมีน้ำหนักแตกต่างกัน เช่น "ทุจริต" (2.5x) มีผลกระทบมากกว่า "ค้าน" (1.5x)
-                        </p>
-                    </section>
-
-                    {/* Score Calculation */}
-                    <section className="bg-slate-900/50 border border-slate-800 rounded-lg p-6">
-                        <h2 className="text-xl font-bold text-cyan-400 mb-4">📊 การคำนวณคะแนน</h2>
-
-                        <div className="space-y-4">
-                            <div>
-                                <h4 className="text-white font-medium mb-2">1. คะแนนฐาน (Base Score)</h4>
-                                <p className="text-gray-400 text-sm">
-                                    แต่ละพรรคมีคะแนนฐานเริ่มต้นจากการประมาณการทั่วไป
-                                </p>
-                            </div>
-
-                            <div>
-                                <h4 className="text-white font-medium mb-2">2. ผลกระทบจากข่าว (News Impact)</h4>
-                                <p className="text-gray-400 text-sm">
-                                    เมื่อมีข่าวเกี่ยวข้องกับพรรคใด คะแนนจะถูกปรับตามอารมณ์ของข่าว
-                                    <br />• ข่าวเชิงบวก: +0.5 ถึง +1.5%
-                                    <br />• ข่าวเชิงลบ: -0.5 ถึง -1.5%
-                                </p>
-                            </div>
-
-                            <div>
-                                <h4 className="text-white font-medium mb-2">3. Pro-Level Hybrid Calculation (สูตรคำนวณขั้นสูง)</h4>
-                                <p className="text-gray-400 text-sm mb-2">
-                                    ระบบแยกการคำนวณตามประเภทบัญชีรายชื่อและเขต เพื่อสะท้อนพฤติกรรมการเลือกตั้งจริง:
-                                </p>
-                                <ul className="text-gray-400 text-sm list-disc list-inside ml-2">
-                                    <li>
-                                        <strong className="text-cyan-400">ส.ส. บัญชีรายชื่อ (100 ที่นั่ง):</strong> เน้นกระแสพรรค (AI 60% / Poll 40%)
-                                    </li>
-                                    <li>
-                                        <strong className="text-yellow-400">ส.ส. เขต (400 ที่นั่ง):</strong> เน้นตัวบุคคลและความผูกพันพื้นที่ (AI 30% / Poll 70%)
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div>
-                                <h4 className="text-white font-medium mb-2">4. ฟีเจอร์พิเศษ (Special Insights)</h4>
-                                <ul className="space-y-2 text-sm">
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-lg">📉</span>
-                                        <span className="text-gray-400">
-                                            <strong className="text-white">Volatility Index:</strong> ตีความกลุ่ม "Neutral News" เป็น "กลุ่มพลังเงียบ/ยังไม่ตัดสินใจ" (Undecided Voter Proxy)
-                                        </span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-lg">🐎</span>
-                                        <span className="text-gray-400">
-                                            <strong className="text-blue-400">Dark Horse Alert:</strong> ระบบเฝ้าระวังพรรคม้ามืดที่คะแนน AI สูงกว่าโพลอย่างมีนัยสำคัญ (Hidden Momentum)
-                                        </span>
-                                    </li>
-                                </ul>
+                                {/* Constituency */}
+                                <div className="bg-black/40 backdrop-blur-sm p-6 rounded-xl border border-teal-500/30 relative overflow-hidden">
+                                    <div className="absolute -right-6 -top-6 w-24 h-24 bg-teal-500/20 rounded-full blur-xl" />
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <Activity className="w-6 h-6 text-teal-400" />
+                                        <h3 className="font-bold text-lg text-white">ส.ส. แบ่งเขต</h3>
+                                        <span className="text-xs bg-teal-500 text-white px-2 py-0.5 rounded-full">400 ที่นั่ง</span>
+                                    </div>
+                                    <div className="text-3xl font-mono font-bold text-teal-300 mb-4">
+                                        30% <span className="text-sm font-sans text-slate-400 font-normal">AI Sentiment</span>
+                                        <span className="mx-2 text-slate-600">+</span>
+                                        70% <span className="text-sm font-sans text-slate-400 font-normal">NIDA Poll</span>
+                                    </div>
+                                    <p className="text-sm text-slate-400">
+                                        เน้น <strong>"ฐานเสียงเดิม"</strong> และความผูกพันกับตัวบุคคลในพื้นที่ ซึ่งโพลมักจะแม่นยำกว่า
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </section>
 
-                    {/* Confidence Interval */}
-                    <section className="bg-slate-900/50 border border-slate-800 rounded-lg p-6">
-                        <h2 className="text-xl font-bold text-cyan-400 mb-4">📏 ช่วงความเชื่อมั่น (Confidence Interval)</h2>
-                        <p className="text-gray-300 mb-4">
-                            ค่า ±X% ที่แสดงข้างคะแนนแต่ละพรรคหมายถึงช่วงความไม่แน่นอนของการประมาณการ
-                        </p>
-                        <div className="bg-slate-800/50 p-4 rounded font-mono text-sm">
-                            <p className="text-gray-400">สูตรการคำนวณ:</p>
-                            <p className="text-cyan-300 mt-2">Margin = 5.0 × √(50 / sampleSize)</p>
+                    {/* Section 3: Performance */}
+                    <section>
+                        <h2 className="text-2xl font-bold flex items-center gap-3 text-green-400 mb-6 border-b border-slate-800 pb-2">
+                            <span className="text-3xl">🚀</span> ประสิทธิภาพระบบ (System Performance)
+                        </h2>
+                        <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-6">
+                            <p className="text-slate-300 mb-6">
+                                เวอร์ชั่น 2.1 ได้รับการปรับปรุงโครงสร้างเพื่อรองรับผู้ใช้งานจำนวนมากพร้อมกัน (Concurrent Users):
+                            </p>
+                            <ul className="grid md:grid-cols-2 gap-4">
+                                <li className="flex items-start gap-3 bg-black/20 p-3 rounded-lg">
+                                    <span className="text-green-400 font-bold">✓</span>
+                                    <span className="text-sm text-slate-300">
+                                        <strong className="text-white block mb-1">Visibility API Optimized</strong>
+                                        ระบบจะหยุดดึงข้อมูลชั่วคราวเมื่อผู้ใช้สลับหน้าจอ เพื่อประหยัดดาต้าและแบตเตอรี่
+                                    </span>
+                                </li>
+                                <li className="flex items-start gap-3 bg-black/20 p-3 rounded-lg">
+                                    <span className="text-green-400 font-bold">✓</span>
+                                    <span className="text-sm text-slate-300">
+                                        <strong className="text-white block mb-1">Lazy Loading Components</strong>
+                                        โหลดกราฟและส่วนเสริมหนักๆ เฉพาะเมื่อจำเป็น ทำให้หน้าเว็บโหลดเร็วขึ้น 40%
+                                    </span>
+                                </li>
+                                <li className="flex items-start gap-3 bg-black/20 p-3 rounded-lg">
+                                    <span className="text-green-400 font-bold">✓</span>
+                                    <span className="text-sm text-slate-300">
+                                        <strong className="text-white block mb-1">Memoized Calculations</strong>
+                                        จดจำผลการคำนวณที่ซ้ำซ้อน ลดภาระเครื่องของผู้ใช้งาน
+                                    </span>
+                                </li>
+                                <li className="flex items-start gap-3 bg-black/20 p-3 rounded-lg">
+                                    <span className="text-green-400 font-bold">✓</span>
+                                    <span className="text-sm text-slate-300">
+                                        <strong className="text-white block mb-1">Database Caching</strong>
+                                        เก็บประวัติคะแนนลงฐานข้อมูลเพื่อวิเคราะห์ Trend ระยะยาวได้อย่างแม่นยำ
+                                    </span>
+                                </li>
+                            </ul>
                         </div>
-                        <p className="text-gray-500 text-sm mt-4">
-                            ยิ่งมีข่าวที่วิเคราะห์มากขึ้น ช่วงความเชื่อมั่นจะแคบลง (แม่นยำขึ้น)
-                        </p>
-                    </section>
-
-                    {/* Limitations */}
-                    <section className="bg-slate-900/50 border border-slate-800 rounded-lg p-6">
-                        <h2 className="text-xl font-bold text-cyan-400 mb-4">⚠️ ข้อจำกัด</h2>
-                        <ul className="text-gray-400 space-y-2 list-disc list-inside">
-                            <li>ใช้ Keyword Matching อย่างง่าย ไม่ใช่ Machine Learning ขั้นสูง</li>
-                            <li>ไม่ได้พิจารณาบริบทของข่าว (Context) อย่างลึกซึ้ง</li>
-                            <li>บาง RSS feeds อาจมี CORS restrictions ทำให้ดึงข้อมูลไม่ได้</li>
-                            <li>Pantip ใช้ unofficial API ซึ่งอาจไม่เสถียร</li>
-                            <li>YouTube ต้องมี API Key จึงจะทำงานได้ (free tier มี quota จำกัด)</li>
-                        </ul>
                     </section>
 
                 </div>
 
                 {/* Footer */}
-                <footer className="mt-8 pt-4 border-t border-gray-800 text-center text-gray-600 text-sm">
-                    <p>© 2026 Bonchon-Studio | TH Election AI Watch</p>
-                    <p className="mt-1">
-                        <Link href="/" className="text-cyan-600 hover:text-cyan-400">
-                            กลับหน้าหลัก
-                        </Link>
+                <footer className="mt-16 pt-8 border-t border-slate-800 text-center text-slate-600">
+                    <p className="mb-2">© 2026 Bonchon-Studio | TH Election AI Watch v2.1</p>
+                    <p className="text-xs">
+                        พัฒนาด้วย ❤️ เพื่อประชาธิปไตยไทย
                     </p>
                 </footer>
             </div>

@@ -98,3 +98,4 @@
 [16/01/2026 05:52] | File: next.config.js | Line: all | Keyword: Performance | Status: Created | Change: Created next.config.js with image optimization, tree-shaking, and caching headers.
 [16/01/2026 05:54] | File: app/page.js | Line: 3-15 | Keyword: Performance | Status: Edited | Change: Added lazy load for PartyDetailModal using dynamic import.
 [16/01/2026 05:55] | File: app/page.js | Line: 226-260 | Keyword: Performance | Status: Edited | Change: Added Visibility API to pause polling when tab is hidden, useMemo for chartData.
+[16/01/2026 06:15] | File: app/methodology/page.js | Line: all | Keyword: Content | Status: Updated | Change: Revamped methodology page with new Hybrid Score logic, Real-time Core details, and Performance Optimization section.
