@@ -246,10 +246,37 @@ export default function Home() {
                             กระแสข้อมูล AI (7 เหตุการณ์ล่าสุด)
                         </h3>
                         <div className="space-y-3 text-green-300/80 mt-2">
-                            {history.length === 0 && (
+                            {history.length === 0 && !data?.recentNews && (
                                 <div className="text-gray-500 text-center py-8">
                                     กำลังรอข่าวใหม่...
                                 </div>
+                            )}
+                            {/* Show recent news when no new analyzed news */}
+                            {history.length === 0 && data?.recentNews?.length > 0 && (
+                                <>
+                                    <div className="text-yellow-500/70 text-xs mb-2">📢 ข่าวการเมืองล่าสุด (24 ชม.):</div>
+                                    {data.recentNews.map((news, i) => (
+                                        <div key={i} className="border-l-2 border-yellow-600/50 pl-2 pb-2 border-b border-yellow-900/20">
+                                            <div className="flex justify-between items-start text-xs">
+                                                <span className="text-purple-400">[{news.source}]</span>
+                                                {news.pubDate && (
+                                                    <span className="text-gray-500">
+                                                        📅 {new Date(news.pubDate).toLocaleString('th-TH', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}
+                                                    </span>
+                                                )}
+                                            </div>
+                                            <div className="mt-1">
+                                                <span className="text-yellow-400">› </span>
+                                                <a href={news.link} target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-yellow-300 hover:underline">
+                                                    {news.headline}
+                                                </a>
+                                            </div>
+                                            <span className={`text-xs px-1 rounded ${news.sentiment === 'pos' ? 'bg-green-900/50 text-green-400' : news.sentiment === 'neg' ? 'bg-red-900/50 text-red-400' : 'bg-gray-800 text-gray-400'}`}>
+                                                {news.sentiment === 'pos' ? '👍 เชิงบวก' : news.sentiment === 'neg' ? '👎 เชิงลบ' : '— เป็นกลาง'}
+                                            </span>
+                                        </div>
+                                    ))}
+                                </>
                             )}
                             {history.slice(-7).reverse().map((tick, i) => (
                                 <div key={i} className="border-l-2 border-green-500 pl-2 animate-in slide-in-from-left duration-300 pb-2 border-b border-green-900/20 last:border-0">
