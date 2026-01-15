@@ -132,7 +132,7 @@ export default function Home() {
                     </h2>
 
                     <div className="space-y-3">
-                        {data?.parties?.map((party, idx) => (
+                        {data?.parties?.slice(0, 5).map((party, idx) => (
                             <div key={party.id} className="bg-slate-900/80 border border-slate-800 p-4 rounded-lg backdrop-blur hover:border-cyan-500/50 transition-all group">
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center gap-4">
