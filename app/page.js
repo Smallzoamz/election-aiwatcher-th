@@ -139,6 +139,11 @@ export default function Home() {
                                         <div className="text-2xl font-bold text-gray-600 font-mono">#{idx + 1}</div>
                                         <div>
                                             <h3 className="font-bold text-lg group-hover:text-cyan-400 transition-colors">{party.name}</h3>
+                                            {party.candidates && (
+                                                <div className="text-xs text-gray-400 mt-0.5">
+                                                    แคนดิเดต: <span className="text-gray-300">{party.candidates.join(", ")}</span>
+                                                </div>
+                                            )}
                                             <div className="text-xs text-gray-400 mt-1 space-y-0.5">
                                                 <div className="flex items-center gap-1">
                                                     <span className="text-gray-500">ส.ส. (คาดการณ์):</span>
@@ -220,7 +225,7 @@ export default function Home() {
                     <div className="bg-slate-900/50 border border-slate-800 p-6 rounded-lg backdrop-blur h-80">
                         <h3 className="text-gray-400 mb-4 text-sm font-mono uppercase">การกระจายความนิยม</h3>
                         <ResponsiveContainer width="100%" height="100%">
-                            <BarChart data={data?.parties || []}>
+                            <BarChart data={data?.parties?.slice(0, 5) || []}>
                                 <CartesianGrid strokeDasharray="3 3" stroke="#333" />
                                 <XAxis dataKey="name" stroke="#666" fontSize={11} />
                                 <YAxis stroke="#666" domain={[0, 50]} />
@@ -230,7 +235,7 @@ export default function Home() {
                                     formatter={(value, name) => [`${value.toFixed(1)}%`, 'คะแนน']}
                                 />
                                 <Bar dataKey="score" radius={[4, 4, 0, 0]}>
-                                    {data?.parties?.map((entry, index) => (
+                                    {data?.parties?.slice(0, 5).map((entry, index) => (
                                         <Cell key={`cell-${index}`} fill={entry.color} />
                                     ))}
                                 </Bar>
