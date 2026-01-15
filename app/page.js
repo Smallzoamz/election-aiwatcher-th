@@ -168,6 +168,33 @@ export default function Home() {
                                         </div>
                                     </div>
                                 </div>
+
+                                {/* Trend Prediction (24h Forecast) */}
+                                {party.trendPrediction && (
+                                    <div className={`mt-3 p-2 rounded-lg text-xs flex items-center justify-between ${party.trendPrediction.prediction === 'up'
+                                        ? 'bg-green-900/30 border border-green-800/50'
+                                        : party.trendPrediction.prediction === 'down'
+                                            ? 'bg-red-900/30 border border-red-800/50'
+                                            : 'bg-slate-800/50 border border-slate-700/50'
+                                        }`}>
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-gray-400">📊 การคาดการณ์ 24 ชม.:</span>
+                                            <span className={`font-medium ${party.trendPrediction.prediction === 'up' ? 'text-green-400'
+                                                : party.trendPrediction.prediction === 'down' ? 'text-red-400'
+                                                    : 'text-gray-300'
+                                                }`}>
+                                                {party.trendPrediction.reason}
+                                            </span>
+                                        </div>
+                                        <div className={`font-mono font-bold ${party.trendPrediction.delta24h > 0 ? 'text-green-400'
+                                            : party.trendPrediction.delta24h < 0 ? 'text-red-400'
+                                                : 'text-gray-400'
+                                            }`}>
+                                            {party.trendPrediction.delta24h > 0 ? '+' : ''}{party.trendPrediction.delta24h}%
+                                        </div>
+                                    </div>
+                                )}
+
                                 {/* Confidence Bar */}
                                 {party.confidenceInterval && (
                                     <div className="mt-2 h-1.5 bg-slate-800 rounded-full overflow-hidden">
@@ -246,13 +273,28 @@ export default function Home() {
                                         </span>
                                         <span className="text-gray-600"> | ผลกระทบ: {tick.analyzedNews?.target} ({tick.analyzedNews?.impact > 0 ? '+' : ''}{tick.analyzedNews?.impact}%)</span>
                                     </div>
+                                    {/* Context Deep Dive */}
+                                    {tick.analyzedNews?.primaryContext && (
+                                        <div className="mt-1">
+                                            <span className={`text-xs px-2 py-0.5 rounded-full ${tick.analyzedNews.sentiment === 'neg'
+                                                    ? 'bg-red-900/50 border border-red-700/50 text-red-300'
+                                                    : tick.analyzedNews.sentiment === 'pos'
+                                                        ? 'bg-green-900/50 border border-green-700/50 text-green-300'
+                                                        : 'bg-slate-800 border border-slate-600 text-gray-300'
+                                                }`}>
+                                                {tick.analyzedNews.sentiment === 'neg' ? '⚠️ สาเหตุ: ' : '✨ เหตุผล: '}
+                                                <span className="font-bold">{tick.analyzedNews.primaryContext.label}</span>
+                                            </span>
+                                        </div>
+                                    )}
                                     {/* Show matched keywords */}
                                     {tick.analyzedNews?.keywords?.length > 0 && (
                                         <div className="mt-1 flex flex-wrap gap-1">
-                                            {tick.analyzedNews.keywords.slice(0, 3).map((kw, ki) => (
+                                            {tick.analyzedNews.keywords.slice(0, 5).map((kw, ki) => (
                                                 <span
                                                     key={ki}
                                                     className={`text-xs px-1 rounded ${kw.type === 'pos' ? 'bg-green-900/50 text-green-400' : 'bg-red-900/50 text-red-400'}`}
+                                                    title={`Context: ${kw.context}`}
                                                 >
                                                     {kw.word}
                                                 </span>

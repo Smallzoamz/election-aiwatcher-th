@@ -19,4 +19,3 @@
 [16/01/2026 00:40] | File: lib/ai-engine.js | Line: 1 | Keyword: Credibility | Status: Edited | Change: Weighted sentiment analysis, confidence intervals, score history tracking
 [16/01/2026 00:40] | File: app/page.js | Line: 1 | Keyword: UI Enhancement | Status: Edited | Change: Added confidence intervals, feed status, keyword display, disclaimer footer
 [16/01/2026 00:40] | File: app/methodology/page.js | Line: 1 | Keyword: Transparency | Status: Created | Change: Created methodology page explaining data sources, algorithms, and limitations
-
