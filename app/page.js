@@ -376,25 +376,31 @@ export default function Home() {
                                     </div>
 
                                     {/* Score Big Display */}
-                                    <div className="text-right">
-                                        {/* Trend Prediction Badge */}
-                                        {party.trendPrediction && (
-                                            <div className={`inline-flex flex-col items-center px-2 py-1 rounded-lg border text-[10px] font-bold mt-1 max-w-[80px] text-center leading-tight
-                                                ${party.trendPrediction.prediction === 'up' ? 'bg-green-500/10 border-green-500/20 text-green-400' :
-                                                    party.trendPrediction.prediction === 'down' ? 'bg-red-500/10 border-red-500/20 text-red-400' :
-                                                        'bg-slate-500/10 border-slate-500/20 text-slate-400'}`}>
-                                                <span className="opacity-70 text-[9px]">คาดการณ์ 24ชม.</span>
-                                                <div className="flex items-center gap-1">
-                                                    {party.trendPrediction.prediction === 'up' ? '▲' : party.trendPrediction.prediction === 'down' ? '▼' : '●'}
-                                                    {Math.abs(party.trendPrediction.delta24h)}%
-                                                </div>
-                                            </div>
-                                        )}
+                                    <div className="text-right flex flex-col items-end">
+                                        <div className="text-3xl font-black tracking-tighter" style={{ color: party.color, textShadow: `0 0 30px ${party.color}40` }}>
+                                            {(party.score ?? party.baseScore).toFixed(1)}<span className="text-lg align-top opacity-50 ml-0.5">%</span>
+                                        </div>
 
-                                        {/* Current Delta pill */}
-                                        <div className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold mt-1 ${party.trend === 'up' ? 'bg-green-500/10 text-green-400' : 'bg-red-500/10 text-red-400'
-                                            }`}>
-                                            {party.trend === 'up' ? '▲' : '▼'} {party.delta}%
+                                        <div className="flex gap-2 items-center mt-1">
+                                            {/* Trend Prediction Badge */}
+                                            {party.trendPrediction && (
+                                                <div className={`inline-flex flex-col items-center px-2 py-0.5 rounded border text-[9px] font-bold max-w-[70px] text-center leading-tight
+                                                    ${party.trendPrediction.prediction === 'up' ? 'bg-green-500/10 border-green-500/20 text-green-400' :
+                                                        party.trendPrediction.prediction === 'down' ? 'bg-red-500/10 border-red-500/20 text-red-400' :
+                                                            'bg-slate-500/10 border-slate-500/20 text-slate-400'}`}>
+                                                    <span className="opacity-70 text-[8px]">อนาคต 24ชม.</span>
+                                                    <div className="flex items-center gap-1">
+                                                        {party.trendPrediction.prediction === 'up' ? '▲' : party.trendPrediction.prediction === 'down' ? '▼' : '●'}
+                                                        {Math.abs(party.trendPrediction.delta24h)}%
+                                                    </div>
+                                                </div>
+                                            )}
+
+                                            {/* Current Delta pill */}
+                                            <div className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold ${party.trend === 'up' ? 'bg-green-500/10 text-green-400' : 'bg-red-500/10 text-red-400'
+                                                }`}>
+                                                {party.trend === 'up' ? '▲' : '▼'} {party.delta}%
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
