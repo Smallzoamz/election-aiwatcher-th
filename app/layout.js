@@ -2,6 +2,7 @@ import './globals.css'
 import { Noto_Sans_Thai } from 'next/font/google'
 import DisclaimerModal from './components/DisclaimerModal'
 import StructuredData from './components/StructuredData'
+import { ThemeProvider } from './components/ThemeProvider'
 
 const notoSansThai = Noto_Sans_Thai({
     subsets: ['thai', 'latin'],
@@ -119,12 +120,12 @@ export const viewport = {
         { media: '(prefers-color-scheme: light)', color: '#06b6d4' },
         { media: '(prefers-color-scheme: dark)', color: '#020617' },
     ],
-    colorScheme: 'dark',
+    colorScheme: 'dark light',
 }
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="th" suppressHydrationWarning>
+        <html lang="th" suppressHydrationWarning data-theme="dark">
             <head>
                 {/* Preconnect to external resources for performance */}
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -138,9 +139,12 @@ export default function RootLayout({ children }) {
                 <StructuredData />
             </head>
             <body className={notoSansThai.className}>
-                {children}
-                <DisclaimerModal />
+                <ThemeProvider>
+                    {children}
+                    <DisclaimerModal />
+                </ThemeProvider>
             </body>
         </html>
     )
 }
+

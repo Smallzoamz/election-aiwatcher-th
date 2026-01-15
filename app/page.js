@@ -1,9 +1,18 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
+import dynamic from 'next/dynamic';
 import { ComposedChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { RefreshCw, TrendingUp, TrendingDown, Activity, Radio, AlertCircle, Info, ExternalLink, Clock, Calendar } from 'lucide-react';
 import Link from 'next/link';
+import ShareButton from './components/ShareButton';
+import ThemeToggle from './components/ThemeToggle';
+
+// Lazy load heavy components
+const PartyDetailModal = dynamic(() => import('./components/PartyDetailModal'), {
+    ssr: false,
+    loading: () => null
+});
 
 // --- CONFIGURATION ---
 const ELECTION_DATE = '2026-02-08T08:00:00'; // Election Date: Feb 8, 2569
@@ -162,6 +171,7 @@ export default function Home() {
     const [history, setHistory] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [selectedParty, setSelectedParty] = useState(null);
 
     const fetchData = useCallback(async () => {
         try {
@@ -197,10 +207,58 @@ export default function Home() {
     }, []);
 
     useEffect(() => {
-        fetchData();
-        const interval = setInterval(fetchData, 3000);
-        return () => clearInterval(interval);
+        let interval = null;
+
+        const startPolling = () => {
+            fetchData();
+            interval = setInterval(fetchData, 3000);
+        };
+
+        const stopPolling = () => {
+            if (interval) {
+                clearInterval(interval);
+                interval = null;
+            }
+        };
+
+        // Visibility API - pause polling when tab is not visible
+        const handleVisibilityChange = () => {
+            if (document.hidden) {
+                stopPolling();
+            } else {
+                startPolling();
+            }
+        };
+
+        // Initial start
+        startPolling();
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+
+        return () => {
+            stopPolling();
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+        };
     }, [fetchData]);
+
+    // Memoize chart data to prevent unnecessary re-renders
+    const chartData = useMemo(() => {
+        if (!data?.parties) return [];
+        return data.parties.slice(0, 5).map(p => ({
+            name: p.name,
+            score: p.score ?? p.baseScore,
+            color: p.color,
+            id: p.id,
+            logoUrl: p.logoUrl,
+            nidaScore: p.nidaScore,
+            hiddenSupport: p.hiddenSupport,
+            divergence: p.divergence
+        }));
+    }, [data?.parties]);
+
+    // Memoize top 5 parties
+    const topParties = useMemo(() => {
+        return data?.parties?.slice(0, 5) || [];
+    }, [data?.parties]);
 
     if (loading) {
         return (
@@ -282,9 +340,13 @@ export default function Home() {
                     <AnnouncementSwitcher />
                 </div>
 
-                {/* Countdown Timer */}
-                <div className="flex items-center gap-2 sm:gap-4 countdown-compact w-full lg:w-auto justify-center lg:justify-end">
+                {/* Countdown Timer + Actions */}
+                <div className="flex items-center gap-2 sm:gap-3 countdown-compact w-full lg:w-auto justify-center lg:justify-end">
                     <ElectionCountdown />
+                    <div className="flex items-center gap-2">
+                        <ShareButton />
+                        <ThemeToggle />
+                    </div>
                     <div className="text-right hidden xl:block">
                         <div className="text-xs text-gray-500 font-mono">สถานะระบบ: ออนไลน์</div>
                         <div className="text-xs text-gray-500 font-mono">เวอร์ชัน: 2.1</div>
@@ -304,7 +366,14 @@ export default function Home() {
 
                     <div className="flex-1 space-y-2 min-h-0">
                         {data?.parties?.slice(0, 5).map((party, idx) => (
-                            <div key={party.id} className="relative bg-slate-900/40 border border-slate-800 p-2 sm:p-3 rounded-xl backdrop-blur-sm hover:border-slate-600 transition-all group overflow-hidden responsive-card flex flex-col justify-center">
+                            <div
+                                key={party.id}
+                                className="relative bg-slate-900/40 border border-slate-800 p-2 sm:p-3 rounded-xl backdrop-blur-sm hover:border-slate-600 transition-all group overflow-hidden responsive-card flex flex-col justify-center cursor-pointer"
+                                onClick={() => setSelectedParty(party)}
+                                role="button"
+                                tabIndex={0}
+                                onKeyDown={(e) => e.key === 'Enter' && setSelectedParty(party)}
+                            >
 
                                 {/* Background Watermark Logo */}
                                 {party.logoUrl && (
@@ -384,18 +453,18 @@ export default function Home() {
                                             {(party.score ?? party.baseScore).toFixed(1)}<span className="text-lg align-top opacity-50 ml-0.5">%</span>
                                         </div>
 
-                                        <div className="flex gap-2 items-center mt-1">
+                                        <div className="flex flex-col items-end gap-1.5 mt-1.5">
                                             {/* Trend Prediction Badge */}
                                             {party.trendPrediction && (
-                                                <div className={`inline-flex flex-col items-center px-2 py-0.5 rounded border text-[9px] font-bold max-w-[70px] text-center leading-tight
-                                                    ${party.trendPrediction.prediction === 'up' ? 'bg-green-500/10 border-green-500/20 text-green-400' :
-                                                        party.trendPrediction.prediction === 'down' ? 'bg-red-500/10 border-red-500/20 text-red-400' :
-                                                            'bg-slate-500/10 border-slate-500/20 text-slate-400'}`}>
-                                                    <span className="opacity-70 text-[8px]">อนาคต 24ชม.</span>
-                                                    <div className="flex items-center gap-1">
+                                                <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-xs font-bold
+                                                    ${party.trendPrediction.prediction === 'up' ? 'bg-green-500/10 border-green-500/30 text-green-400' :
+                                                        party.trendPrediction.prediction === 'down' ? 'bg-red-500/10 border-red-500/30 text-red-400' :
+                                                            'bg-slate-500/10 border-slate-500/30 text-slate-400'}`}>
+                                                    <span className="opacity-60 text-[10px] hidden sm:inline">24ชม.</span>
+                                                    <span className="flex items-center gap-0.5">
                                                         {party.trendPrediction.prediction === 'up' ? '▲' : party.trendPrediction.prediction === 'down' ? '▼' : '●'}
-                                                        {Math.abs(party.trendPrediction.delta24h)}%
-                                                    </div>
+                                                        <span className="font-mono">{Math.abs(party.trendPrediction.delta24h).toFixed(2)}%</span>
+                                                    </span>
                                                 </div>
                                             )}
 
@@ -440,14 +509,14 @@ export default function Home() {
                                 การกระจายความนิยม (Top 5)
                             </h3>
                             <ResponsiveContainer width="100%" height="90%">
-                                <ComposedChart data={data?.parties?.slice(0, 5) || []} margin={{ bottom: 30, top: 10 }}>
+                                <ComposedChart data={chartData} margin={{ bottom: 30, top: 10 }}>
                                     <CartesianGrid strokeDasharray="3 3" stroke="#334155" opacity={0.5} vertical={false} />
                                     <XAxis
                                         dataKey="name"
                                         stroke="#cbd5e1"
                                         fontSize={12}
                                         interval={0}
-                                        tick={<CustomAxisTick data={data?.parties} />}
+                                        tick={<CustomAxisTick data={chartData} />}
                                         height={70}
                                         axisLine={false}
                                         tickLine={false}
@@ -456,7 +525,7 @@ export default function Home() {
                                     <Tooltip
                                         content={({ active, payload, label }) => {
                                             if (active && payload && payload.length) {
-                                                const data = payload[0].payload;
+                                                const tooltipData = payload[0].payload;
                                                 return (
                                                     <div className="bg-slate-900 border border-slate-700 p-3 rounded shadow-xl min-w-[200px] z-50">
                                                         <p className="font-bold text-white mb-2 text-base">{label}</p>
@@ -472,14 +541,14 @@ export default function Home() {
                                                         ))}
 
                                                         {/* DIVERGENCE ALERT ON HOVER */}
-                                                        {data.hiddenSupport && (
+                                                        {tooltipData.hiddenSupport && (
                                                             <div className="mt-3 pt-2 border-t border-slate-700 animate-in fade-in slide-in-from-top-1">
                                                                 <div className="flex items-center gap-2 text-amber-500 font-bold text-xs mb-1">
                                                                     <TrendingUp className="w-4 h-4" />
                                                                     <span>ตรวจพบฐานเสียงแฝง!</span>
                                                                 </div>
                                                                 <div className="text-[10px] text-amber-200/80 leading-relaxed bg-amber-900/20 p-2 rounded border border-amber-900/50">
-                                                                    คะแนนจริงสูงกว่ากระแสโซเชียล <span className="text-white font-bold">{Math.abs(data.divergence)}%</span>
+                                                                    คะแนนจริงสูงกว่ากระแสโซเชียล <span className="text-white font-bold">{Math.abs(tooltipData.divergence)}%</span>
                                                                     <br />(Underlying Support)
                                                                 </div>
                                                             </div>
@@ -492,7 +561,7 @@ export default function Home() {
                                     />
                                     {/* Main AI Bar */}
                                     <Bar dataKey="score" radius={[4, 4, 0, 0]} name="score">
-                                        {data?.parties?.slice(0, 5).map((entry, index) => (
+                                        {chartData.map((entry, index) => (
                                             <Cell key={`cell-${index}`} fill={entry.color} />
                                         ))}
                                     </Bar>
@@ -501,7 +570,7 @@ export default function Home() {
                                     <Line
                                         type="monotone"
                                         dataKey="nidaScore"
-                                        stroke="#fbbf24" // Amber/Yellow for contrast
+                                        stroke="#fbbf24"
                                         strokeWidth={2}
                                         strokeDasharray="5 5"
                                         dot={{ r: 4, fill: '#fbbf24', strokeWidth: 0 }}
@@ -660,6 +729,13 @@ export default function Home() {
                     </div>
                 </div>
             </footer>
+
+            {/* Party Detail Modal */}
+            <PartyDetailModal
+                party={selectedParty}
+                isOpen={!!selectedParty}
+                onClose={() => setSelectedParty(null)}
+            />
         </main>
     );
 }

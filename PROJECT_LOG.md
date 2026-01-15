@@ -79,3 +79,22 @@
 [16/01/2026 05:05] | File: app/page.js | Line: 590-660 | Keyword: UI | Status: Enhanced | Change: Upgraded Footer with gradient border, disclaimer box, AI badge, larger links, version/status panel with glow effect.
 [16/01/2026 05:05] | File: plan.md | Line: 1 | Keyword: Planning | Status: Created | Change: Created Election Day Mode implementation plan with architecture, checklist, and timeline.
 [16/01/2026 05:08] | File: public/og-image.png | Line: N/A | Keyword: SEO | Status: Created | Change: Generated OG image for social media preview (1200x630, dark theme, Thai flag accents).
+[16/01/2026 05:12] | File: app/components/ThemeProvider.js | Line: 1 | Keyword: Feature | Status: Created | Change: Created theme context with localStorage persistence for Dark/Light mode.
+[16/01/2026 05:12] | File: app/components/ThemeToggle.js | Line: 1 | Keyword: Feature | Status: Created | Change: Created animated theme toggle button with Sun/Moon icons.
+[16/01/2026 05:12] | File: app/components/ShareButton.js | Line: 1 | Keyword: Feature | Status: Created | Change: Created share dropdown with Facebook, Twitter, LINE, and copy link options.
+[16/01/2026 05:12] | File: app/globals.css | Line: 5-55 | Keyword: Theme | Status: Added | Change: Added Light theme CSS variables and theme-aware utility classes.
+[16/01/2026 05:12] | File: app/layout.js | Line: 140 | Keyword: Theme | Status: Edited | Change: Wrapped app with ThemeProvider for global theme context.
+[16/01/2026 05:12] | File: app/page.js | Line: 287 | Keyword: UI | Status: Edited | Change: Added ShareButton and ThemeToggle to header.
+[16/01/2026 05:17] | File: app/globals.css | Line: 180-290 | Keyword: Theme | Status: Added | Change: Added comprehensive light mode CSS overrides for better text contrast.
+[16/01/2026 05:22] | File: lib/party-data.js | Line: 1 | Keyword: Feature | Status: Created | Change: Created party detail data with top 5 policies per party and category colors.
+[16/01/2026 05:22] | File: app/components/PartyDetailModal.js | Line: 1 | Keyword: Feature | Status: Created | Change: Created modal component with party info, policies, and external links.
+[16/01/2026 05:22] | File: app/page.js | Line: 312 | Keyword: Feature | Status: Edited | Change: Added click handler on party cards to open PartyDetailModal.
+[16/01/2026 05:30] | File: app/page.js | Line: 402-422 | Keyword: UI | Status: Edited | Change: Improved 24hr trend prediction badge layout - vertical stack, larger text.
+[16/01/2026 05:35] | File: lib/party-data.js | Line: all | Keyword: Data | Status: Updated | Change: Removed iLaw links, added disclaimer styling to modal.
+[16/01/2026 05:40] | File: lib/party-data.js | Line: all | Keyword: Data | Status: Updated | Change: Updated party leaders and slogans with verified 2569 data.
+[16/01/2026 05:45] | File: lib/party-data.js | Line: all | Keyword: Data | Status: Updated | Change: Updated all 5 main parties with official policies from news sources.
+[16/01/2026 05:48] | File: lib/party-data.js | Line: all | Keyword: Data | Status: Updated | Change: Added all 12 parties from ai-engine.js with policies (pprp, cpd, tst, srt, tkm, okm, econ).
+[16/01/2026 05:48] | File: app/components/PartyDetailModal.js | Line: 175 | Keyword: UI | Status: Edited | Change: Enhanced disclaimer with amber warning styling.
+[16/01/2026 05:52] | File: next.config.js | Line: all | Keyword: Performance | Status: Created | Change: Created next.config.js with image optimization, tree-shaking, and caching headers.
+[16/01/2026 05:54] | File: app/page.js | Line: 3-15 | Keyword: Performance | Status: Edited | Change: Added lazy load for PartyDetailModal using dynamic import.
+[16/01/2026 05:55] | File: app/page.js | Line: 226-260 | Keyword: Performance | Status: Edited | Change: Added Visibility API to pause polling when tab is hidden, useMemo for chartData.
