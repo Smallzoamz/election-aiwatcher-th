@@ -8,6 +8,13 @@ import Link from 'next/link';
 // --- CONFIGURATION ---
 const ELECTION_DATE = '2026-02-08T08:00:00'; // Election Date: Feb 8, 2569
 
+// Announcement Messages
+const ANNOUNCEMENTS = [
+    "📢 คำเตือน: ข้อมูลนี้เป็นการประมาณการโดย AI เพื่อการวิจัยเท่านั้น ไม่ใช่ผลการเลือกตั้งจริง",
+    "👨‍💻 พัฒนาโดยทีมงาน Bonchon-Studio เพื่อส่งเสริมการเข้าถึงข้อมูล",
+    "🗳️ ขอเชิญชวนประชาชนชาวไทยไปใช้สิทธิเลือกตั้ง และ ทำประชามติเพื่ออนาคตของประเทศ"
+];
+
 // --- COMPONENTS ---
 
 // Custom Axis Tick for Chart
@@ -38,6 +45,42 @@ const CustomAxisTick = ({ x, y, payload, data }) => {
                 {payload.value.replace('พรรค', '')}
             </text>
         </g>
+    );
+};
+
+// Announcement Switcher Component
+const AnnouncementSwitcher = () => {
+    const [index, setIndex] = useState(0);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setIndex((prev) => (prev + 1) % ANNOUNCEMENTS.length);
+        }, 5000); // Switch every 5 seconds
+        return () => clearInterval(timer);
+    }, []);
+
+    return (
+        <div className="flex-grow max-w-4xl h-9 overflow-hidden bg-amber-950/20 border border-amber-900/30 rounded-lg flex items-center mx-4 relative group">
+            <div className="relative w-full h-full flex items-center justify-center px-4">
+                {ANNOUNCEMENTS.map((text, i) => (
+                    <div
+                        key={i}
+                        className={`absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out px-10 text-center
+                            ${i === index
+                                ? 'opacity-100 translate-y-0'
+                                : 'opacity-0 translate-y-4 pointer-events-none'
+                            }`}
+                    >
+                        <span className="text-[11px] md:text-xs text-amber-500/90 font-bold uppercase tracking-wider leading-relaxed">
+                            {text}
+                        </span>
+                    </div>
+                ))}
+            </div>
+            {/* Visual Accents */}
+            <div className="absolute left-0 top-0 bottom-0 w-1 bg-amber-500/20" />
+            <div className="absolute right-0 top-0 bottom-0 w-1 bg-amber-500/20" />
+        </div>
     );
 };
 
@@ -193,6 +236,8 @@ export default function Home() {
             {/* Background Cyber Grid */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
 
+
+
             {/* Error Banner */}
             {error && (
                 <div className="relative z-30 bg-red-900/50 border border-red-500 rounded-lg p-2 mb-3 flex items-center gap-3">
@@ -202,34 +247,38 @@ export default function Home() {
             )}
 
             {/* Header */}
-            <header className="relative z-20 flex flex-col md:flex-row justify-between items-start md:items-center mb-2 border-b border-gray-800 pb-1 gap-2">
-                <div>
-                    <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600">
+            <header className="relative z-20 flex items-center justify-between mb-2 border-b border-gray-800 pb-2 gap-4">
+                {/* Left: Logo & Status Info */}
+                <div className="flex flex-col gap-1 min-w-fit">
+                    <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600 leading-tight">
                         TH ELECTION <span className="text-white">AI WATCH</span>
                     </h1>
-                    <div className="flex items-center gap-4 mt-1 flex-wrap">
-                        <p className="text-gray-400 text-sm flex items-center gap-2">
-                            <Radio className="w-4 h-4 text-red-500 animate-pulse" />
-                            วิเคราะห์อารมณ์สังคม (จำนวน: {data?.sampleSize || 0})
+                    <div className="flex items-center gap-3 mt-1 flex-wrap">
+                        <p className="text-gray-400 text-[11px] flex items-center gap-2">
+                            <Radio className="w-3.5 h-3.5 text-red-500 animate-pulse" />
+                            วิเคราะห์อารมณ์สังคม ({data?.sampleSize || 0})
                         </p>
                         {data?.feedStatus && (
-                            <span className="text-xs bg-green-900/50 text-green-400 px-2 py-0.5 rounded border border-green-700">
+                            <span className="text-[10px] bg-green-900/40 text-green-400 px-1.5 py-0.5 rounded border border-green-800/50">
                                 {data.feedStatus.activeFeeds}/{data.feedStatus.totalFeeds} แหล่งข่าว
                             </span>
                         )}
                         <Link
                             href="/methodology"
-                            className="text-xs bg-slate-800 text-gray-400 hover:text-white px-2 py-0.5 rounded border border-slate-700 flex items-center gap-1 transition-colors"
+                            className="text-[10px] bg-slate-800/80 text-gray-400 hover:text-white px-2 py-0.5 rounded border border-slate-700 flex items-center gap-1 transition-colors"
                         >
                             <Info className="w-3 h-3" />
                             วิธีการคำนวณ
                         </Link>
-                        <span className="text-[10px] text-amber-500/70 flex items-center gap-1 border-l border-gray-700 pl-4 ml-2 hidden xl:flex">
+                        <span className="text-[10px] text-amber-500/70 items-center gap-1 border-l border-slate-800 pl-3 ml-1 hidden xl:flex">
                             <AlertCircle className="w-3 h-3" />
                             ประมาณการเพื่อการวิจัยเท่านั้น ไม่ใช่ผลการเลือกตั้งจริง
                         </span>
                     </div>
                 </div>
+
+                {/* Center: Integrated Announcement Switcher (Replaces Marquee) */}
+                <AnnouncementSwitcher />
 
                 {/* Countdown Timer */}
                 <div className="flex items-center gap-4">

@@ -49,4 +49,13 @@
 [16/01/2026 03:05] | File: app/page.js | Line: 250-327 | Keyword: UI Refinement | Status: Edited | Change: Added "(คาดการณ์)" labels, reduced card height, padding and font size for better compact flow
 [16/01/2026 03:09] | File: app/page.js | Line: 192-470 | Keyword: FHD Optimization | Status: Edited | Change: Drastically reduced vertical spacing (Header, Chart height, Margins) for No-Scroll FHD target
 [16/01/2026 03:14] | File: app/page.js | Line: 220-486 | Keyword: UI Restructure | Status: Edited | Change: Moved Disclaimer from Footer to Header (Compact version) for streamlined FHD layout
+[16/01/2026 03:20] | File: app/page.js | Line: 220 | Keyword: UI Enhancement | Status: Edited | Change: Implemented Announcement Marquee Ticker in Header with custom CSS animation
+[16/01/2026 03:20] | File: app/globals.css | Line: 60 | Keyword: UI Enhancement | Status: Edited | Change: Added marquee animation keyframes
+[16/01/2026 03:24] | File: app/page.js | Line: 193-246 | Keyword: UI Restructure | Status: Edited | Change: Moved Announcement Bar to the very top and restored static Disclaimer in Header
+[16/01/2026 03:25] | File: app/page.js | Line: 195 | Keyword: UI Refinement | Status: Edited | Change: Refined Top Announcement to "Centered Pill" style for precise positioning per user feedback
+[16/01/2026 03:27] | File: app/page.js | Line: 195-252 | Keyword: Layout Audit | Status: Edited | Change: Optimized spacing, width, and font hierarchy for Top Announcement and Header Disclaimer to ensure a "perfect fit"
+[16/01/2026 03:28] | File: app/page.js | Line: 195-256 | Keyword: Bug Fix | Status: Edited | Change: Fixed text stacking/overlapping in Top Announcement by adding `whitespace-nowrap` and strictly defining height. Restored original Header Disclaimer text.
+[16/01/2026 03:30] | File: app/page.js | Line: 231-261 | Keyword: UI Finalization | Status: Edited | Change: Relocated Announcement Marquee into the Header center per user's specific visual guidance. Adjusted title and stats spacing to fit the 3-column header layout.
+[16/01/2026 03:32] | File: app/page.js | Line: 44-240 | Keyword: UI Refinement | Status: Edited | Change: Replaced Marquee with a Slide-up Announcement Switcher for better readability. Added ANNOUNCEMENTS array and logic to rotate messages every 5 seconds.
+[16/01/2026 03:32] | File: app/page.js | Line: 196-221 | Keyword: Cleanup | Status: Edited | Change: Removed redundant/duplicate Top Announcement Bar component. Final Layout is now 100% focused on the integrated Header Marquee.
 
