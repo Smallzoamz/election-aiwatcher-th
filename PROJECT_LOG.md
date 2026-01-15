@@ -19,3 +19,26 @@
 [16/01/2026 00:40] | File: lib/ai-engine.js | Line: 1 | Keyword: Credibility | Status: Edited | Change: Weighted sentiment analysis, confidence intervals, score history tracking
 [16/01/2026 00:40] | File: app/page.js | Line: 1 | Keyword: UI Enhancement | Status: Edited | Change: Added confidence intervals, feed status, keyword display, disclaimer footer
 [16/01/2026 00:40] | File: app/methodology/page.js | Line: 1 | Keyword: Transparency | Status: Created | Change: Created methodology page explaining data sources, algorithms, and limitations
+
+## 2026-01-16 Session 2
+
+[16/01/2026 01:05] | File: .env.local | Line: 1 | Keyword: Supabase | Status: Created | Change: Added Supabase credentials for PostgreSQL database
+[16/01/2026 01:05] | File: lib/supabase.js | Line: 1 | Keyword: Database | Status: Created | Change: Created Supabase client configuration
+[16/01/2026 01:05] | File: lib/db.js | Line: 1 | Keyword: Database | Status: Rewritten | Change: Migrated from JSON file to Supabase PostgreSQL with in-memory caching
+[16/01/2026 01:05] | File: supabase-schema.sql | Line: 1 | Keyword: Database | Status: Created | Change: SQL schema for consumed_news and score_history tables
+
+[16/01/2026 01:11] | File: app/components/DisclaimerModal.js | Line: 1 | Keyword: UI | Status: Created | Change: Created popup disclaimer with developer message, localStorage persistence
+[16/01/2026 01:11] | File: app/layout.js | Line: 1 | Keyword: UI | Status: Edited | Change: Added DisclaimerModal component, suppressHydrationWarning
+
+[16/01/2026 01:23] | File: lib/ai-engine.js | Line: 25-110 | Keyword: Context Deep Dive | Status: Edited | Change: Added 6 context categories (person, policy, scandal, performance, support, conflict) to keywords
+[16/01/2026 01:23] | File: lib/ai-engine.js | Line: 182-230 | Keyword: Trend Prediction | Status: Created | Change: Implemented linear regression for 24h trend prediction per party
+[16/01/2026 01:25] | File: app/page.js | Line: 170-218 | Keyword: Trend Prediction UI | Status: Created | Change: Added 24h forecast display with color-coded backgrounds
+[16/01/2026 01:25] | File: app/page.js | Line: 276-304 | Keyword: Context Deep Dive UI | Status: Created | Change: Added primary context label in news analysis section
+
+[16/01/2026 01:29] | File: lib/pantip-scraper.js | Line: 1 | Keyword: Social Media | Status: Created | Change: Created Pantip scraper for 3 political rooms (Sinthorn, Rajdumnern, Chalermthai)
+[16/01/2026 01:29] | File: lib/youtube-fetcher.js | Line: 1 | Keyword: Social Media | Status: Created | Change: Created YouTube fetcher for 4 Thai news channels
+[16/01/2026 01:30] | File: lib/rss-fetcher.js | Line: 1 | Keyword: Integration | Status: Edited | Change: Integrated Pantip + YouTube into main data pipeline
+
+[16/01/2026 01:40] | File: app/methodology/page.js | Line: 40-90 | Keyword: Documentation | Status: Edited | Change: Added Pantip and YouTube to data sources section
+[16/01/2026 01:41] | File: lib/rss-fetcher.js | Line: 1-60 | Keyword: CORS Fix | Status: Edited | Change: Added CORS proxy support for blocked RSS feeds (allorigins, corsproxy)
+
