@@ -237,17 +237,17 @@ export default function Home() {
                 </div>
             </header>
 
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
                 {/* Left Column: Rankings */}
-                <div className="lg:col-span-1 space-y-4">
+                <div className="lg:col-span-1 flex flex-col space-y-4">
                     <h2 className="text-xl font-bold flex items-center gap-2 text-cyan-400">
                         <Activity className="w-5 h-5" />
                         ดัชนีความนิยมปัจจุบัน
                     </h2>
 
-                    <div className="space-y-3">
+                    <div className="flex-1 space-y-3">
                         {data?.parties?.slice(0, 5).map((party, idx) => (
-                            <div key={party.id} className="relative bg-slate-900/40 border border-slate-800 p-4 rounded-xl backdrop-blur-sm hover:border-slate-600 transition-all group overflow-hidden">
+                            <div key={party.id} className="relative bg-slate-900/40 border border-slate-800 p-4 rounded-xl backdrop-blur-sm hover:border-slate-600 transition-all group overflow-hidden h-[calc((100%-48px)/5)] min-h-[180px] flex flex-col justify-center">
 
                                 {/* Background Watermark Logo */}
                                 {party.logoUrl && (
@@ -264,9 +264,6 @@ export default function Home() {
                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[150px] font-black text-white/[0.015] pointer-events-none z-0 whitespace-nowrap font-mono select-none select-none">
                                     {party.id.toUpperCase()}
                                 </div>
-
-                                {/* Background Gradient Hint */}
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/5 to-transparent rounded-bl-full -mr-10 -mt-10 pointer-events-none z-0" />
 
                                 <div className="flex items-start justify-between relative z-10">
                                     <div className="flex items-start gap-4">
@@ -351,144 +348,115 @@ export default function Home() {
                 </div>
 
                 {/* Right Column: Visualization & News */}
-                <div className="lg:col-span-2 space-y-6">
+                <div className="lg:col-span-2 flex flex-col space-y-4">
 
-                    {/* Main Chart */}
-                    <div className="bg-slate-900/50 border border-slate-800 p-6 rounded-2xl backdrop-blur h-[480px] relative overflow-hidden">
-                        <div className="absolute top-0 right-0 p-4 opacity-10">
-                            <Activity className="w-24 h-24 text-slate-500" />
+                    {/* Balanced Header for Right Column */}
+                    <h2 className="text-xl font-bold flex items-center gap-2 text-blue-400">
+                        <TrendingUp className="w-5 h-5" />
+                        วิเคราะห์และกระแสข้อมูล AI
+                    </h2>
+
+                    <div className="flex-1 flex flex-col gap-6">
+                        {/* Main Chart */}
+                        <div className="bg-slate-900/50 border border-slate-800 p-6 rounded-2xl backdrop-blur h-[420px] relative overflow-hidden shrink-0">
+                            <div className="absolute top-0 right-0 p-4 opacity-10">
+                                <Activity className="w-24 h-24 text-slate-500" />
+                            </div>
+                            <h3 className="text-slate-400 mb-6 text-sm font-mono uppercase tracking-wider flex items-center gap-2">
+                                <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
+                                การกระจายความนิยม (Top 5)
+                            </h3>
+                            <ResponsiveContainer width="100%" height="90%">
+                                <BarChart data={data?.parties?.slice(0, 5) || []} margin={{ bottom: 30, top: 10 }}>
+                                    <CartesianGrid strokeDasharray="3 3" stroke="#334155" opacity={0.5} vertical={false} />
+                                    <XAxis
+                                        dataKey="name"
+                                        stroke="#cbd5e1"
+                                        fontSize={12}
+                                        interval={0}
+                                        tick={<CustomAxisTick data={data?.parties} />}
+                                        height={70}
+                                        axisLine={false}
+                                        tickLine={false}
+                                    />
+                                    <YAxis stroke="#666" domain={[0, 50]} />
+                                    <Tooltip
+                                        contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155' }}
+                                        itemStyle={{ color: '#fff' }}
+                                        formatter={(value, name) => [`${value.toFixed(1)}%`, 'คะแนน']}
+                                    />
+                                    <Bar dataKey="score" radius={[4, 4, 0, 0]}>
+                                        {data?.parties?.slice(0, 5).map((entry, index) => (
+                                            <Cell key={`cell-${index}`} fill={entry.color} />
+                                        ))}
+                                    </Bar>
+                                </BarChart>
+                            </ResponsiveContainer>
                         </div>
-                        <h3 className="text-slate-400 mb-6 text-sm font-mono uppercase tracking-wider flex items-center gap-2">
-                            <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
-                            การกระจายความนิยม (Top 5)
-                        </h3>
-                        <ResponsiveContainer width="100%" height="90%">
-                            <BarChart data={data?.parties?.slice(0, 5) || []} margin={{ bottom: 30, top: 10 }}>
-                                <CartesianGrid strokeDasharray="3 3" stroke="#334155" opacity={0.5} vertical={false} />
-                                <XAxis
-                                    dataKey="name"
-                                    stroke="#cbd5e1"
-                                    fontSize={12}
-                                    interval={0}
-                                    tick={<CustomAxisTick data={data?.parties} />}
-                                    height={70}
-                                    axisLine={false}
-                                    tickLine={false}
-                                />
-                                <YAxis stroke="#666" domain={[0, 50]} />
-                                <Tooltip
-                                    contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155' }}
-                                    itemStyle={{ color: '#fff' }}
-                                    formatter={(value, name) => [`${value.toFixed(1)}%`, 'คะแนน']}
-                                />
-                                <Bar dataKey="score" radius={[4, 4, 0, 0]}>
-                                    {data?.parties?.slice(0, 5).map((entry, index) => (
-                                        <Cell key={`cell-${index}`} fill={entry.color} />
-                                    ))}
-                                </Bar>
-                            </BarChart>
-                        </ResponsiveContainer>
-                    </div>
 
-                    {/* AI Console / News Ticker */}
-                    <div className="bg-black border border-green-900/50 rounded-lg p-4 font-mono text-sm h-[520px] overflow-y-auto relative custom-scrollbar">
-                        <div className="absolute top-0 left-0 w-full h-1 bg-green-500 animate-pulse sticky z-10" />
-                        <h3 className="text-green-500 mb-2 flex items-center gap-2 sticky top-0 bg-black/90 pb-2 z-10 border-b border-green-900/50 w-full">
-                            <RefreshCw className="w-4 h-4 animate-spin" />
-                            กระแสข้อมูล AI (7 เหตุการณ์ล่าสุด)
-                        </h3>
-                        <div className="space-y-3 text-green-300/80 mt-2">
-                            {history.length === 0 && !data?.recentNews && (
-                                <div className="text-gray-500 text-center py-8">
-                                    กำลังรอข่าวใหม่...
-                                </div>
-                            )}
-                            {/* Show recent news when no new analyzed news */}
-                            {history.length === 0 && data?.recentNews?.length > 0 && (
-                                <>
-                                    <div className="text-yellow-500/70 text-xs mb-2">📢 ข่าวการเมืองล่าสุด (24 ชม.):</div>
-                                    {data.recentNews.map((news, i) => (
-                                        <div key={i} className="border-l-2 border-yellow-600/50 pl-2 pb-2 border-b border-yellow-900/20">
-                                            <div className="flex justify-between items-start text-xs">
-                                                <span className="text-purple-400">[{news.source}]</span>
-                                                {news.pubDate && (
-                                                    <span className="text-gray-500">
-                                                        📅 {new Date(news.pubDate).toLocaleString('th-TH', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}
-                                                    </span>
-                                                )}
-                                            </div>
-                                            <div className="mt-1">
-                                                <span className="text-yellow-400">› </span>
-                                                <a href={news.link} target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-yellow-300 hover:underline">
-                                                    {news.headline}
-                                                </a>
-                                            </div>
-                                            <span className={`text-xs px-1 rounded ${news.sentiment === 'pos' ? 'bg-green-900/50 text-green-400' : news.sentiment === 'neg' ? 'bg-red-900/50 text-red-400' : 'bg-gray-800 text-gray-400'}`}>
-                                                {news.sentiment === 'pos' ? '👍 เชิงบวก' : news.sentiment === 'neg' ? '👎 เชิงลบ' : '— เป็นกลาง'}
-                                            </span>
-                                        </div>
-                                    ))}
-                                </>
-                            )}
-                            {history.slice(-7).reverse().map((tick, i) => (
-                                <div key={i} className="border-l-2 border-green-500 pl-2 animate-in slide-in-from-left duration-300 pb-2 border-b border-green-900/20 last:border-0">
-                                    <div className="flex justify-between items-start">
-                                        <span className="text-white text-xs opacity-50">[{new Date(tick.timestamp).toLocaleTimeString()}]</span>
-                                        <div className="flex items-center gap-2 text-xs">
-                                            <span className="text-purple-400">[{tick.analyzedNews?.source}]</span>
-                                            {tick.analyzedNews?.pubDate && (
-                                                <span className="text-gray-500">
-                                                    📅 {new Date(tick.analyzedNews.pubDate).toLocaleString('th-TH', { day: 'numeric', month: 'short', year: '2-digit', hour: '2-digit', minute: '2-digit' })}
+                        {/* AI Console / News Ticker - Now FLEX-1 to fill the remaining gap */}
+                        <div className="bg-black border border-green-900/50 rounded-lg p-4 font-mono text-sm flex-1 min-h-[300px] overflow-y-auto relative custom-scrollbar">
+                            <div className="absolute top-0 left-0 w-full h-1 bg-green-500 animate-pulse sticky z-10" />
+                            <h3 className="text-green-500 mb-2 flex items-center gap-2 sticky top-0 bg-black/90 pb-2 z-10 border-b border-green-900/50 w-full">
+                                <RefreshCw className="w-4 h-4 animate-spin" />
+                                กระแสข้อมูล AI (ล่าสุด)
+                            </h3>
+                            <div className="space-y-3 text-green-300/80 mt-2">
+                                {history.length === 0 && !data?.recentNews && (
+                                    <div className="text-gray-500 text-center py-8">
+                                        กำลังรอข่าวใหม่...
+                                    </div>
+                                )}
+                                {history.length === 0 && data?.recentNews?.length > 0 && (
+                                    <>
+                                        <div className="text-yellow-500/70 text-xs mb-2">📢 ข่าวการเมืองล่าสุด (24 ชม.):</div>
+                                        {data.recentNews.map((news, i) => (
+                                            <div key={i} className="border-l-2 border-yellow-600/50 pl-2 pb-2 border-b border-yellow-900/20">
+                                                <div className="flex justify-between items-start text-xs">
+                                                    <span className="text-purple-400">[{news.source}]</span>
+                                                    {news.pubDate && (
+                                                        <span className="text-gray-500">
+                                                            📅 {new Date(news.pubDate).toLocaleString('th-TH', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}
+                                                        </span>
+                                                    )}
+                                                </div>
+                                                <div className="mt-1">
+                                                    <span className="text-yellow-400">› </span>
+                                                    <a href={news.link} target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-yellow-300 hover:underline">
+                                                        {news.headline}
+                                                    </a>
+                                                </div>
+                                                <span className={`text-xs px-1 rounded ${news.sentiment === 'pos' ? 'bg-green-900/50 text-green-400' : news.sentiment === 'neg' ? 'bg-red-900/50 text-red-400' : 'bg-gray-800 text-gray-400'}`}>
+                                                    {news.sentiment === 'pos' ? '👍 เชิงบวก' : news.sentiment === 'neg' ? '👎 เชิงลบ' : '— เป็นกลาง'}
                                                 </span>
-                                            )}
+                                            </div>
+                                        ))}
+                                    </>
+                                )}
+                                {history.slice(-10).reverse().map((tick, i) => (
+                                    <div key={i} className="border-l-2 border-green-500 pl-2 animate-in slide-in-from-left duration-300 pb-2 border-b border-green-900/20 last:border-0">
+                                        <div className="flex justify-between items-start">
+                                            <span className="text-white text-xs opacity-50">[{new Date(tick.timestamp).toLocaleTimeString()}]</span>
+                                            <div className="flex items-center gap-2 text-xs">
+                                                <span className="text-purple-400">[{tick.analyzedNews?.source}]</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="mt-1">
-                                        <span className="text-cyan-400 font-bold">&gt; </span>
-                                        <a href={tick.analyzedNews?.link} target="_blank" rel="noopener noreferrer" className="hover:text-cyan-300 hover:underline transition-colors">
-                                            {tick.analyzedNews?.headline}
-                                        </a>
-                                    </div>
-                                    <div className="mt-1 text-xs flex flex-wrap gap-2 items-center">
-                                        <span className="bg-slate-800 text-gray-400 px-1 rounded border border-slate-700" title="AI Confidence Score">
-                                            ความมั่นใจ: {tick.analyzedNews?.confidence}%
-                                        </span>
-                                        <span className="text-gray-500">วิเคราะห์: </span>
-                                        <span className={`font-bold ${tick.analyzedNews?.sentiment === 'pos' ? 'text-green-400' : tick.analyzedNews?.sentiment === 'neg' ? 'text-red-400' : 'text-yellow-400'}`}>
-                                            {tick.analyzedNews?.sentiment === 'pos' ? 'เชิงบวก' : tick.analyzedNews?.sentiment === 'neg' ? 'เชิงลบ' : 'เป็นกลาง'}
-                                        </span>
-                                        <span className="text-gray-600"> | ผลกระทบ: {tick.analyzedNews?.target} ({tick.analyzedNews?.impact > 0 ? '+' : ''}{tick.analyzedNews?.impact}%)</span>
-                                    </div>
-                                    {/* Context Deep Dive */}
-                                    {tick.analyzedNews?.primaryContext && (
                                         <div className="mt-1">
-                                            <span className={`text-xs px-2 py-0.5 rounded-full ${tick.analyzedNews.sentiment === 'neg'
-                                                ? 'bg-red-900/50 border border-red-700/50 text-red-300'
-                                                : tick.analyzedNews.sentiment === 'pos'
-                                                    ? 'bg-green-900/50 border border-green-700/50 text-green-300'
-                                                    : 'bg-slate-800 border border-slate-600 text-gray-300'
-                                                }`}>
-                                                {tick.analyzedNews.sentiment === 'neg' ? '⚠️ สาเหตุ: ' : '✨ เหตุผล: '}
-                                                <span className="font-bold">{tick.analyzedNews.primaryContext.label}</span>
+                                            <span className="text-cyan-400 font-bold">&gt; </span>
+                                            <a href={tick.analyzedNews?.link} target="_blank" rel="noopener noreferrer" className="hover:text-cyan-300 hover:underline transition-colors">
+                                                {tick.analyzedNews?.headline}
+                                            </a>
+                                        </div>
+                                        <div className="mt-1 text-xs flex flex-wrap gap-2 items-center">
+                                            <span className="text-gray-500">วิเคราะห์: </span>
+                                            <span className={`font-bold ${tick.analyzedNews?.sentiment === 'pos' ? 'text-green-400' : tick.analyzedNews?.sentiment === 'neg' ? 'text-red-400' : 'text-yellow-400'}`}>
+                                                {tick.analyzedNews?.sentiment === 'pos' ? 'เชิงบวก' : tick.analyzedNews?.sentiment === 'neg' ? 'เชิงลบ' : 'เป็นกลาง'}
                                             </span>
+                                            <span className="text-gray-600"> | ผลกระทบ: {tick.analyzedNews?.target} ({tick.analyzedNews?.impact > 0 ? '+' : ''}{tick.analyzedNews?.impact}%)</span>
                                         </div>
-                                    )}
-                                    {/* Show matched keywords */}
-                                    {tick.analyzedNews?.keywords?.length > 0 && (
-                                        <div className="mt-1 flex flex-wrap gap-1">
-                                            {tick.analyzedNews.keywords.slice(0, 5).map((kw, ki) => (
-                                                <span
-                                                    key={ki}
-                                                    className={`text-xs px-1 rounded ${kw.type === 'pos' ? 'bg-green-900/50 text-green-400' : 'bg-red-900/50 text-red-400'}`}
-                                                    title={`Context: ${kw.context}`}
-                                                >
-                                                    {kw.word}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    )}
-                                </div>
-                            ))}
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
 
@@ -502,8 +470,7 @@ export default function Home() {
                         <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
                         <span>
                             <strong>ข้อจำกัดความรับผิดชอบ:</strong> ผลลัพธ์ที่แสดงเป็นการ<strong>ประมาณการ</strong>จากการวิเคราะห์ข่าวสารเท่านั้น
-                            ไม่ใช่การทำนายผลเลือกตั้งจริง และไม่ได้รับรองโดยองค์กรใดๆ
-                            กรุณาใช้วิจารณญาณในการตีความข้อมูล
+                            ไม่ใช่การทำนายผลเลือกตั้งจริง กรุณาใช้วิจารณญาณในการตีความข้อมูล
                         </span>
                     </p>
                 </div>
