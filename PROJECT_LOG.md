@@ -41,4 +41,6 @@
 
 [16/01/2026 01:40] | File: app/methodology/page.js | Line: 40-90 | Keyword: Documentation | Status: Edited | Change: Added Pantip and YouTube to data sources section
 [16/01/2026 01:41] | File: lib/rss-fetcher.js | Line: 1-60 | Keyword: CORS Fix | Status: Edited | Change: Added CORS proxy support for blocked RSS feeds (allorigins, corsproxy)
+[16/01/2026 02:50] | File: app/page.js | Line: 1 | Keyword: UI Polish | Status: Edited | Change: Implemented Flex-Stretch for perfect column alignment
+[16/01/2026 02:57] | File: app/page.js | Line: 1 | Keyword: UI Polish | Status: Edited | Change: Compacted layout for 1080p/FHD (reduced heights, tightened padding)
 
