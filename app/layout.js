@@ -1,5 +1,6 @@
 import './globals.css'
 import { Noto_Sans_Thai } from 'next/font/google'
+import DisclaimerModal from './components/DisclaimerModal'
 
 const notoSansThai = Noto_Sans_Thai({
     subsets: ['thai', 'latin'],
@@ -32,8 +33,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="th">
-            <body className={notoSansThai.className}>{children}</body>
+        <html lang="th" suppressHydrationWarning>
+            <body className={notoSansThai.className}>
+                {children}
+                <DisclaimerModal />
+            </body>
         </html>
     )
 }
+
