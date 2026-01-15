@@ -255,7 +255,14 @@ export default function Home() {
                                 <div key={i} className="border-l-2 border-green-500 pl-2 animate-in slide-in-from-left duration-300 pb-2 border-b border-green-900/20 last:border-0">
                                     <div className="flex justify-between items-start">
                                         <span className="text-white text-xs opacity-50">[{new Date(tick.timestamp).toLocaleTimeString()}]</span>
-                                        <span className="text-purple-400 text-xs">[{tick.analyzedNews?.source}]</span>
+                                        <div className="flex items-center gap-2 text-xs">
+                                            <span className="text-purple-400">[{tick.analyzedNews?.source}]</span>
+                                            {tick.analyzedNews?.pubDate && (
+                                                <span className="text-gray-500">
+                                                    📅 {new Date(tick.analyzedNews.pubDate).toLocaleString('th-TH', { day: 'numeric', month: 'short', year: '2-digit', hour: '2-digit', minute: '2-digit' })}
+                                                </span>
+                                            )}
+                                        </div>
                                     </div>
                                     <div className="mt-1">
                                         <span className="text-cyan-400 font-bold">&gt; </span>
@@ -277,10 +284,10 @@ export default function Home() {
                                     {tick.analyzedNews?.primaryContext && (
                                         <div className="mt-1">
                                             <span className={`text-xs px-2 py-0.5 rounded-full ${tick.analyzedNews.sentiment === 'neg'
-                                                    ? 'bg-red-900/50 border border-red-700/50 text-red-300'
-                                                    : tick.analyzedNews.sentiment === 'pos'
-                                                        ? 'bg-green-900/50 border border-green-700/50 text-green-300'
-                                                        : 'bg-slate-800 border border-slate-600 text-gray-300'
+                                                ? 'bg-red-900/50 border border-red-700/50 text-red-300'
+                                                : tick.analyzedNews.sentiment === 'pos'
+                                                    ? 'bg-green-900/50 border border-green-700/50 text-green-300'
+                                                    : 'bg-slate-800 border border-slate-600 text-gray-300'
                                                 }`}>
                                                 {tick.analyzedNews.sentiment === 'neg' ? '⚠️ สาเหตุ: ' : '✨ เหตุผล: '}
                                                 <span className="font-bold">{tick.analyzedNews.primaryContext.label}</span>

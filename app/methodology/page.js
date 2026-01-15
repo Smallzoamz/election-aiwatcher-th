@@ -48,13 +48,11 @@ export default function MethodologyPage() {
                         <h3 className="text-white font-medium mb-2 mt-4">📰 RSS Feeds (สื่อข่าว)</h3>
                         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
                             {[
-                                { name: 'มติชนออนไลน์', weight: '1.0x' },
-                                { name: 'ประชาชาติธุรกิจ', weight: '1.0x' },
-                                { name: 'ไทยรัฐ', weight: '1.2x' },
-                                { name: 'เดลินิวส์', weight: '1.0x' },
-                                { name: 'กรุงเทพธุรกิจ', weight: '1.1x' },
-                                { name: 'Thai PBS', weight: '1.2x' },
-                                { name: 'โพสต์ทูเดย์', weight: '1.0x' },
+                                { name: 'มติชนออนไลน์ (การเมือง)', weight: '1.0x' },
+                                { name: 'ประชาชาติธุรกิจ (การเมือง)', weight: '1.0x' },
+                                { name: 'ผู้จัดการออนไลน์ (การเมือง)', weight: '1.2x' },
+                                { name: 'มติชน (ทั่วไป)', weight: '0.8x' },
+                                { name: 'ประชาชาติ (ทั่วไป)', weight: '0.8x' },
                             ].map((source, i) => (
                                 <div key={i} className="bg-slate-800/50 p-3 rounded border border-slate-700">
                                     <div className="font-medium">{source.name}</div>
