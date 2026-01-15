@@ -354,7 +354,7 @@ export default function Home() {
                 <div className="lg:col-span-2 space-y-6">
 
                     {/* Main Chart */}
-                    <div className="bg-slate-900/50 border border-slate-800 p-6 rounded-2xl backdrop-blur h-[600px] relative overflow-hidden">
+                    <div className="bg-slate-900/50 border border-slate-800 p-6 rounded-2xl backdrop-blur h-[480px] relative overflow-hidden">
                         <div className="absolute top-0 right-0 p-4 opacity-10">
                             <Activity className="w-24 h-24 text-slate-500" />
                         </div>
@@ -391,7 +391,7 @@ export default function Home() {
                     </div>
 
                     {/* AI Console / News Ticker */}
-                    <div className="bg-black border border-green-900/50 rounded-lg p-4 font-mono text-sm h-[600px] overflow-y-auto relative custom-scrollbar">
+                    <div className="bg-black border border-green-900/50 rounded-lg p-4 font-mono text-sm h-[520px] overflow-y-auto relative custom-scrollbar">
                         <div className="absolute top-0 left-0 w-full h-1 bg-green-500 animate-pulse sticky z-10" />
                         <h3 className="text-green-500 mb-2 flex items-center gap-2 sticky top-0 bg-black/90 pb-2 z-10 border-b border-green-900/50 w-full">
                             <RefreshCw className="w-4 h-4 animate-spin" />
