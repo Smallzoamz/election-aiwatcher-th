@@ -224,6 +224,10 @@ export default function Home() {
                             <Info className="w-3 h-3" />
                             วิธีการคำนวณ
                         </Link>
+                        <span className="text-[10px] text-amber-500/70 flex items-center gap-1 border-l border-gray-700 pl-4 ml-2 hidden xl:flex">
+                            <AlertCircle className="w-3 h-3" />
+                            ประมาณการเพื่อการวิจัยเท่านั้น ไม่ใช่ผลการเลือกตั้งจริง
+                        </span>
                     </div>
                 </div>
 
@@ -466,16 +470,7 @@ export default function Home() {
             </div>
 
             {/* Disclaimer Footer */}
-            <footer className="relative z-10 mt-2 shrink-0">
-                <div className="bg-amber-900/20 border border-amber-700/50 rounded-lg p-2 mb-2">
-                    <p className="text-amber-200/80 text-xs flex items-start gap-2">
-                        <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
-                        <span>
-                            <strong>ข้อจำกัดความรับผิดชอบ:</strong> ผลลัพธ์ที่แสดงเป็นการ<strong>ประมาณการ</strong>จากการวิเคราะห์ข่าวสารเท่านั้น
-                            ไม่ใช่การทำนายผลเลือกตั้งจริง กรุณาใช้วิจารณญาณในการตีความข้อมูล
-                        </span>
-                    </p>
-                </div>
+            <footer className="relative z-10 mt-2 pb-4 shrink-0">
                 <div className="text-center text-xs text-gray-600 flex items-center justify-center gap-4">
                     <span>© 2026 Bonchon-Studio</span>
                     <Link href="/methodology" className="text-cyan-600 hover:text-cyan-400 flex items-center gap-1">

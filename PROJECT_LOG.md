@@ -48,4 +48,5 @@
 [16/01/2026 03:06] | File: lib/ai-engine.js | Line: 1 | Keyword: Supabase | Status: Edited | Change: Integrated persistence and initial state rehydration
 [16/01/2026 03:05] | File: app/page.js | Line: 250-327 | Keyword: UI Refinement | Status: Edited | Change: Added "(คาดการณ์)" labels, reduced card height, padding and font size for better compact flow
 [16/01/2026 03:09] | File: app/page.js | Line: 192-470 | Keyword: FHD Optimization | Status: Edited | Change: Drastically reduced vertical spacing (Header, Chart height, Margins) for No-Scroll FHD target
+[16/01/2026 03:14] | File: app/page.js | Line: 220-486 | Keyword: UI Restructure | Status: Edited | Change: Moved Disclaimer from Footer to Header (Compact version) for streamlined FHD layout
 
