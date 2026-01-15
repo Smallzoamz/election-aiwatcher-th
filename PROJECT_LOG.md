@@ -68,3 +68,8 @@
 [16/01/2026 04:52] | File: app/page.js | Line: 588-600 | Keyword: Cleanup | Status: Fixed | Change: Fixed malformed JSX closing tags with extra whitespace.
 [16/01/2026 04:52] | File: app/globals.css | Line: 62-81 | Keyword: Cleanup | Status: Removed | Change: Removed unused marquee animation CSS (replaced by slide-up switcher).
 [16/01/2026 04:52] | File: test.txt | Line: N/A | Keyword: Cleanup | Status: Deleted | Change: Removed unnecessary test file from project root.
+[16/01/2026 04:55] | File: public/robots.txt | Line: 1 | Keyword: SEO | Status: Created | Change: Created robots.txt with sitemap reference and AI bot blocking.
+[16/01/2026 04:55] | File: public/sitemap.xml | Line: 1 | Keyword: SEO | Status: Created | Change: Created XML sitemap with main and methodology pages.
+[16/01/2026 04:55] | File: public/manifest.json | Line: 1 | Keyword: SEO/PWA | Status: Created | Change: Created PWA manifest with Thai localization and cyan theme.
+[16/01/2026 04:55] | File: app/components/StructuredData.js | Line: 1 | Keyword: SEO | Status: Created | Change: Created JSON-LD structured data (WebApplication, LiveBlogPosting, Breadcrumb).
+[16/01/2026 04:55] | File: app/layout.js | Line: 1 | Keyword: SEO | Status: Upgraded | Change: Full SEO overhaul: title template, expanded keywords, canonical, OpenGraph, Twitter, viewport, preconnect, structured data.
