@@ -59,3 +59,8 @@
 [16/01/2026 03:32] | File: app/page.js | Line: 44-240 | Keyword: UI Refinement | Status: Edited | Change: Replaced Marquee with a Slide-up Announcement Switcher for better readability. Added ANNOUNCEMENTS array and logic to rotate messages every 5 seconds.
 [16/01/2026 03:32] | File: app/page.js | Line: 196-221 | Keyword: Cleanup | Status: Edited | Change: Removed redundant/duplicate Top Announcement Bar component. Final Layout is now 100% focused on the integrated Header Marquee.
 [16/01/2026 03:40] | File: app/page.js | Line: 381-511 | Keyword: UI Restoration | Status: Edited | Change: Restored Trend Prediction badges and Context Deep Dive labels (Primary Context) to UI
+[16/01/2026 03:41] | File: app/page.js | Line: 379-399 | Keyword: Bug Fix | Status: Edited | Change: Restored missing party score percentage display and optimized badge layout after user feedback
+[16/01/2026 04:06] | File: scripts/pantip_agent.py | Line: 1 | Keyword: AI Agent | Status: Created | Change: Implemented Pantip Scraper with 200-thread limit, budget guardrails, and IO detection structure
+[16/01/2026 04:06] | File: scripts/requirements.txt | Line: 1 | Keyword: Dependencies | Status: Created | Change: Added packages for AI Agent
+[16/01/2026 04:10] | File: scripts/pantip_agent.py | Line: 1 | Keyword: AI Agent | Status: Disabled | Change: Renamed to .py.disabled to prevent execution due to payment/billing issues
+
