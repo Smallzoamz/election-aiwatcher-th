@@ -189,37 +189,37 @@ export default function Home() {
     }
 
     return (
-        <main className="min-h-screen bg-slate-950 text-white p-6 relative overflow-hidden">
+        <main className="min-h-screen bg-slate-950 text-white p-4 md:p-6 relative overflow-hidden flex flex-col">
             {/* Background Cyber Grid */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
 
             {/* Error Banner */}
             {error && (
-                <div className="relative z-30 bg-red-900/50 border border-red-500 rounded-lg p-3 mb-4 flex items-center gap-3">
-                    <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0" />
-                    <p className="text-sm text-red-200">{error}</p>
+                <div className="relative z-30 bg-red-900/50 border border-red-500 rounded-lg p-2 mb-3 flex items-center gap-3">
+                    <AlertCircle className="w-4 h-4 text-red-400 flex-shrink-0" />
+                    <p className="text-xs text-red-200">{error}</p>
                 </div>
             )}
 
             {/* Header */}
-            <header className="relative z-20 flex flex-col md:flex-row justify-between items-start md:items-center mb-8 border-b border-gray-800 pb-4 gap-4">
+            <header className="relative z-20 flex flex-col md:flex-row justify-between items-start md:items-center mb-4 md:mb-6 border-b border-gray-800 pb-3 gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600">
+                    <h1 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600">
                         TH ELECTION <span className="text-white">AI WATCH</span>
                     </h1>
-                    <div className="flex items-center gap-4 mt-1 flex-wrap">
-                        <p className="text-gray-400 text-sm flex items-center gap-2">
-                            <Radio className="w-4 h-4 text-red-500 animate-pulse" />
-                            วิเคราะห์อารมณ์สังคม (จำนวน: {data?.sampleSize || 0})
+                    <div className="flex items-center gap-4 mt-0.5 flex-wrap">
+                        <p className="text-gray-400 text-xs flex items-center gap-2">
+                            <Radio className="w-3.5 h-3.5 text-red-500 animate-pulse" />
+                            วิเคราะห์อารมณ์สังคม ({data?.sampleSize || 0})
                         </p>
                         {data?.feedStatus && (
-                            <span className="text-xs bg-green-900/50 text-green-400 px-2 py-0.5 rounded border border-green-700">
+                            <span className="text-[10px] bg-green-900/50 text-green-400 px-1.5 py-0.5 rounded border border-green-700">
                                 {data.feedStatus.activeFeeds}/{data.feedStatus.totalFeeds} แหล่งข่าว
                             </span>
                         )}
                         <Link
                             href="/methodology"
-                            className="text-xs bg-slate-800 text-gray-400 hover:text-white px-2 py-0.5 rounded border border-slate-700 flex items-center gap-1 transition-colors"
+                            className="text-[10px] bg-slate-800 text-gray-400 hover:text-white px-1.5 py-0.5 rounded border border-slate-700 flex items-center gap-1 transition-colors"
                         >
                             <Info className="w-3 h-3" />
                             วิธีการคำนวณ
@@ -231,27 +231,27 @@ export default function Home() {
                 <div className="flex items-center gap-4">
                     <ElectionCountdown />
                     <div className="text-right hidden xl:block">
-                        <div className="text-xs text-gray-500 font-mono">สถานะระบบ: ออนไลน์</div>
-                        <div className="text-xs text-gray-500 font-mono">เวอร์ชัน: 2.1</div>
+                        <div className="text-[10px] text-gray-500 font-mono">สถานะระบบ: ออนไลน์</div>
+                        <div className="text-[10px] text-gray-500 font-mono">เวอร์ชัน: 2.1</div>
                     </div>
                 </div>
             </header>
 
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 items-stretch flex-1 min-h-0">
                 {/* Left Column: Rankings */}
-                <div className="lg:col-span-1 flex flex-col space-y-4">
-                    <h2 className="text-xl font-bold flex items-center gap-2 text-cyan-400">
-                        <Activity className="w-5 h-5" />
+                <div className="lg:col-span-1 flex flex-col space-y-3 min-h-0">
+                    <h2 className="text-lg font-bold flex items-center gap-2 text-cyan-400 shrink-0">
+                        <Activity className="w-4 h-4" />
                         ดัชนีความนิยมปัจจุบัน
                     </h2>
 
-                    <div className="flex-1 space-y-3">
+                    <div className="flex-1 space-y-2 min-h-0">
                         {data?.parties?.slice(0, 5).map((party, idx) => (
-                            <div key={party.id} className="relative bg-slate-900/40 border border-slate-800 p-4 rounded-xl backdrop-blur-sm hover:border-slate-600 transition-all group overflow-hidden h-[calc((100%-48px)/5)] min-h-[180px] flex flex-col justify-center">
+                            <div key={party.id} className="relative bg-slate-900/40 border border-slate-800 p-3 rounded-xl backdrop-blur-sm hover:border-slate-600 transition-all group overflow-hidden h-[calc((100%-32px)/5)] min-h-[135px] flex flex-col justify-center">
 
                                 {/* Background Watermark Logo */}
                                 {party.logoUrl && (
-                                    <div className="absolute -right-6 -bottom-10 w-48 h-48 opacity-[0.06] pointer-events-none grayscale group-hover:grayscale-0 group-hover:opacity-[0.08] transition-all duration-500 ease-out z-0">
+                                    <div className="absolute -right-4 -bottom-8 w-40 h-40 opacity-[0.05] pointer-events-none grayscale group-hover:grayscale-0 group-hover:opacity-[0.07] transition-all duration-500 ease-out z-0">
                                         <img
                                             src={party.logoUrl}
                                             alt=""
@@ -261,45 +261,44 @@ export default function Home() {
                                 )}
 
                                 {/* Background Watermark Text (Party ID) */}
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[150px] font-black text-white/[0.015] pointer-events-none z-0 whitespace-nowrap font-mono select-none select-none">
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[120px] font-black text-white/[0.012] pointer-events-none z-0 whitespace-nowrap font-mono select-none">
                                     {party.id.toUpperCase()}
                                 </div>
 
                                 <div className="flex items-start justify-between relative z-10">
-                                    <div className="flex items-start gap-4">
+                                    <div className="flex items-start gap-3">
                                         {/* Rank Number */}
-                                        <div className="flex flex-col items-center gap-1 mt-1">
-                                            <div className="text-2xl font-black text-slate-700 font-mono italic">#{idx + 1}</div>
+                                        <div className="flex flex-col items-center gap-1 mt-0.5">
+                                            <div className="text-xl font-black text-slate-700 font-mono italic">#{idx + 1}</div>
                                         </div>
 
                                         {/* Logo Container */}
                                         {party.logoUrl && (
                                             <div className="relative">
                                                 <div
-                                                    className="w-16 h-16 bg-white rounded-full p-2 shadow-lg flex items-center justify-center shrink-0 border-4 border-slate-800/50"
-                                                    style={{ borderColor: `${party.color}30`, boxShadow: `0 0 20px ${party.color}20` }}
+                                                    className="w-12 h-12 md:w-14 md:h-14 bg-white rounded-full p-1.5 shadow-lg flex items-center justify-center shrink-0 border-3 border-slate-800/50"
+                                                    style={{ borderColor: `${party.color}30`, boxShadow: `0 0 15px ${party.color}20` }}
                                                 >
                                                     <img src={party.logoUrl} alt={party.name} className="w-full h-full object-contain mix-blend-multiply" />
                                                 </div>
                                                 {/* Status Dot */}
-                                                <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-slate-900 rounded-full flex items-center justify-center border border-slate-700">
+                                                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-slate-900 rounded-full flex items-center justify-center border border-slate-700">
                                                     {party.trend === 'up'
-                                                        ? <TrendingUp className="w-3 h-3 text-green-500" />
-                                                        : <TrendingDown className="w-3 h-3 text-red-500" />
+                                                        ? <TrendingUp className="w-2.5 h-2.5 text-green-500" />
+                                                        : <TrendingDown className="w-2.5 h-2.5 text-red-500" />
                                                     }
                                                 </div>
                                             </div>
                                         )}
 
                                         <div className="pt-0.5">
-                                            <h3 className="font-bold text-xl text-white group-hover:text-cyan-400 transition-colors tracking-tight">
+                                            <h3 className="font-bold text-lg text-white group-hover:text-cyan-400 transition-colors tracking-tight leading-tight">
                                                 {party.name}
                                             </h3>
 
                                             {/* Candidates */}
                                             {party.candidates && (
-                                                <div className="text-sm text-slate-400 mt-1 flex flex-wrap gap-x-2">
-                                                    <span className="text-slate-500 font-medium">แคนดิเดต:</span>
+                                                <div className="text-[11px] text-slate-500 mt-0.5 flex flex-wrap gap-x-1.5">
                                                     <span className="text-slate-300">
                                                         {party.candidates.join(", ")}
                                                     </span>
@@ -307,16 +306,16 @@ export default function Home() {
                                             )}
 
                                             {/* Stats Grid */}
-                                            <div className="grid grid-cols-2 gap-x-6 gap-y-1 mt-3">
-                                                <div className="flex items-center gap-2">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-slate-600" />
-                                                    <span className="text-slate-500 text-xs">ส.ส. คาดการณ์</span>
-                                                    <span className="text-white font-mono font-bold">{party.projectedSeats ?? Math.round((party.score ?? party.baseScore) / 100 * 500)}</span>
+                                            <div className="grid grid-cols-2 gap-x-4 gap-y-0.5 mt-2">
+                                                <div className="flex items-center gap-1.5">
+                                                    <div className="w-1 h-1 rounded-full bg-slate-600" />
+                                                    <span className="text-slate-500 text-[10px]">ส.ส.</span>
+                                                    <span className="text-white font-mono text-xs font-bold">{party.projectedSeats ?? Math.round((party.score ?? party.baseScore) / 100 * 500)}</span>
                                                 </div>
-                                                <div className="flex items-center gap-2">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-slate-600" />
-                                                    <span className="text-slate-500 text-xs">คะแนนเสียง</span>
-                                                    <span className="text-white font-mono font-bold">{party.projectedVotes ?? Math.floor((party.score ?? party.baseScore) / 100 * 39000000).toLocaleString('th-TH')}</span>
+                                                <div className="flex items-center gap-1.5">
+                                                    <div className="w-1 h-1 rounded-full bg-slate-600" />
+                                                    <span className="text-slate-500 text-[10px]">คะแนนเสียง</span>
+                                                    <span className="text-white font-mono text-[10px] font-bold">{party.projectedVotes ?? Math.floor((party.score ?? party.baseScore) / 100 * 39000000).toLocaleString('th-TH')}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -324,11 +323,11 @@ export default function Home() {
 
                                     {/* Score Big Display */}
                                     <div className="text-right">
-                                        <div className="text-4xl font-black tracking-tighter" style={{ color: party.color, textShadow: `0 0 30px ${party.color}40` }}>
-                                            {(party.score ?? party.baseScore).toFixed(1)}<span className="text-lg align-top opacity-50">%</span>
+                                        <div className="text-3xl font-black tracking-tighter" style={{ color: party.color, textShadow: `0 0 20px ${party.color}30` }}>
+                                            {(party.score ?? party.baseScore).toFixed(1)}<span className="text-xs align-top opacity-50 ml-0.5">%</span>
                                         </div>
                                         {/* Delta pill */}
-                                        <div className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-bold mt-1 ${party.trend === 'up' ? 'bg-green-500/10 text-green-400' : 'bg-red-500/10 text-red-400'
+                                        <div className={`inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full text-[10px] font-bold mt-1 ${party.trend === 'up' ? 'bg-green-500/10 text-green-400' : 'bg-red-500/10 text-red-400'
                                             }`}>
                                             {party.trend === 'up' ? '▲' : '▼'} {party.delta}%
                                         </div>
@@ -336,10 +335,10 @@ export default function Home() {
                                 </div>
 
                                 {/* Progress Bar Bottom */}
-                                <div className="absolute bottom-0 left-0 w-full h-1 bg-slate-800/50">
+                                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-slate-800/50">
                                     <div
                                         className="h-full transition-all duration-1000 ease-out"
-                                        style={{ width: `${party.score}%`, backgroundColor: party.color, boxShadow: `0 0 10px ${party.color}` }}
+                                        style={{ width: `${party.score}%`, backgroundColor: party.color, boxShadow: `0 0 8px ${party.color}` }}
                                     />
                                 </div>
                             </div>
@@ -348,38 +347,38 @@ export default function Home() {
                 </div>
 
                 {/* Right Column: Visualization & News */}
-                <div className="lg:col-span-2 flex flex-col space-y-4">
+                <div className="lg:col-span-2 flex flex-col space-y-3 min-h-0">
 
                     {/* Balanced Header for Right Column */}
-                    <h2 className="text-xl font-bold flex items-center gap-2 text-blue-400">
-                        <TrendingUp className="w-5 h-5" />
+                    <h2 className="text-lg font-bold flex items-center gap-2 text-blue-400 shrink-0">
+                        <TrendingUp className="w-4 h-4" />
                         วิเคราะห์และกระแสข้อมูล AI
                     </h2>
 
-                    <div className="flex-1 flex flex-col gap-6">
+                    <div className="flex-1 flex flex-col gap-4 min-h-0">
                         {/* Main Chart */}
-                        <div className="bg-slate-900/50 border border-slate-800 p-6 rounded-2xl backdrop-blur h-[420px] relative overflow-hidden shrink-0">
-                            <div className="absolute top-0 right-0 p-4 opacity-10">
-                                <Activity className="w-24 h-24 text-slate-500" />
+                        <div className="bg-slate-900/50 border border-slate-800 p-4 md:p-6 rounded-2xl backdrop-blur h-[340px] relative overflow-hidden shrink-0">
+                            <div className="absolute top-0 right-0 p-3 opacity-5">
+                                <Activity className="w-20 h-20 text-slate-500" />
                             </div>
-                            <h3 className="text-slate-400 mb-6 text-sm font-mono uppercase tracking-wider flex items-center gap-2">
-                                <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
+                            <h3 className="text-slate-500 mb-4 text-[10px] font-mono uppercase tracking-wider flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />
                                 การกระจายความนิยม (Top 5)
                             </h3>
                             <ResponsiveContainer width="100%" height="90%">
                                 <BarChart data={data?.parties?.slice(0, 5) || []} margin={{ bottom: 30, top: 10 }}>
-                                    <CartesianGrid strokeDasharray="3 3" stroke="#334155" opacity={0.5} vertical={false} />
+                                    <CartesianGrid strokeDasharray="3 3" stroke="#334155" opacity={0.3} vertical={false} />
                                     <XAxis
                                         dataKey="name"
                                         stroke="#cbd5e1"
-                                        fontSize={12}
+                                        fontSize={10}
                                         interval={0}
                                         tick={<CustomAxisTick data={data?.parties} />}
-                                        height={70}
+                                        height={60}
                                         axisLine={false}
                                         tickLine={false}
                                     />
-                                    <YAxis stroke="#666" domain={[0, 50]} />
+                                    <YAxis stroke="#666" domain={[0, 50]} fontSize={10} />
                                     <Tooltip
                                         contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155' }}
                                         itemStyle={{ color: '#fff' }}
@@ -394,65 +393,54 @@ export default function Home() {
                             </ResponsiveContainer>
                         </div>
 
-                        {/* AI Console / News Ticker - Now FLEX-1 to fill the remaining gap */}
-                        <div className="bg-black border border-green-900/50 rounded-lg p-4 font-mono text-sm flex-1 min-h-[300px] overflow-y-auto relative custom-scrollbar">
-                            <div className="absolute top-0 left-0 w-full h-1 bg-green-500 animate-pulse sticky z-10" />
-                            <h3 className="text-green-500 mb-2 flex items-center gap-2 sticky top-0 bg-black/90 pb-2 z-10 border-b border-green-900/50 w-full">
-                                <RefreshCw className="w-4 h-4 animate-spin" />
+                        {/* AI Console / News Ticker - FLEX-1 to fill the remaining gap */}
+                        <div className="bg-black border border-green-900/50 rounded-lg p-3 font-mono text-xs flex-1 min-h-[200px] overflow-y-auto relative custom-scrollbar">
+                            <div className="absolute top-0 left-0 w-full h-0.5 bg-green-500 animate-pulse sticky z-10" />
+                            <h3 className="text-green-500 mb-2 flex items-center gap-2 sticky top-0 bg-black/90 pb-2 z-10 border-b border-green-900/50 w-full text-[11px]">
+                                <RefreshCw className="w-3.5 h-3.5 animate-spin" />
                                 กระแสข้อมูล AI (ล่าสุด)
                             </h3>
-                            <div className="space-y-3 text-green-300/80 mt-2">
+                            <div className="space-y-2 text-green-300/80 mt-1">
                                 {history.length === 0 && !data?.recentNews && (
-                                    <div className="text-gray-500 text-center py-8">
+                                    <div className="text-gray-600 text-center py-6 text-[10px]">
                                         กำลังรอข่าวใหม่...
                                     </div>
                                 )}
                                 {history.length === 0 && data?.recentNews?.length > 0 && (
                                     <>
-                                        <div className="text-yellow-500/70 text-xs mb-2">📢 ข่าวการเมืองล่าสุด (24 ชม.):</div>
+                                        <div className="text-yellow-600/70 text-[10px] mb-1">📢 ข่าวการเมืองล่าสุด:</div>
                                         {data.recentNews.map((news, i) => (
-                                            <div key={i} className="border-l-2 border-yellow-600/50 pl-2 pb-2 border-b border-yellow-900/20">
-                                                <div className="flex justify-between items-start text-xs">
-                                                    <span className="text-purple-400">[{news.source}]</span>
-                                                    {news.pubDate && (
-                                                        <span className="text-gray-500">
-                                                            📅 {new Date(news.pubDate).toLocaleString('th-TH', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}
-                                                        </span>
-                                                    )}
+                                            <div key={i} className="border-l border-yellow-800/30 pl-2 pb-1.5 border-b border-yellow-900/10">
+                                                <div className="flex justify-between items-start text-[9px]">
+                                                    <span className="text-purple-500/70">[{news.source}]</span>
                                                 </div>
-                                                <div className="mt-1">
-                                                    <span className="text-yellow-400">› </span>
-                                                    <a href={news.link} target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-yellow-300 hover:underline">
+                                                <div className="mt-0.5">
+                                                    <span className="text-yellow-600">› </span>
+                                                    <a href={news.link} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-yellow-400 transition-colors">
                                                         {news.headline}
                                                     </a>
                                                 </div>
-                                                <span className={`text-xs px-1 rounded ${news.sentiment === 'pos' ? 'bg-green-900/50 text-green-400' : news.sentiment === 'neg' ? 'bg-red-900/50 text-red-400' : 'bg-gray-800 text-gray-400'}`}>
-                                                    {news.sentiment === 'pos' ? '👍 เชิงบวก' : news.sentiment === 'neg' ? '👎 เชิงลบ' : '— เป็นกลาง'}
-                                                </span>
                                             </div>
                                         ))}
                                     </>
                                 )}
-                                {history.slice(-10).reverse().map((tick, i) => (
-                                    <div key={i} className="border-l-2 border-green-500 pl-2 animate-in slide-in-from-left duration-300 pb-2 border-b border-green-900/20 last:border-0">
+                                {history.slice(-12).reverse().map((tick, i) => (
+                                    <div key={i} className="border-l border-green-700/50 pl-2 pb-1.5 border-b border-green-900/10 last:border-0">
                                         <div className="flex justify-between items-start">
-                                            <span className="text-white text-xs opacity-50">[{new Date(tick.timestamp).toLocaleTimeString()}]</span>
-                                            <div className="flex items-center gap-2 text-xs">
-                                                <span className="text-purple-400">[{tick.analyzedNews?.source}]</span>
-                                            </div>
+                                            <span className="text-white/40 text-[9px]">[{new Date(tick.timestamp).toLocaleTimeString()}]</span>
+                                            <span className="text-purple-500/70 text-[9px]">[{tick.analyzedNews?.source}]</span>
                                         </div>
-                                        <div className="mt-1">
-                                            <span className="text-cyan-400 font-bold">&gt; </span>
-                                            <a href={tick.analyzedNews?.link} target="_blank" rel="noopener noreferrer" className="hover:text-cyan-300 hover:underline transition-colors">
+                                        <div className="mt-0.5 leading-snug">
+                                            <span className="text-cyan-500 font-bold">&gt; </span>
+                                            <a href={tick.analyzedNews?.link} target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors">
                                                 {tick.analyzedNews?.headline}
                                             </a>
                                         </div>
-                                        <div className="mt-1 text-xs flex flex-wrap gap-2 items-center">
-                                            <span className="text-gray-500">วิเคราะห์: </span>
-                                            <span className={`font-bold ${tick.analyzedNews?.sentiment === 'pos' ? 'text-green-400' : tick.analyzedNews?.sentiment === 'neg' ? 'text-red-400' : 'text-yellow-400'}`}>
-                                                {tick.analyzedNews?.sentiment === 'pos' ? 'เชิงบวก' : tick.analyzedNews?.sentiment === 'neg' ? 'เชิงลบ' : 'เป็นกลาง'}
+                                        <div className="mt-0.5 text-[10px] flex items-center gap-2">
+                                            <span className={`font-bold ${tick.analyzedNews?.sentiment === 'pos' ? 'text-green-500' : tick.analyzedNews?.sentiment === 'neg' ? 'text-red-500' : 'text-yellow-600'}`}>
+                                                {tick.analyzedNews?.sentiment === 'pos' ? 'บวก' : tick.analyzedNews?.sentiment === 'neg' ? 'ลบ' : 'กลาง'}
                                             </span>
-                                            <span className="text-gray-600"> | ผลกระทบ: {tick.analyzedNews?.target} ({tick.analyzedNews?.impact > 0 ? '+' : ''}{tick.analyzedNews?.impact}%)</span>
+                                            <span className="text-gray-600">| {tick.analyzedNews?.target} ({tick.analyzedNews?.impact > 0 ? '+' : ''}{tick.analyzedNews?.impact}%)</span>
                                         </div>
                                     </div>
                                 ))}
@@ -464,20 +452,19 @@ export default function Home() {
             </div>
 
             {/* Disclaimer Footer */}
-            <footer className="relative z-10 mt-8 pt-4 border-t border-gray-800">
-                <div className="bg-amber-900/20 border border-amber-700/50 rounded-lg p-3 mb-4">
-                    <p className="text-amber-200/80 text-xs flex items-start gap-2">
-                        <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
+            <footer className="relative z-10 mt-4 pt-3 border-t border-gray-900 shrink-0">
+                <div className="bg-amber-950/10 border border-amber-900/20 rounded-lg p-2 mb-3">
+                    <p className="text-amber-200/50 text-[9px] flex items-start gap-1.5 leading-tight">
+                        <AlertCircle className="w-3 h-3 flex-shrink-0 mt-0.5" />
                         <span>
-                            <strong>ข้อจำกัดความรับผิดชอบ:</strong> ผลลัพธ์ที่แสดงเป็นการ<strong>ประมาณการ</strong>จากการวิเคราะห์ข่าวสารเท่านั้น
-                            ไม่ใช่การทำนายผลเลือกตั้งจริง กรุณาใช้วิจารณญาณในการตีความข้อมูล
+                            <strong>ข้อจำกัดความรับผิดชอบ:</strong> ข้อมูลนี้เป็นการประมาณการจากการวิเคราะห์ AI เท่านั้น ไม่ใช่การทำนายผลจริง
                         </span>
                     </p>
                 </div>
-                <div className="text-center text-xs text-gray-600 flex items-center justify-center gap-4">
+                <div className="text-center text-[10px] text-gray-700 flex items-center justify-center gap-4">
                     <span>© 2026 Bonchon-Studio</span>
-                    <Link href="/methodology" className="text-cyan-600 hover:text-cyan-400 flex items-center gap-1">
-                        <ExternalLink className="w-3 h-3" />
+                    <Link href="/methodology" className="text-cyan-900 hover:text-cyan-700 flex items-center gap-1 transition-colors">
+                        <ExternalLink className="w-2.5 h-2.5" />
                         วิธีการคำนวณ
                     </Link>
                 </div>

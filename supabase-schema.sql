@@ -1,60 +1,59 @@
--- POLE Database Schema for Supabase
--- Run this in Supabase SQL Editor (https://supabase.com/dashboard/project/[project-id]/sql)
+-- POLE Project Database Schema
 
--- Table: consumed_news
--- Tracks which news articles have been processed
+-- 1. Table: consumed_news (Track news already analyzed)
 CREATE TABLE IF NOT EXISTS consumed_news (
-    id BIGSERIAL PRIMARY KEY,
-    news_key TEXT NOT NULL UNIQUE,
+    news_key TEXT PRIMARY KEY,
     party_id TEXT,
+    sentiment TEXT,
+    impact FLOAT8,
     created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- Index for faster lookups
-CREATE INDEX IF NOT EXISTS idx_consumed_news_key ON consumed_news(news_key);
-CREATE INDEX IF NOT EXISTS idx_consumed_news_party ON consumed_news(party_id);
-CREATE INDEX IF NOT EXISTS idx_consumed_news_created ON consumed_news(created_at DESC);
+-- Index for faster cleanup/querying
+CREATE INDEX IF NOT EXISTS idx_consumed_news_created_at ON consumed_news (created_at DESC);
 
--- Enable Row Level Security (optional but recommended)
-ALTER TABLE consumed_news ENABLE ROW LEVEL SECURITY;
-
--- Policy: Allow all operations for now (public access)
-CREATE POLICY "Allow all operations on consumed_news" ON consumed_news
-    FOR ALL
-    USING (true)
-    WITH CHECK (true);
-
--- Function: Cleanup old news entries
-CREATE OR REPLACE FUNCTION cleanup_old_news(keep_count INTEGER DEFAULT 1000)
-RETURNS void
-LANGUAGE plpgsql
-AS $$
-BEGIN
-    DELETE FROM consumed_news
-    WHERE id NOT IN (
-        SELECT id FROM consumed_news
-        ORDER BY created_at DESC
-        LIMIT keep_count
-    );
-END;
-$$;
-
--- Optional: Table for score history (for trend analysis)
+-- 2. Table: score_history (Track popularity trends over time)
 CREATE TABLE IF NOT EXISTS score_history (
-    id BIGSERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     timestamp TIMESTAMPTZ DEFAULT NOW(),
     party_id TEXT NOT NULL,
-    score DECIMAL(5,2) NOT NULL,
-    sample_size INTEGER
+    score FLOAT8 NOT NULL,
+    delta FLOAT8,
+    trend TEXT,
+    projected_seats INT
 );
 
-CREATE INDEX IF NOT EXISTS idx_score_history_party ON score_history(party_id);
-CREATE INDEX IF NOT EXISTS idx_score_history_time ON score_history(timestamp DESC);
+-- Index for trend grouping
+CREATE INDEX IF NOT EXISTS idx_score_history_timestamp ON score_history (timestamp DESC);
+CREATE INDEX IF NOT EXISTS idx_score_history_party ON score_history (party_id);
 
--- Enable RLS for score_history
+-- 3. Row Level Security (RLS) - Enable for security but allow all for now (development)
+ALTER TABLE consumed_news ENABLE ROW LEVEL SECURITY;
 ALTER TABLE score_history ENABLE ROW LEVEL SECURITY;
 
-CREATE POLICY "Allow all operations on score_history" ON score_history
-    FOR ALL
-    USING (true)
-    WITH CHECK (true);
+CREATE POLICY "Allow all for anonymous" ON consumed_news FOR ALL USING (true);
+CREATE POLICY "Allow all for anonymous" ON score_history FOR ALL USING (true);
+
+-- 4. RPC for Cleanup
+CREATE OR REPLACE FUNCTION cleanup_old_news(keep_count INT)
+RETURNS void AS $$
+BEGIN
+    DELETE FROM consumed_news
+    WHERE news_key IN (
+        SELECT news_key
+        FROM consumed_news
+        ORDER BY created_at ASC
+        LIMIT (SELECT GREATEST(0, (SELECT COUNT(*) FROM consumed_news) - keep_count))
+    );
+END;
+$$ LANGUAGE plpgsql;
+
+-- 5. Helper function for initializing tables (called from app)
+CREATE OR REPLACE FUNCTION init_pole_tables()
+RETURNS boolean AS $$
+BEGIN
+    -- This function serves as a trigger point for the app to verify connection
+    -- Actual table creation is handled via SQL Editor for reliability.
+    RETURN true;
+END;
+$$ LANGUAGE plpgsql;
