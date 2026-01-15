@@ -5,6 +5,21 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 import { RefreshCw, TrendingUp, TrendingDown, Activity, Radio, AlertCircle, Info, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 
+// Custom Axis Tick Component for Logo Display
+const CustomAxisTick = ({ x, y, payload, data }) => {
+    const party = data && data.find(p => p.name === payload.value);
+    return (
+        <g transform={`translate(${x},${y})`}>
+            {party && party.logoUrl ? (
+                <image x={-15} y={0} width={30} height={30} href={party.logoUrl} preserveAspectRatio="xMidYMid slice" />
+            ) : null}
+            <text x={0} y={party && party.logoUrl ? 40 : 15} dy={0} textAnchor="middle" fill="#666" fontSize={10}>
+                {payload.value.replace('พรรค', '')}
+            </text>
+        </g>
+    );
+};
+
 export default function Home() {
     const [data, setData] = useState(null);
     const [history, setHistory] = useState([]);
@@ -137,6 +152,11 @@ export default function Home() {
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center gap-4">
                                         <div className="text-2xl font-bold text-gray-600 font-mono">#{idx + 1}</div>
+                                        {party.logoUrl && (
+                                            <div className="w-12 h-12 relative bg-white/10 rounded-full overflow-hidden p-1 shrink-0 flex items-center justify-center">
+                                                <img src={party.logoUrl} alt={party.name} className="w-full h-full object-contain" />
+                                            </div>
+                                        )}
                                         <div>
                                             <h3 className="font-bold text-lg group-hover:text-cyan-400 transition-colors">{party.name}</h3>
                                             {party.candidates && (
@@ -225,9 +245,16 @@ export default function Home() {
                     <div className="bg-slate-900/50 border border-slate-800 p-6 rounded-lg backdrop-blur h-80">
                         <h3 className="text-gray-400 mb-4 text-sm font-mono uppercase">การกระจายความนิยม</h3>
                         <ResponsiveContainer width="100%" height="100%">
-                            <BarChart data={data?.parties?.slice(0, 5) || []}>
+                            <BarChart data={data?.parties?.slice(0, 5) || []} margin={{ bottom: 20 }}>
                                 <CartesianGrid strokeDasharray="3 3" stroke="#333" />
-                                <XAxis dataKey="name" stroke="#666" fontSize={11} />
+                                <XAxis
+                                    dataKey="name"
+                                    stroke="#666"
+                                    fontSize={11}
+                                    interval={0}
+                                    tick={<CustomAxisTick data={data?.parties} />}
+                                    height={50}
+                                />
                                 <YAxis stroke="#666" domain={[0, 50]} />
                                 <Tooltip
                                     contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155' }}
