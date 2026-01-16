@@ -46,10 +46,10 @@ export const metadata = {
     manifest: '/manifest.json',
     icons: {
         icon: [
-            { url: '/favicon.ico', sizes: 'any' },
+            { url: '/icon.png' },
         ],
         apple: [
-            { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+            { url: '/icon.png' },
         ],
     },
 
