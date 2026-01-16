@@ -701,29 +701,39 @@ export default function Home() {
                             </div>
 
                             {/* Center: Links */}
-                            <div className="flex items-center gap-4 sm:gap-6">
+                            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm">
                                 <Link
-                                    href="/trends"
-                                    className="flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors font-medium"
+                                    href="/about"
+                                    className="text-slate-400 hover:text-cyan-400 transition-colors"
                                 >
-                                    <TrendingUp className="w-4 h-4" />
-                                    <span>เทรนด์ย้อนหลัง</span>
+                                    เกี่ยวกับเรา
+                                </Link>
+                                <Link
+                                    href="/privacy"
+                                    className="text-slate-400 hover:text-cyan-400 transition-colors"
+                                >
+                                    นโยบายความเป็นส่วนตัว
+                                </Link>
+                                <Link
+                                    href="/terms"
+                                    className="text-slate-400 hover:text-cyan-400 transition-colors"
+                                >
+                                    เงื่อนไขการใช้งาน
                                 </Link>
                                 <Link
                                     href="/methodology"
-                                    className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-medium"
+                                    className="text-slate-400 hover:text-cyan-400 transition-colors"
                                 >
-                                    <Info className="w-4 h-4" />
-                                    <span>วิธีการคำนวณ</span>
+                                    วิธีการคำนวณ
                                 </Link>
                                 <a
                                     href="https://github.com/Smallzoamz/election-aiwatcher-th"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors font-medium"
+                                    className="flex items-center gap-1.5 text-slate-400 hover:text-white transition-colors"
                                 >
-                                    <ExternalLink className="w-4 h-4" />
-                                    <span>GitHub</span>
+                                    <ExternalLink className="w-3.5 h-3.5" />
+                                    GitHub
                                 </a>
                             </div>
 
