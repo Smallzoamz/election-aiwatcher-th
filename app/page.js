@@ -493,7 +493,7 @@ export default function Home() {
                                 </div>
 
                                 {/* Progress Bar Bottom */}
-                                <div className="absolute bottom-0 left-0 w-full h-1 bg-slate-800/50">
+                                < div className="absolute bottom-0 left-0 w-full h-1 bg-slate-800/50" >
                                     <div
                                         className="h-full transition-all duration-1000 ease-out"
                                         style={{ width: `${party.score}%`, backgroundColor: party.color, boxShadow: `0 0 10px ${party.color}` }}
@@ -669,12 +669,12 @@ export default function Home() {
                     </div>
 
                 </div>
-            </div>
+            </div >
 
             {/* Professional Footer - Enhanced */}
-            <footer className="relative z-10 mt-4 shrink-0">
+            < footer className="relative z-10 mt-4 shrink-0" >
                 {/* Gradient Border Top */}
-                <div className="h-[2px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent mb-4" />
+                < div className="h-[2px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent mb-4" />
 
                 <div className="max-w-7xl mx-auto px-2 sm:px-4">
                     {/* Disclaimer Box - More Prominent */}
@@ -750,14 +750,15 @@ export default function Home() {
                         Developed with 💙 for Thai Democracy
                     </div>
                 </div>
-            </footer>
+            </footer >
 
             {/* Party Detail Modal */}
-            <PartyDetailModal
+            < PartyDetailModal
                 party={selectedParty}
-                isOpen={!!selectedParty}
+                isOpen={!!selectedParty
+                }
                 onClose={() => setSelectedParty(null)}
             />
-        </main>
+        </main >
     );
 }

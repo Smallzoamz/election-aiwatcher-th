@@ -34,7 +34,7 @@ export const metadata = {
     category: 'politics',
 
     // === Canonical & Alternate ===
-    metadataBase: new URL('https://th-election-ai.vercel.app'),
+    metadataBase: new URL('https://election-aiwatcher-th.vercel.app'),
     alternates: {
         canonical: '/',
         languages: {
@@ -57,7 +57,7 @@ export const metadata = {
     openGraph: {
         title: 'TH Election AI Watch - ระบบวิเคราะห์การเลือกตั้งด้วย AI',
         description: 'ติดตามดัชนีความนิยมพรรคการเมืองไทยแบบ Real-time วิเคราะห์ด้วย AI จากข่าวสารและโซเชียลมีเดีย',
-        url: 'https://th-election-ai.vercel.app',
+        url: 'https://election-aiwatcher-th.vercel.app',
         siteName: 'TH Election AI Watch',
         images: [
             {
@@ -133,6 +133,8 @@ export default function RootLayout({ children }) {
                 {/* DNS Prefetch for API domains */}
                 <link rel="dns-prefetch" href="https://www.matichon.co.th" />
                 <link rel="dns-prefetch" href="https://www.prachachat.net" />
+                <link rel="dns-prefetch" href="https://thestandard.co" />
+                <link rel="dns-prefetch" href="https://www.khaosod.co.th" />
 
                 {/* Structured Data for Rich Results */}
                 <StructuredData />

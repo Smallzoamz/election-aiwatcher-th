@@ -5,7 +5,7 @@ export default function StructuredData() {
         "@type": "WebApplication",
         "name": "TH Election AI Watch",
         "alternateName": "ระบบวิเคราะห์การเลือกตั้งด้วย AI",
-        "url": "https://th-election-ai.vercel.app",
+        "url": "https://election-aiwatcher-th.vercel.app",
         "description": "ระบบวิเคราะห์ความนิยมพรรคการเมืองไทยด้วย AI ติดตามแนวโน้มแบบ Real-time จากข่าวสารล่าสุด",
         "applicationCategory": "NewsApplication",
         "operatingSystem": "Any",
@@ -15,14 +15,14 @@ export default function StructuredData() {
         "author": {
             "@type": "Organization",
             "name": "Bonchon-Studio",
-            "url": "https://bonchon-studio.com"
+            "logo": "https://election-aiwatcher-th.vercel.app/og-image.png"
         },
         "publisher": {
             "@type": "Organization",
             "name": "Bonchon-Studio",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://th-election-ai.vercel.app/icon-512.png"
+                "url": "https://election-aiwatcher-th.vercel.app/og-image.png"
             }
         },
         "offers": {
@@ -32,28 +32,23 @@ export default function StructuredData() {
         },
         "potentialAction": {
             "@type": "ViewAction",
-            "target": "https://th-election-ai.vercel.app"
+            "target": "https://election-aiwatcher-th.vercel.app"
         }
     };
 
     const newsArticleSchema = {
         "@context": "https://schema.org",
-        "@type": "LiveBlogPosting",
-        "headline": "การวิเคราะห์ความนิยมพรรคการเมืองไทย แบบ Real-time",
-        "description": "ติดตามดัชนีความนิยมพรรคการเมืองไทยจากข่าวสารและโซเชียลมีเดีย วิเคราะห์ด้วย AI",
-        "datePublished": "2026-01-15",
+        "@type": "NewsArticle",
+        "headline": "Election AI Watch: วิเคราะห์ความนิยมพรรคการเมืองไทยแบบรายวัน",
+        "description": "ติดตามดัชนีความนิยมพรรคการเมืองไทยจากข่าวสารและโซเชียลมีเดีย วิเคราะห์ด้วย AI รุ่นใหม่ล่าสุด",
+        "image": "https://election-aiwatcher-th.vercel.app/og-image.png",
+        "datePublished": "2026-01-16T12:00:00Z",
         "dateModified": new Date().toISOString(),
         "author": {
             "@type": "Organization",
-            "name": "Bonchon-Studio"
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "Bonchon-Studio"
-        },
-        "mainEntityOfPage": {
+            "name": "Bonchon-Studio",
             "@type": "WebPage",
-            "@id": "https://th-election-ai.vercel.app"
+            "@id": "https://election-aiwatcher-th.vercel.app"
         },
         "about": {
             "@type": "Event",
@@ -74,13 +69,13 @@ export default function StructuredData() {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "หน้าหลัก",
-                "item": "https://th-election-ai.vercel.app"
+                "item": "https://election-aiwatcher-th.vercel.app"
             },
             {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "วิธีการคำนวณ",
-                "item": "https://th-election-ai.vercel.app/methodology"
+                "item": "https://election-aiwatcher-th.vercel.app/methodology"
             }
         ]
     };
