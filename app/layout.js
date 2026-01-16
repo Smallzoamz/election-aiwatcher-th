@@ -61,10 +61,11 @@ export const metadata = {
         siteName: 'TH Election AI Watch',
         images: [
             {
-                url: '/og-image.png',
+                url: 'https://election-aiwatcher-th.vercel.app/og-image.png',
                 width: 1200,
                 height: 630,
                 alt: 'TH Election AI Watch - ระบบวิเคราะห์การเลือกตั้งด้วย AI',
+                type: 'image/png',
             },
         ],
         locale: 'th_TH',
@@ -76,7 +77,7 @@ export const metadata = {
         card: 'summary_large_image',
         title: 'TH Election AI Watch',
         description: 'ระบบวิเคราะห์ความนิยมพรรคการเมืองไทยด้วย AI แบบ Real-time',
-        images: ['/og-image.png'],
+        images: ['https://election-aiwatcher-th.vercel.app/og-image.png'],
         creator: '@BonchonStudio',
     },
 

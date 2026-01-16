@@ -7,7 +7,7 @@ export default function ShareButton() {
     const [isOpen, setIsOpen] = useState(false);
     const [copied, setCopied] = useState(false);
 
-    const shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://th-election-ai.vercel.app';
+    const shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://election-aiwatcher-th.vercel.app';
     const shareTitle = 'TH Election AI Watch - ระบบวิเคราะห์การเลือกตั้งด้วย AI';
     const shareText = 'ติดตามดัชนีความนิยมพรรคการเมืองไทยแบบ Real-time วิเคราะห์ด้วย AI';
 
