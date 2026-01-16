@@ -86,19 +86,64 @@ export default function MethodologyPage() {
                                 <div>
                                     <h3 className="text-white font-medium mb-4 flex items-center gap-2">
                                         <span className="w-2 h-2 rounded-full bg-blue-500"></span>
-                                        สำนักข่าวหลัก (Mainstream Media)
+                                        สำนักข่าวหลัก (Verified Working)
                                     </h3>
                                     <ul className="space-y-3">
                                         {[
-                                            { name: 'มติชนออนไลน์', weight: '1.0x', detail: 'การเมือง, ทั่วไป' },
-                                            { name: 'ประชาชาติธุรกิจ', weight: '1.0x', detail: 'เศรษฐกิจ, การเมือง' },
-                                            { name: 'ผู้จัดการออนไลน์', weight: '1.2x', detail: 'การวิเคราะห์เชิงลึก' },
+                                            { name: 'มติชนออนไลน์ (การเมือง)', weight: '1.0x', detail: 'เจาะลึกข่าวการเมืองหลัก' },
+                                            { name: 'ประชาชาติธุรกิจ (การเมือง)', weight: '1.0x', detail: 'เจาะลึกรัฐบาลและสภา' },
+                                            { name: 'มติชน (ทั่วไป)', weight: '0.7x', detail: 'ข่าวกระแสสังคม' },
+                                            { name: 'ประชาชาติ (ทั่วไป)', weight: '0.7x', detail: 'ข่าวเศรษฐกิจและการเมือง' },
+                                            { name: 'ข่าวสด', weight: '0.9x', detail: 'ข่าวอาชญากรรมและการเมือง' },
+                                            { name: 'ประชาไท', weight: '1.3x', detail: 'สื่อทางเลือก / ข่าวสิทธิมนุษยชน' },
+                                            { name: 'THE STANDARD', weight: '1.2x', detail: 'สื่อออนไลน์ยุคใหม่' },
+                                            { name: 'Bangkok Post', weight: '1.1x', detail: 'ข่าวภาษาอังกฤษ (National)' },
+                                        ].map((item, i) => (
+                                            <li key={i} className="flex justify-between items-center bg-slate-800/50 p-2 rounded-lg border border-slate-700">
+                                                <span className="text-slate-200 text-sm">{item.name}</span>
+                                                <div className="text-right">
+                                                    <div className="text-[10px] font-mono text-cyan-400 bg-cyan-900/30 px-1.5 py-0.5 rounded">Weight: {item.weight}</div>
+                                                    <div className="text-[9px] text-slate-500 mt-0.5">{item.detail}</div>
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    <h3 className="text-white font-medium mt-6 mb-4 flex items-center gap-2">
+                                        <span className="w-2 h-2 rounded-full bg-orange-500"></span>
+                                        แหล่งข่าวท้องถิ่น (Regional News)
+                                    </h3>
+                                    <ul className="space-y-3">
+                                        {[
+                                            { name: 'The Isaan Record', weight: '1.4x', detail: 'ภาคอีสาน (High Impact)' },
+                                            { name: 'The Phuket News', weight: '1.3x', detail: 'ภาคใต้ / ภูเก็ต' },
+                                            { name: 'Chiang Mai Citylife', weight: '1.3x', detail: 'ภาคเหนือ / เชียงใหม่' },
+                                        ].map((item, i) => (
+                                            <li key={i} className="flex justify-between items-center bg-slate-800/50 p-2 rounded-lg border border-slate-700">
+                                                <span className="text-slate-200 text-sm">{item.name}</span>
+                                                <div className="text-right">
+                                                    <div className="text-[10px] font-mono text-orange-400 bg-orange-900/30 px-1.5 py-0.5 rounded">Weight: {item.weight}</div>
+                                                    <div className="text-[9px] text-slate-500 mt-0.5">{item.detail}</div>
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    <h3 className="text-white font-medium mt-6 mb-4 flex items-center gap-2">
+                                        <span className="w-2 h-2 rounded-full bg-green-500"></span>
+                                        ระบบกรองคุณภาพ (Data Quality Filters)
+                                    </h3>
+                                    <ul className="space-y-3">
+                                        {[
+                                            { name: 'Political Filter', detail: 'กรองเฉพาะข่าวการเมือง 50+ keywords' },
+                                            { name: 'Duplicate Filter', detail: 'ลบข่าวหัวซ้ำ (ตรวจ 40 ตัวแรก)' },
+                                            { name: 'Score Decay', detail: 'ลดความผันผวน 2% ต่อ tick' },
+                                            { name: 'Score Clamping', detail: 'จำกัดคะแนน 0-100%' },
                                         ].map((item, i) => (
                                             <li key={i} className="flex justify-between items-center bg-slate-800/50 p-3 rounded-lg border border-slate-700">
                                                 <span className="text-slate-200">{item.name}</span>
                                                 <div className="text-right">
-                                                    <div className="text-xs font-mono text-cyan-400 bg-cyan-900/30 px-2 py-0.5 rounded">Weight: {item.weight}</div>
-                                                    <div className="text-[10px] text-slate-500 mt-1">{item.detail}</div>
+                                                    <div className="text-[10px] text-emerald-400">{item.detail}</div>
                                                 </div>
                                             </li>
                                         ))}
@@ -107,25 +152,34 @@ export default function MethodologyPage() {
                                 <div>
                                     <h3 className="text-white font-medium mb-4 flex items-center gap-2">
                                         <span className="w-2 h-2 rounded-full bg-purple-500"></span>
-                                        โซเชียลมีเดีย (Social Listening)
+                                        โซเชียลมีเดีย & เทรนด์ (Trends & Sentiment)
                                     </h3>
                                     <div className="space-y-4">
                                         <div className="bg-orange-900/10 border border-orange-500/20 p-4 rounded-lg">
                                             <div className="flex justify-between mb-2">
-                                                <span className="font-bold text-orange-400">Pantip.com</span>
-                                                <span className="text-xs bg-orange-500/20 text-orange-300 px-2 py-1 rounded">Weight: 1.5x</span>
+                                                <span className="font-bold text-orange-400">Wikipedia Analytics (PageViews)</span>
+                                                <span className="text-xs bg-orange-500/20 text-orange-300 px-2 py-1 rounded">25% of AI Score</span>
                                             </div>
                                             <p className="text-xs text-orange-200/60">
-                                                เจาะลึกห้องราชดำเนิน, สินธร และกระทู้แนะนำ เพื่อจับกระแสความคิดเห็นเชิงลึกของกลุ่มพลังเงียบ
+                                                ติดตามสถิติการเข้าชมหน้าบทความ (Pageviews) ของผู้นำพรรคการเมือง บน Wikipedia ไทย เพื่อวัดระดับความ "อยากรู้จัก" และความสนใจเชิงลึก (Interest Index)
+                                            </p>
+                                        </div>
+                                        <div className="bg-blue-900/10 border border-blue-500/20 p-4 rounded-lg">
+                                            <div className="flex justify-between mb-2">
+                                                <span className="font-bold text-blue-400">Social Listening</span>
+                                                <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">Score Impact</span>
+                                            </div>
+                                            <p className="text-xs text-blue-200/60">
+                                                วิเคราะห์ความรู้สึก (Sentiment) จากข่าวและบทความออนไลน์ด้วย AI เพื่อประเมินทิศทางกระแสสังคม (รวดเร็ว)
                                             </p>
                                         </div>
                                         <div className="bg-red-900/10 border border-red-500/20 p-4 rounded-lg">
                                             <div className="flex justify-between mb-2">
-                                                <span className="font-bold text-red-400">YouTube Comments</span>
-                                                <span className="text-xs bg-red-500/20 text-red-300 px-2 py-1 rounded">Weight: 1.3x</span>
+                                                <span className="font-bold text-red-400">NIDA Poll (ฐานข้อมูลโพล)</span>
+                                                <span className="text-xs bg-red-500/20 text-red-300 px-2 py-1 rounded">40% Weight</span>
                                             </div>
                                             <p className="text-xs text-red-200/60">
-                                                วิเคราะห์คอมเมนต์จากช่องข่าวหลัก (Thai PBS, PPTV, ไทยรัฐ) เพื่อดูปฏิกิริยาต่อข่าวรายวัน
+                                                ใช้ผลโพลจากสถาบันบัณฑิตพัฒนบริหารศาสตร์ (NIDA) เป็นฐานความจริง (Ground Truth) สำหรับการคำนวณ Hybrid Score
                                             </p>
                                         </div>
                                     </div>
@@ -156,12 +210,27 @@ export default function MethodologyPage() {
                                         <span className="text-xs bg-purple-500 text-white px-2 py-0.5 rounded-full">100 ที่นั่ง</span>
                                     </div>
                                     <div className="text-3xl font-mono font-bold text-purple-300 mb-4">
-                                        60% <span className="text-sm font-sans text-slate-400 font-normal">AI Sentiment</span>
-                                        <span className="mx-2 text-slate-600">+</span>
                                         40% <span className="text-sm font-sans text-slate-400 font-normal">NIDA Poll</span>
+                                        <span className="mx-2 text-slate-600">+</span>
+                                        60% <span className="text-sm font-sans text-slate-400 font-normal">AI Hybrid</span>
                                     </div>
-                                    <p className="text-sm text-slate-400">
-                                        ให้ความสำคัญกับ <strong>"กระแสรายวัน"</strong> และความนิยมของพรรคในภาพรวม
+
+                                    <div className="bg-purple-900/20 p-3 rounded-lg border border-purple-500/20 text-sm mb-2">
+                                        <div className="text-purple-200 font-bold mb-2 text-xs uppercase tracking-wider">Inside AI Hybrid Component:</div>
+                                        <ul className="space-y-2 text-slate-300 text-xs">
+                                            <li className="flex justify-between">
+                                                <span>• Sentiment Analysis (อารมณ์ข่าว)</span>
+                                                <span className="text-purple-400 font-bold">75% Weight</span>
+                                            </li>
+                                            <li className="flex justify-between">
+                                                <span>• Wikipedia Index (ความสนใจ)</span>
+                                                <span className="text-orange-400 font-bold">25% Weight</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <p className="text-xs text-slate-500 mt-2">
+                                        สูตรนี้ช่วยลดความผันผวนของข่าวกระแส (Noise) ด้วยข้อมูลเชิงลึก (Deep Interest) จาก WikiIndex
                                     </p>
                                 </div>
 

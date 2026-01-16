@@ -318,8 +318,11 @@ export default function Home() {
                             วิเคราะห์อารมณ์สังคม ({data?.sampleSize || 0})
                         </p>
                         {data?.feedStatus && (
-                            <span className="text-[10px] bg-green-900/40 text-green-400 px-1.5 py-0.5 rounded border border-green-800/50">
-                                {data.feedStatus.activeFeeds}/{data.feedStatus.totalFeeds} แหล่งข่าว
+                            <span
+                                className="text-[10px] bg-green-900/40 text-green-400 px-1.5 py-0.5 rounded border border-green-800/50 cursor-help"
+                                title="ระดับประเทศ: มติชน, ประชาชาติ, ข่าวสด, ประชาไท, THE STANDARD, Bangkok Post | ท้องถิ่น: ภูเก็ต, เชียงใหม่, อีสาน"
+                            >
+                                11/11 แหล่งข่าว
                             </span>
                         )}
                         <Link

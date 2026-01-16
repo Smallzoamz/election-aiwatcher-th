@@ -1,5 +1,16 @@
 import { NextResponse } from 'next/server';
 import { simulateMarket } from '@/lib/ai-engine';
+import * as fs from 'fs';
+import * as path from 'path';
+
+const DEBUG_LOG_PATH = path.join(process.cwd(), 'debug_engine.log');
+function logDebug(msg) {
+    try {
+        fs.appendFileSync(DEBUG_LOG_PATH, `[API-ROUTE] [${new Date().toISOString()}] ${msg}\n`);
+    } catch (e) {
+        // ignore
+    }
+}
 
 // Simple in-memory rate limiter
 const rateLimitMap = new Map();
@@ -66,6 +77,7 @@ export async function GET(request) {
         });
     } catch (error) {
         console.error('API Error:', error);
+        logDebug(`API Error: ${error.message}\nStack: ${error.stack}`);
         return NextResponse.json(
             { error: 'Internal server error' },
             { status: 500 }
