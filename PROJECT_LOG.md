@@ -128,3 +128,5 @@
 [16/01/2026 21:15] | File: multiple | Keyword: Policy | Status: Created/Edited | Change: Created Privacy Policy, Terms of Service, and About Us pages. Integrated into footer navigation and dynamic sitemap.
 [16/01/2026 21:25] | File: app/icon.png | Keyword: UI | Status: Created | Change: Implemented a custom symbolic "Ballot Box" favicon with a cyber-tech aesthetic for better brand identity and visibility.
 [16/01/2026 21:30] | File: app/layout.js, ShareButton.js | Keyword: SEO/Social | Status: Edited | Change: Fixed missing social media previews by using absolute URLs for OG/Twitter images and updating the share domain. Removed legacy static robots/sitemap files from public/.
+[17/01/2026 02:34] | File: lib/ai-engine.js | Line: 430-485, 547-558 | Keyword: Victim Context | Status: Created | Change: Added VICTIM_PATTERNS (14 patterns), detectVictimContext() function, and modified calculateAmbiguityScore() to escalate victim/whistleblower news to Gemini AI for accurate context analysis.
+[17/01/2026 02:34] | File: app/methodology/page.js | Line: 141 | Keyword: Documentation | Status: Edited | Change: Added "Victim Context" filter to Data Quality Filters section.

@@ -137,6 +137,7 @@ export default function MethodologyPage() {
                                         {[
                                             { name: 'Political Filter', detail: 'กรองเฉพาะข่าวการเมือง 50+ keywords' },
                                             { name: 'Duplicate Filter', detail: 'ลบข่าวหัวซ้ำ (ตรวจ 40 ตัวแรก)' },
+                                            { name: 'Victim Context', detail: 'ตรวจจับบริบท "ถูกกระทำ" ส่ง Gemini' },
                                             { name: 'Score Decay', detail: 'ลดความผันผวน 2% ต่อ tick' },
                                             { name: 'Score Clamping', detail: 'จำกัดคะแนน 0-100%' },
                                         ].map((item, i) => (
