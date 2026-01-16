@@ -13,11 +13,23 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
+                hostname: 'upload.wikimedia.org',
+            },
+            {
+                protocol: 'https',
+                hostname: 'ui-avatars.com',
+            },
+            {
+                protocol: 'https',
                 hostname: '*.or.th',
             },
             {
                 protocol: 'https',
                 hostname: '*.com',
+            },
+            {
+                protocol: 'https',
+                hostname: '*.org',
             },
         ],
         // Optimize images

@@ -7,6 +7,7 @@ import { RefreshCw, TrendingUp, TrendingDown, Activity, Radio, AlertCircle, Info
 import Link from 'next/link';
 import ShareButton from './components/ShareButton';
 import ThemeToggle from './components/ThemeToggle';
+import { CandidateLink } from './components/CandidateModal';
 
 // Lazy load heavy components
 const PartyDetailModal = dynamic(() => import('./components/PartyDetailModal'), {
@@ -368,11 +369,7 @@ export default function Home() {
                         {data?.parties?.slice(0, 5).map((party, idx) => (
                             <div
                                 key={party.id}
-                                className="relative bg-slate-900/40 border border-slate-800 p-2 sm:p-3 rounded-xl backdrop-blur-sm hover:border-slate-600 transition-all group overflow-hidden responsive-card flex flex-col justify-center cursor-pointer"
-                                onClick={() => setSelectedParty(party)}
-                                role="button"
-                                tabIndex={0}
-                                onKeyDown={(e) => e.key === 'Enter' && setSelectedParty(party)}
+                                className="relative bg-slate-900/40 border border-slate-800 p-2 sm:p-3 rounded-xl backdrop-blur-sm hover:border-slate-600 transition-all group overflow-hidden responsive-card flex flex-col justify-center"
                             >
 
                                 {/* Background Watermark Logo */}
@@ -418,16 +415,31 @@ export default function Home() {
                                         )}
 
                                         <div className="pt-0.5">
-                                            <h3 className="font-bold text-base sm:text-lg md:text-xl text-white group-hover:text-cyan-400 transition-colors tracking-tight leading-tight">
+                                            <h3
+                                                className="font-bold text-base sm:text-lg md:text-xl text-white hover:text-cyan-400 transition-colors tracking-tight leading-tight cursor-pointer underline decoration-dotted decoration-slate-600 hover:decoration-cyan-400 underline-offset-2"
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    setSelectedParty(party);
+                                                }}
+                                            >
                                                 {party.name}
                                             </h3>
 
-                                            {party.candidates && (
-                                                <div className="text-xs sm:text-sm text-slate-400 mt-1 flex flex-wrap gap-x-2 hidden sm:flex">
-                                                    <span className="text-slate-500 font-medium">แคนดิเดต:</span>
-                                                    <span className="text-slate-300">
-                                                        {party.candidates.join(", ")}
-                                                    </span>
+                                            {party.candidates && party.candidates.length > 0 && (
+                                                <div className="text-xs sm:text-sm text-slate-400 mt-1 flex flex-wrap gap-x-1 gap-y-0.5 hidden sm:flex items-center">
+                                                    <span className="text-slate-500 font-medium mr-1">แคนดิเดต:</span>
+                                                    {party.candidates.map((candidate, cidx) => (
+                                                        <span key={cidx} className="inline-flex items-center">
+                                                            <CandidateLink candidate={candidate} party={party}>
+                                                                <span className="text-slate-300 hover:text-white">
+                                                                    {candidate.name || candidate}
+                                                                </span>
+                                                            </CandidateLink>
+                                                            {cidx < party.candidates.length - 1 && (
+                                                                <span className="text-slate-600 mx-0.5">,</span>
+                                                            )}
+                                                        </span>
+                                                    ))}
                                                 </div>
                                             )}
 
@@ -687,6 +699,13 @@ export default function Home() {
 
                             {/* Center: Links */}
                             <div className="flex items-center gap-4 sm:gap-6">
+                                <Link
+                                    href="/trends"
+                                    className="flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors font-medium"
+                                >
+                                    <TrendingUp className="w-4 h-4" />
+                                    <span>เทรนด์ย้อนหลัง</span>
+                                </Link>
                                 <Link
                                     href="/methodology"
                                     className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-medium"
