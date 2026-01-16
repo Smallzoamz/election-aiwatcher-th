@@ -123,3 +123,4 @@
 [16/01/2026 20:42] | File: app/methodology/page.js | Line: 92-120 | Keyword: Documentation | Status: Updated | Change: Detailed breakdown of 11 news sources (National + Regional) with impact weights.
 [16/01/2026 20:45] | File: app/page.js | Line: 323 | Keyword: UI Fix | Status: Edited | Change: Corrected tooltip sources to match verified 11 active feeds (Removed Thairath/ThaiPBS/Korat/Nation).
 [16/01/2026 20:48] | File: package.json | Line: 4 | Keyword: Performance | Status: Edited | Change: Added "type": "module" to fix performance overhead warning and properly support ESM syntax.
+[16/01/2026 20:50] | File: postcss.config.js, tailwind.config.js | Keyword: Build Fix | Status: Edited | Change: Converted configuration files to ES Module syntax (export default) to resolve build failure after enabling "type": "module".
