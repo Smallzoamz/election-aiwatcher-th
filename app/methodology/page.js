@@ -23,7 +23,7 @@ export default function MethodologyPage() {
                         เจาะลึกระบบ AI อัจฉริยะ
                     </h1>
                     <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                        เปิดเผยเบื้องหลังเทคโนโลยีการวิเคราะห์ Data-Driven Election Analysis (v3.0) ที่แม่นยำและรวดเร็วที่สุด
+                        เปิดเผยเบื้องหลังเทคโนโลยีการวิเคราะห์ Data-Driven Election Analysis (v3.2) ที่แม่นยำและรวดเร็วที่สุด
                     </p>
                 </header>
 
@@ -272,7 +272,7 @@ export default function MethodologyPage() {
                         </h2>
                         <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-6">
                             <p className="text-slate-300 mb-6">
-                                เวอร์ชั่น 2.2 ได้รับการปรับปรุงโครงสร้างเพื่อรองรับข้อมูล Real-time Analytics จาก Wikipedia อย่างเป็นทางการ:
+                                เวอร์ชั่น 3.2 ได้รับการปรับปรุงโครงสร้างเพื่อรองรับข้อมูล Real-time Analytics จาก Gemini และ Wikipedia:
                             </p>
                             <ul className="grid md:grid-cols-2 gap-4">
                                 <li className="flex items-start gap-3 bg-black/20 p-3 rounded-lg">
@@ -311,7 +311,7 @@ export default function MethodologyPage() {
 
                 {/* Footer */}
                 <footer className="mt-16 pt-8 border-t border-slate-800 text-center text-slate-600">
-                    <p className="mb-2">© 2026 Bonchon-Studio | TH Election AI Watch v3.0</p>
+                    <p className="mb-2">© 2026 Bonchon-Studio | TH Election AI Watch v3.2</p>
                     <p className="text-xs">
                         พัฒนาด้วย ❤️ เพื่อประชาธิปไตยไทย
                     </p>

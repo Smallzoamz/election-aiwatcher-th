@@ -287,3 +287,5 @@
 [2026-01-17 21:50] | File: lib/gemini-client.js | Keyword: Gemini | Status: Edited | Change: Updated Gemini prompt to return confidence scores and model branding.
 [2026-01-17 21:55] | File: lib/ai-engine.js | Keyword: AI | Status: Edited | Change: Integrated confidence scoring (85-99%) and model identification (Rule Engine vs Gemini) into sentiment analysis.
 [2026-01-17 22:00] | File: app/page.js, methodology/page.js | Keyword: UI | Status: Edited | Change: Displayed AI Model and Confidence badges in news feed for full transparency.
+[2026-01-17 22:30] | File: lib/gemini-client.js, lib/ai-engine.js | Keyword: Audit | Status: Fixed | Change: Reconnected calculateConfidence logic and restored news-db.json fallback.
+[2026-01-17 22:45] | File: app/page.js | Keyword: UI | Status: Synced | Change: Updated news source count and tooltips to 12/12. Optimized Gemini with full article content.
