@@ -295,3 +295,9 @@
 [2026-01-17 23:05] | File: app/page.js, app/methodology/page.js | Keyword: UI | Status: Synced | Change: Updated tooltips and methodology details to reflect BBC News Thai as a primary verified source.
 [2026-01-17 23:10] | File: lib/ai-engine.js | Keyword: Data | Status: Restored | Change: Re-enriched 12 parties with detailed candidate bios, education, and career paths.
 [2026-01-17 23:15] | File: app/components/CandidateModal.js | Keyword: UI/UX | Status: Upgraded | Change: Implemented tabbed Modal interface (Bio/Path) with premium glassmorphism and fixed padding for Vision badge.
+[2026-01-17 23:20] | File: lib/ai-engine.js | Keyword: Electoral Law | Status: Fixed | Change: Trimmed Democrat party candidates from 5 to 3 (Abhisit, Korn, Karndee) for Simulation 2569 compliance.
+[2026-01-17 23:25] | File: app/components/Monetization.js | Keyword: UI Cleanup | Status: Deleted | Change: Removed PRO-LEVEL RECOMMENDATIONS card to simplify layout and shift other content up.
+[2026-01-17 23:30] | File: lib/ai-engine.js | Keyword: News Filters | Status: Fixed | Change: Enforced strict 48-hour time limit and political relevance check (`isPoliticalNews`) for all RSS sources.
+[2026-01-17 23:35] | File: lib/ai-engine.js | Keyword: News Fallback | Status: Created | Change: Implemented "Best Effort" fallback to show top 7 most recent political items if 48h filter results in empty feed.
+[2026-01-17 23:40] | File: lib/ai-engine.js, app/page.js | Keyword: UX Persistence | Status: Migrated | Change: Moved news history to server-side (Global analyzedHistory) ensuring a stable 7-item timeline across refreshes.
+[2026-01-17 23:45] | File: lib/ai-engine.js | Keyword: Deduplication | Status: Fixed | Change: Standardized normalization keys for `markNewsAsRead` and added strict guards to `analyzedHistory` to kill news duplication once and for all.

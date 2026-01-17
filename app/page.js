@@ -248,23 +248,16 @@ export default function Home() {
             setData(json);
             setError(null);
 
-            setHistory(prev => {
-                if (!json.analyzedNews) return prev;
-
-                // [FIX] Strict Deduplication: Skip if this headline is already in the recent history
-                const isDuplicate = prev.some(item =>
-                    item.analyzedNews?.headline === json.analyzedNews.headline
-                );
-
-                if (isDuplicate) {
-                    return prev;
-                }
-
-                const updated = prev.length >= 20
-                    ? [...prev.slice(1), json]
-                    : [...prev, json];
-                return updated;
-            });
+            if (json.analyzedHistory && json.analyzedHistory.length > 0) {
+                // Map the server format to the expected tick format if different, 
+                // but since we structured it similarly, we can just use the server's history.
+                const serverHistory = json.analyzedHistory.map(item => ({
+                    timestamp: item.timestamp,
+                    analyzedNews: item,
+                    // Keep other fields if needed, but analyzedNews is the primary display data
+                }));
+                setHistory(serverHistory);
+            }
 
             setLoading(false);
         } catch (err) {
