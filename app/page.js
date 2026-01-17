@@ -193,6 +193,15 @@ export default function Home() {
             setHistory(prev => {
                 if (!json.analyzedNews) return prev;
 
+                // [FIX] Strict Deduplication: Skip if this headline is already in the recent history
+                const isDuplicate = prev.some(item =>
+                    item.analyzedNews?.headline === json.analyzedNews.headline
+                );
+
+                if (isDuplicate) {
+                    return prev;
+                }
+
                 const updated = prev.length >= 20
                     ? [...prev.slice(1), json]
                     : [...prev, json];
