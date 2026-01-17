@@ -292,3 +292,6 @@
 [2026-01-17 22:50] | File: lib/ai-engine.js, app/page.js | Keyword: Monitoring | Status: Created | Change: Implemented real-time RSS Source Monitoring (Node Status) with heartbeat UI.
 [2026-01-17 22:55] | File: lib/ai-engine.js | Keyword: RSS | Status: Fixed | Change: Updated User-Agent to Chrome 120 to fix 403 Forbidden errors on Reddit and other sources.
 [2026-01-17 23:00] | File: lib/ai-engine.js | Keyword: RSS | Status: Replaced | Change: Swapped broken/outdated Pantip feed (2013 data) with BBC News Thai for 2026 data integrity.
+[2026-01-17 23:05] | File: app/page.js, app/methodology/page.js | Keyword: UI | Status: Synced | Change: Updated tooltips and methodology details to reflect BBC News Thai as a primary verified source.
+[2026-01-17 23:10] | File: lib/ai-engine.js | Keyword: Data | Status: Restored | Change: Re-enriched 12 parties with detailed candidate bios, education, and career paths.
+[2026-01-17 23:15] | File: app/components/CandidateModal.js | Keyword: UI/UX | Status: Upgraded | Change: Implemented tabbed Modal interface (Bio/Path) with premium glassmorphism and fixed padding for Vision badge.

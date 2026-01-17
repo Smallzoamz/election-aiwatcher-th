@@ -5,25 +5,6 @@ import { DollarSign, Zap, ShieldCheck, Mail, Globe, MapPin, ExternalLink } from 
 export default function Monetization() {
     return (
         <div className="space-y-4">
-            {/* Pro Recommendation / Upgrade Teaser */}
-            <div className="bg-gradient-to-br from-indigo-950/40 to-slate-900/60 border border-indigo-500/30 rounded-xl p-4 relative overflow-hidden group">
-                <div className="absolute -right-4 -top-4 w-24 h-24 bg-indigo-500/10 rounded-full blur-2xl group-hover:bg-indigo-500/20 transition-all" />
-
-                <div className="flex items-center gap-2 text-indigo-400 font-bold text-sm mb-2">
-                    <Zap className="w-4 h-4 fill-indigo-400" />
-                    <span>PRO-LEVEL RECOMMENDATIONS</span>
-                </div>
-
-                <h4 className="text-white font-bold text-sm mb-1">วิเคราะห์เชิงลึกรายเขต (District Analysis)</h4>
-                <p className="text-[11px] text-slate-400 leading-relaxed mb-3">
-                    อัปเกรดเพื่อดูความเคลื่อนไหวรายเขตเลือกตั้ง 400 เขต พร้อมระบบตรวจจับ "กระสุน vs กระแส" แบบ Real-time
-                </p>
-
-                <button className="w-full py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-[11px] font-bold transition-all shadow-[0_0_15px_rgba(79,70,229,0.3)]">
-                    ปลดล็อกฟีเจอร์ PRO
-                </button>
-            </div>
-
             {/* Support / Donation Box */}
             <div className="bg-slate-900/40 border border-slate-800 rounded-xl p-3 flex items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
