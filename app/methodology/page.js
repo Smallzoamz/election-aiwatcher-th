@@ -189,7 +189,7 @@ export default function MethodologyPage() {
                                         </div>
                                         <div className="bg-blue-900/10 border border-blue-500/20 p-4 rounded-lg">
                                             <div className="flex justify-between mb-2">
-                                                <span className="font-bold text-blue-400">Social Sentiment (Pantip/Reddit)</span>
+                                                <span className="font-bold text-blue-400">Social Sentiment (Reddit / BBC Thai)</span>
                                                 <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">20% Weight (List)</span>
                                             </div>
                                             <p className="text-xs text-blue-200/60">

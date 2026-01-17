@@ -291,3 +291,4 @@
 [2026-01-17 22:45] | File: app/page.js | Keyword: UI | Status: Synced | Change: Updated news source count and tooltips to 12/12. Optimized Gemini with full article content.
 [2026-01-17 22:50] | File: lib/ai-engine.js, app/page.js | Keyword: Monitoring | Status: Created | Change: Implemented real-time RSS Source Monitoring (Node Status) with heartbeat UI.
 [2026-01-17 22:55] | File: lib/ai-engine.js | Keyword: RSS | Status: Fixed | Change: Updated User-Agent to Chrome 120 to fix 403 Forbidden errors on Reddit and other sources.
+[2026-01-17 23:00] | File: lib/ai-engine.js | Keyword: RSS | Status: Replaced | Change: Swapped broken/outdated Pantip feed (2013 data) with BBC News Thai for 2026 data integrity.

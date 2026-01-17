@@ -204,12 +204,12 @@ const RSSNodeStatus = ({ feedStatus }) => {
                     >
                         <div className="relative">
                             <div className={`w-1.5 h-1.5 rounded-full ${node.status === 'active' ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]' :
-                                    node.status === 'error' ? 'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.6)]' : 'bg-slate-600'
+                                node.status === 'error' ? 'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.6)]' : 'bg-slate-600'
                                 }`} />
                             {node.status === 'active' && <div className="absolute inset-0 w-1.5 h-1.5 rounded-full bg-green-500 animate-ping opacity-75" />}
                         </div>
                         <span className={`text-[10px] font-bold truncate ${node.status === 'active' ? 'text-slate-300 group-hover:text-green-400' :
-                                node.status === 'error' ? 'text-red-400' : 'text-slate-500'
+                            node.status === 'error' ? 'text-red-400' : 'text-slate-500'
                             }`}>
                             {node.name}
                         </span>
@@ -387,7 +387,7 @@ export default function Home() {
                         {data?.feedStatus && (
                             <span
                                 className="text-[10px] bg-green-900/40 text-green-400 px-1.5 py-0.5 rounded border border-green-800/50 cursor-help"
-                                title="ระดับประเทศ: มติชน, ประชาชาติ, ข่าวสด, ประชาไท, THE STANDARD, Bangkok Post | ท้องถิ่น: ภูเก็ต, เชียงใหม่, อีสาน | ออนไลน์: Reddit, Pantip"
+                                title="ระดับประเทศ: มติชน, ประชาชาติ, ข่าวสด, ประชาไท, THE STANDARD, Bangkok Post, BBC News ไทย | ท้องถิ่น: ภูเก็ต, เชียงใหม่, อีสาน | ออนไลน์: Reddit"
                             >
                                 12/12 แหล่งข่าว
                             </span>
