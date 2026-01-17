@@ -672,17 +672,29 @@ export default function Home() {
                                                     {tick.analyzedNews?.headline}
                                                 </a>
                                             </div>
-                                            <div className="mt-1 text-xs flex flex-wrap gap-2 items-center">
-                                                <span className="text-gray-500">วิเคราะห์: </span>
-                                                <span className={`font-bold ${tick.analyzedNews?.sentiment === 'pos' ? 'text-green-400' : tick.analyzedNews?.sentiment === 'neg' ? 'text-red-400' : 'text-yellow-400'}`}>
-                                                    {tick.analyzedNews?.sentiment === 'pos' ? 'เชิงบวก' : tick.analyzedNews?.sentiment === 'neg' ? 'เชิงลบ' : 'เป็นกลาง'}
-                                                </span>
-                                                {tick.analyzedNews?.primaryContext && (
-                                                    <span className="bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded text-[10px] font-bold border border-slate-700">
-                                                        ({tick.analyzedNews.primaryContext.label})
+                                            <div className="mt-1 text-xs flex flex-wrap gap-x-2 gap-y-1 items-center">
+                                                <div className="flex items-center gap-1.5 bg-slate-800/80 px-2 py-0.5 rounded border border-slate-700/50">
+                                                    <span className="text-slate-500 font-medium">Model:</span>
+                                                    <span className="text-cyan-400 font-mono text-[10px]">{tick.analyzedNews?.modelUsed || 'Rule Engine'}</span>
+                                                    <span className="w-px h-2.5 bg-slate-700 mx-0.5" />
+                                                    <span className="text-slate-500 font-medium whitespace-nowrap">มั่นใจ:</span>
+                                                    <span className={`font-mono text-[10px] ${tick.analyzedNews?.confidence > 90 ? 'text-green-400' : 'text-amber-400'}`}>
+                                                        {tick.analyzedNews?.confidence || 85}%
                                                     </span>
-                                                )}
-                                                <span className="text-gray-600"> | ผลกระทบ: {tick.analyzedNews?.target} ({tick.analyzedNews?.impact > 0 ? '+' : ''}{tick.analyzedNews?.impact}%)</span>
+                                                </div>
+
+                                                <div className="flex items-center gap-2">
+                                                    <span className="text-gray-500">วิเคราะห์: </span>
+                                                    <span className={`font-bold ${tick.analyzedNews?.sentiment === 'pos' ? 'text-green-400' : tick.analyzedNews?.sentiment === 'neg' ? 'text-red-400' : 'text-yellow-400'}`}>
+                                                        {tick.analyzedNews?.sentiment === 'pos' ? 'เชิงบวก' : tick.analyzedNews?.sentiment === 'neg' ? 'เชิงลบ' : 'เป็นกลาง'}
+                                                    </span>
+                                                    {tick.analyzedNews?.primaryContext && (
+                                                        <span className="bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded text-[10px] font-bold border border-slate-700">
+                                                            ({tick.analyzedNews.primaryContext.label})
+                                                        </span>
+                                                    )}
+                                                    <span className="text-gray-600"> | ผลกระทบ: {tick.analyzedNews?.target} ({tick.analyzedNews?.impact > 0 ? '+' : ''}{tick.analyzedNews?.impact}%)</span>
+                                                </div>
                                             </div>
                                         </div>
                                     ))}

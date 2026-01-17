@@ -149,6 +149,28 @@ export default function MethodologyPage() {
                                             </li>
                                         ))}
                                     </ul>
+
+                                    <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-700/50 mt-6">
+                                        <div className="flex items-center gap-3 mb-3">
+                                            <div className="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center border border-purple-500/20 text-purple-400">
+                                                <Zap className="w-4 h-4" />
+                                            </div>
+                                            <h3 className="font-bold text-white text-sm">AI Transparency Engine</h3>
+                                        </div>
+                                        <p className="text-slate-400 text-[11px] leading-relaxed mb-4">
+                                            เราระบุโมเดลที่ใช้และระบุค่าความมั่นใจ (Confidence) ของการวิเคราะห์เพื่อให้ Papa ตรวจสอบความถูกต้องได้:
+                                        </p>
+                                        <ul className="space-y-2 text-[10px] text-slate-300">
+                                            <li className="flex items-start gap-2">
+                                                <span className="text-cyan-400 font-bold">•</span>
+                                                <span><strong>Rule Engine:</strong> วิเคราะห์ด้วย Keyword (มั่นใจ 85-95%)</span>
+                                            </li>
+                                            <li className="flex items-start gap-2">
+                                                <span className="text-purple-400 font-bold">•</span>
+                                                <span><strong>Gemini 2.0 Flash:</strong> วิเคราะห์ประโยค (มั่นใจ 90-99%)</span>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div>
                                     <h3 className="text-white font-medium mb-4 flex items-center gap-2">
