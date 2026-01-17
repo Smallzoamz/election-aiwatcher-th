@@ -23,7 +23,7 @@ export default function MethodologyPage() {
                         เจาะลึกระบบ AI อัจฉริยะ
                     </h1>
                     <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                        เปิดเผยเบื้องหลังเทคโนโลยีการวิเคราะห์ Data-Driven Election Analysis ที่แม่นยำและรวดเร็วที่สุด
+                        เปิดเผยเบื้องหลังเทคโนโลยีการวิเคราะห์ Data-Driven Election Analysis (v3.0) ที่แม่นยำและรวดเร็วที่สุด
                     </p>
                 </header>
 
@@ -158,29 +158,29 @@ export default function MethodologyPage() {
                                     <div className="space-y-4">
                                         <div className="bg-orange-900/10 border border-orange-500/20 p-4 rounded-lg">
                                             <div className="flex justify-between mb-2">
-                                                <span className="font-bold text-orange-400">Wikipedia Analytics (PageViews)</span>
-                                                <span className="text-xs bg-orange-500/20 text-orange-300 px-2 py-1 rounded">25% of AI Score</span>
+                                                <span className="font-bold text-orange-400">Wikipedia Analytics (Search Trends)</span>
+                                                <span className="text-xs bg-orange-500/20 text-orange-300 px-2 py-1 rounded">20% Weight</span>
                                             </div>
                                             <p className="text-xs text-orange-200/60">
-                                                ติดตามสถิติการเข้าชมหน้าบทความ (Pageviews) แบบ <strong>Real-time</strong> ของผู้นำพรรคการเมือง บน Wikipedia ไทย เพื่อวัดระดับความ "อยากรู้จัก" และความสนใจเชิงลึก (Interest Index)
+                                                ติดตามสถิติการเข้าชมหน้าบทความ (Pageviews) แบบ Real-time เพื่อวัดระดับความ "อยากรู้จัก" และความสนใจเชิงลึก
                                             </p>
                                         </div>
                                         <div className="bg-blue-900/10 border border-blue-500/20 p-4 rounded-lg">
                                             <div className="flex justify-between mb-2">
-                                                <span className="font-bold text-blue-400">Social Listening</span>
-                                                <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">Score Impact</span>
+                                                <span className="font-bold text-blue-400">Social Sentiment (Pantip/Reddit)</span>
+                                                <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded">20% Weight (List)</span>
                                             </div>
                                             <p className="text-xs text-blue-200/60">
-                                                วิเคราะห์ความรู้สึก (Sentiment) จากข่าวและบทความออนไลน์ด้วย AI เพื่อประเมินทิศทางกระแสสังคม (รวดเร็ว)
+                                                วิเคราะห์ความรู้สึกจากบอร์ดสนทนาออนไลน์และบทความแสดงทัศนะขยายความจากข่าวหลัก (Opinion Pieces)
                                             </p>
                                         </div>
                                         <div className="bg-red-900/10 border border-red-500/20 p-4 rounded-lg">
                                             <div className="flex justify-between mb-2">
-                                                <span className="font-bold text-red-400">NIDA Poll (ฐานข้อมูลโพล)</span>
-                                                <span className="text-xs bg-red-500/20 text-red-300 px-2 py-1 rounded">40% Weight</span>
+                                                <span className="font-bold text-red-400">NIDA Poll (Ground Truth)</span>
+                                                <span className="text-xs bg-red-500/20 text-red-300 px-2 py-1 rounded">50% Weight (Const)</span>
                                             </div>
                                             <p className="text-xs text-red-200/60">
-                                                ใช้ผลโพลจากสถาบันบัณฑิตพัฒนบริหารศาสตร์ (NIDA) เป็นฐานความจริง (Ground Truth) สำหรับการคำนวณ Hybrid Score
+                                                ใช้ผลโพลของสำนักโพลมาตรฐาน (NIDA) เป็นฐานอ้างอิงความจริง (Ground Truth) ร่วมกับข้อมูล Real-time
                                             </p>
                                         </div>
                                     </div>
@@ -207,31 +207,17 @@ export default function MethodologyPage() {
                                     <div className="absolute -right-6 -top-6 w-24 h-24 bg-purple-500/20 rounded-full blur-xl" />
                                     <div className="flex items-center gap-3 mb-4">
                                         <TrendingUp className="w-6 h-6 text-purple-400" />
-                                        <h3 className="font-bold text-lg text-white">ส.ส. บัญชีรายชื่อ</h3>
+                                        <h3 className="font-bold text-lg text-white">ส.ส. บัญชีรายชื่อ (QWHS)</h3>
                                         <span className="text-xs bg-purple-500 text-white px-2 py-0.5 rounded-full">100 ที่นั่ง</span>
                                     </div>
-                                    <div className="text-3xl font-mono font-bold text-purple-300 mb-4">
-                                        40% <span className="text-sm font-sans text-slate-400 font-normal">NIDA Poll</span>
-                                        <span className="mx-2 text-slate-600">+</span>
-                                        60% <span className="text-sm font-sans text-slate-400 font-normal">AI Hybrid</span>
+                                    <div className="text-sm font-mono space-y-1 mb-4">
+                                        <div className="flex justify-between text-slate-400"><span>• Poll Data:</span> <span className="text-white font-bold">30%</span></div>
+                                        <div className="flex justify-between text-slate-400"><span>• News Sentiment:</span> <span className="text-white font-bold">30%</span></div>
+                                        <div className="flex justify-between text-slate-400"><span>• Social Signal:</span> <span className="text-white font-bold">20%</span></div>
+                                        <div className="flex justify-between text-slate-400"><span>• Search Trends:</span> <span className="text-white font-bold">20%</span></div>
                                     </div>
-
-                                    <div className="bg-purple-900/20 p-3 rounded-lg border border-purple-500/20 text-sm mb-2">
-                                        <div className="text-purple-200 font-bold mb-2 text-xs uppercase tracking-wider">Inside AI Hybrid Component:</div>
-                                        <ul className="space-y-2 text-slate-300 text-xs">
-                                            <li className="flex justify-between">
-                                                <span>• Sentiment Analysis (อารมณ์ข่าว)</span>
-                                                <span className="text-purple-400 font-bold">75% Weight</span>
-                                            </li>
-                                            <li className="flex justify-between">
-                                                <span>• Wikipedia Index (ความสนใจ)</span>
-                                                <span className="text-orange-400 font-bold">25% Weight</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-
                                     <p className="text-xs text-slate-500 mt-2">
-                                        สูตรนี้ช่วยลดความผันผวนของข่าวกระแส (Noise) ด้วยข้อมูลเชิงลึก (Deep Interest) จาก WikiIndex
+                                        เน้นการกระจายน้ำหนักเพื่อสะท้อนภาพรวมความนิยมทั้งประเทศ
                                     </p>
                                 </div>
 
@@ -240,16 +226,17 @@ export default function MethodologyPage() {
                                     <div className="absolute -right-6 -top-6 w-24 h-24 bg-teal-500/20 rounded-full blur-xl" />
                                     <div className="flex items-center gap-3 mb-4">
                                         <Activity className="w-6 h-6 text-teal-400" />
-                                        <h3 className="font-bold text-lg text-white">ส.ส. แบ่งเขต</h3>
+                                        <h3 className="font-bold text-lg text-white">ส.ส. แบ่งเขต (QWHS)</h3>
                                         <span className="text-xs bg-teal-500 text-white px-2 py-0.5 rounded-full">400 ที่นั่ง</span>
                                     </div>
-                                    <div className="text-3xl font-mono font-bold text-teal-300 mb-4">
-                                        30% <span className="text-sm font-sans text-slate-400 font-normal">AI Sentiment</span>
-                                        <span className="mx-2 text-slate-600">+</span>
-                                        70% <span className="text-sm font-sans text-slate-400 font-normal">NIDA Poll</span>
+                                    <div className="text-sm font-mono space-y-1 mb-4">
+                                        <div className="flex justify-between text-slate-400"><span>• Poll Data:</span> <span className="text-white font-bold">50%</span></div>
+                                        <div className="flex justify-between text-slate-400"><span>• News Sentiment:</span> <span className="text-white font-bold">20%</span></div>
+                                        <div className="flex justify-between text-slate-400"><span>• Social Signal:</span> <span className="text-white font-bold">10%</span></div>
+                                        <div className="flex justify-between text-slate-400"><span>• Search Trends:</span> <span className="text-white font-bold">20%</span></div>
                                     </div>
-                                    <p className="text-sm text-slate-400">
-                                        เน้น <strong>"ฐานเสียงเดิม"</strong> และความผูกพันกับตัวบุคคลในพื้นที่ ซึ่งโพลมักจะแม่นยำกว่า
+                                    <p className="text-xs text-slate-500 mt-2">
+                                        เน้นน้ำหนักผลโพลรายพื้นที่เพื่อลดความคลาดเคลื่อนจากกระแสออนไลน์ที่ไม่สะท้อนฐานเสียงเขต
                                     </p>
                                 </div>
                             </div>
@@ -302,7 +289,7 @@ export default function MethodologyPage() {
 
                 {/* Footer */}
                 <footer className="mt-16 pt-8 border-t border-slate-800 text-center text-slate-600">
-                    <p className="mb-2">© 2026 Bonchon-Studio | TH Election AI Watch v2.2</p>
+                    <p className="mb-2">© 2026 Bonchon-Studio | TH Election AI Watch v3.0</p>
                     <p className="text-xs">
                         พัฒนาด้วย ❤️ เพื่อประชาธิปไตยไทย
                     </p>
