@@ -311,6 +311,7 @@ export default function Home() {
             id: p.id,
             logoUrl: p.logoUrl,
             nidaScore: p.nidaScore,
+            isTrending: p.isTrending,
             hiddenSupport: p.hiddenSupport,
             divergence: p.divergence
         }));

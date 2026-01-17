@@ -315,3 +315,7 @@
 [2026-01-18 01:25] | File: lib/ai-engine.js | Keyword: Data | Status: Updated | Change: Updated NIDA Poll fallback to Jan 8-9, 2026 results. PP (30.4%), BJT (22.1% SURGE), PT (15.6%), DEM (12.3%).
 [2026-01-18 01:28] | File: app/methodology/page.js | Keyword: Docs | Status: Upgraded | Change: Bumped version to v4.1 (NIDA Poll 2026 Refresh).
 [2026-01-18 01:45] | File: lib/ai-engine.js | Keyword: News | Status: Optimized | Change: Implemented batch news processing (3 items/cycle if history low) and 7-item padded fallback to ensure ticker density.
+[2026-01-18 03:30] | File: lib/ai-engine.js | Keyword: RSS | Status: Stabilized | Change: Implemented fetchWithRetry, HTTPS (Pantip), and staggered throttling (v4.3).
+[2026-01-18 03:45] | File: lib/ai-engine.js | Keyword: News | Status: Fixed | Change: Switched to MD5 hashing for Thai-friendly deduplication.
+[2026-01-18 04:15] | File: lib/ai-engine.js | Keyword: Order | Status: Fixed | Change: Corrected batch processing direction and added pubDate sort (v4.4).
+[2026-01-18 04:29] | File: app/page.js | Keyword: UI | Status: Corrected | Change: Fixed divergence logic and added isTrending mapping to tooltips (v4.5).
