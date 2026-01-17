@@ -620,15 +620,16 @@ export default function Home() {
                                                         ))}
 
                                                         {/* DIVERGENCE ALERT ON HOVER */}
-                                                        {tooltipData.hiddenSupport && (
+                                                        {(tooltipData.isTrending || tooltipData.hiddenSupport) && (
                                                             <div className="mt-3 pt-2 border-t border-slate-700 animate-in fade-in slide-in-from-top-1">
-                                                                <div className="flex items-center gap-2 text-amber-500 font-bold text-xs mb-1">
-                                                                    <TrendingUp className="w-4 h-4" />
-                                                                    <span>ตรวจพบฐานเสียงแฝง!</span>
+                                                                <div className={`flex items-center gap-2 font-bold text-xs mb-1 ${tooltipData.isTrending ? 'text-cyan-400' : 'text-amber-500'}`}>
+                                                                    {tooltipData.isTrending ? <TrendingUp className="w-4 h-4" /> : <Info className="w-4 h-4" />}
+                                                                    <span>{tooltipData.isTrending ? 'กระแสโซเชียลมาแรง!' : 'ตรวจพบฐานเสียงแฝง!'}</span>
                                                                 </div>
-                                                                <div className="text-[10px] text-amber-200/80 leading-relaxed bg-amber-900/20 p-2 rounded border border-amber-900/50">
-                                                                    คะแนนจริงสูงกว่ากระแสโซเชียล <span className="text-white font-bold">{Math.abs(tooltipData.divergence)}%</span>
-                                                                    <br />(Underlying Support)
+                                                                <div className={`text-[10px] leading-relaxed p-2 rounded border ${tooltipData.isTrending ? 'text-cyan-200/80 bg-cyan-900/20 border-cyan-900/50' : 'text-amber-200/80 bg-amber-900/20 border-amber-900/50'}`}>
+                                                                    {tooltipData.isTrending ? 'กระแสโซเชียลสูงกว่าคะแนนโพล ' : 'คะแนนโพลสูงกว่ากระแสโซเชียล '}
+                                                                    <span className="text-white font-bold">{Math.abs(tooltipData.divergence)}%</span>
+                                                                    <br />({tooltipData.isTrending ? 'Sentiment Momentum' : 'Underlying Support'})
                                                                 </div>
                                                             </div>
                                                         )}
