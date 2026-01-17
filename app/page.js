@@ -640,39 +640,47 @@ export default function Home() {
                                         ))}
                                     </>
                                 )}
-                                {history.slice(-10).reverse().map((tick, i) => (
-                                    <div key={i} className="border-l-2 border-green-500 pl-2 animate-in slide-in-from-left duration-300 pb-2 border-b border-green-900/20 last:border-0">
-                                        <div className="flex justify-between items-start">
-                                            <span className="text-white text-xs opacity-50">[{new Date(tick.timestamp).toLocaleTimeString()}]</span>
-                                            <div className="flex items-center gap-2 text-xs">
-                                                <span className="text-purple-400">[{tick.analyzedNews?.source}]</span>
-                                                {tick.analyzedNews?.pubDate && (
-                                                    <span className="text-gray-500">
-                                                        📅 {new Date(tick.analyzedNews.pubDate).toLocaleString('th-TH', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}
+                                {history
+                                    .slice() // Copy array
+                                    .sort((a, b) => {
+                                        const dateA = new Date(a.analyzedNews?.pubDate || a.timestamp).getTime();
+                                        const dateB = new Date(b.analyzedNews?.pubDate || b.timestamp).getTime();
+                                        return dateB - dateA; // Newest First
+                                    })
+                                    .slice(0, 10) // Take top 10 newest
+                                    .map((tick, i) => (
+                                        <div key={i} className="border-l-2 border-green-500 pl-2 animate-in slide-in-from-left duration-300 pb-2 border-b border-green-900/20 last:border-0">
+                                            <div className="flex justify-between items-start">
+                                                <span className="text-white text-xs opacity-50">[{new Date(tick.timestamp).toLocaleTimeString()}]</span>
+                                                <div className="flex items-center gap-2 text-xs">
+                                                    <span className="text-purple-400">[{tick.analyzedNews?.source}]</span>
+                                                    {tick.analyzedNews?.pubDate && (
+                                                        <span className="text-gray-500">
+                                                            📅 {new Date(tick.analyzedNews.pubDate).toLocaleString('th-TH', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}
+                                                        </span>
+                                                    )}
+                                                </div>
+                                            </div>
+                                            <div className="mt-1">
+                                                <span className="text-cyan-400 font-bold">&gt; </span>
+                                                <a href={tick.analyzedNews?.link} target="_blank" rel="noopener noreferrer" className="hover:text-cyan-300 hover:underline transition-colors">
+                                                    {tick.analyzedNews?.headline}
+                                                </a>
+                                            </div>
+                                            <div className="mt-1 text-xs flex flex-wrap gap-2 items-center">
+                                                <span className="text-gray-500">วิเคราะห์: </span>
+                                                <span className={`font-bold ${tick.analyzedNews?.sentiment === 'pos' ? 'text-green-400' : tick.analyzedNews?.sentiment === 'neg' ? 'text-red-400' : 'text-yellow-400'}`}>
+                                                    {tick.analyzedNews?.sentiment === 'pos' ? 'เชิงบวก' : tick.analyzedNews?.sentiment === 'neg' ? 'เชิงลบ' : 'เป็นกลาง'}
+                                                </span>
+                                                {tick.analyzedNews?.primaryContext && (
+                                                    <span className="bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded text-[10px] font-bold border border-slate-700">
+                                                        ({tick.analyzedNews.primaryContext.label})
                                                     </span>
                                                 )}
+                                                <span className="text-gray-600"> | ผลกระทบ: {tick.analyzedNews?.target} ({tick.analyzedNews?.impact > 0 ? '+' : ''}{tick.analyzedNews?.impact}%)</span>
                                             </div>
                                         </div>
-                                        <div className="mt-1">
-                                            <span className="text-cyan-400 font-bold">&gt; </span>
-                                            <a href={tick.analyzedNews?.link} target="_blank" rel="noopener noreferrer" className="hover:text-cyan-300 hover:underline transition-colors">
-                                                {tick.analyzedNews?.headline}
-                                            </a>
-                                        </div>
-                                        <div className="mt-1 text-xs flex flex-wrap gap-2 items-center">
-                                            <span className="text-gray-500">วิเคราะห์: </span>
-                                            <span className={`font-bold ${tick.analyzedNews?.sentiment === 'pos' ? 'text-green-400' : tick.analyzedNews?.sentiment === 'neg' ? 'text-red-400' : 'text-yellow-400'}`}>
-                                                {tick.analyzedNews?.sentiment === 'pos' ? 'เชิงบวก' : tick.analyzedNews?.sentiment === 'neg' ? 'เชิงลบ' : 'เป็นกลาง'}
-                                            </span>
-                                            {tick.analyzedNews?.primaryContext && (
-                                                <span className="bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded text-[10px] font-bold border border-slate-700">
-                                                    ({tick.analyzedNews.primaryContext.label})
-                                                </span>
-                                            )}
-                                            <span className="text-gray-600"> | ผลกระทบ: {tick.analyzedNews?.target} ({tick.analyzedNews?.impact > 0 ? '+' : ''}{tick.analyzedNews?.impact}%)</span>
-                                        </div>
-                                    </div>
-                                ))}
+                                    ))}
                             </div>
                         </div>
                     </div>
