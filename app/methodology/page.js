@@ -162,7 +162,7 @@ export default function MethodologyPage() {
                                                 <span className="text-xs bg-orange-500/20 text-orange-300 px-2 py-1 rounded">25% of AI Score</span>
                                             </div>
                                             <p className="text-xs text-orange-200/60">
-                                                ติดตามสถิติการเข้าชมหน้าบทความ (Pageviews) ของผู้นำพรรคการเมือง บน Wikipedia ไทย เพื่อวัดระดับความ "อยากรู้จัก" และความสนใจเชิงลึก (Interest Index)
+                                                ติดตามสถิติการเข้าชมหน้าบทความ (Pageviews) แบบ <strong>Real-time</strong> ของผู้นำพรรคการเมือง บน Wikipedia ไทย เพื่อวัดระดับความ "อยากรู้จัก" และความสนใจเชิงลึก (Interest Index)
                                             </p>
                                         </div>
                                         <div className="bg-blue-900/10 border border-blue-500/20 p-4 rounded-lg">
@@ -263,7 +263,7 @@ export default function MethodologyPage() {
                         </h2>
                         <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-6">
                             <p className="text-slate-300 mb-6">
-                                เวอร์ชั่น 2.1 ได้รับการปรับปรุงโครงสร้างเพื่อรองรับผู้ใช้งานจำนวนมากพร้อมกัน (Concurrent Users):
+                                เวอร์ชั่น 2.2 ได้รับการปรับปรุงโครงสร้างเพื่อรองรับข้อมูล Real-time Analytics จาก Wikipedia อย่างเป็นทางการ:
                             </p>
                             <ul className="grid md:grid-cols-2 gap-4">
                                 <li className="flex items-start gap-3 bg-black/20 p-3 rounded-lg">
@@ -302,7 +302,7 @@ export default function MethodologyPage() {
 
                 {/* Footer */}
                 <footer className="mt-16 pt-8 border-t border-slate-800 text-center text-slate-600">
-                    <p className="mb-2">© 2026 Bonchon-Studio | TH Election AI Watch v2.1</p>
+                    <p className="mb-2">© 2026 Bonchon-Studio | TH Election AI Watch v2.2</p>
                     <p className="text-xs">
                         พัฒนาด้วย ❤️ เพื่อประชาธิปไตยไทย
                     </p>
