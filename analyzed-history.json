@@ -1,5 +1,65 @@
 [
   {
+    "headline": "‘ณัฐวุฒิ’ แนะชาวชลบุรีเลือกเพื่อไทยยกจังหวัด ตัดปัญหาบ้านใหญ่",
+    "link": "https://www.khaosod.co.th/politics/news_10101324",
+    "pubDate": "Sat, 17 Jan 2026 03:41:54 +0000",
+    "sentiment": "neu",
+    "confidence": 90.4,
+    "modelUsed": "Local Rule Engine",
+    "source": "ข่าวสด",
+    "impact": "-0.06",
+    "primaryContext": {
+      "context": "policy",
+      "label": "นโยบาย",
+      "weight": 1.8
+    },
+    "target": "พรรคเพื่อไทย",
+    "timestamp": "2026-01-17T20:45:21.715Z"
+  },
+  {
+    "headline": "“เจษฏ์” แฉดีลลับ “ส้ม-เทา” เตือนอย่าหลงกลเกมแก้รธน. หวังล้างผิดนักการเมืองชั่ว",
+    "link": "https://www.khaosod.co.th/politics/news_10101349",
+    "pubDate": "Sat, 17 Jan 2026 04:01:11 +0000",
+    "sentiment": "neg",
+    "confidence": 93.6,
+    "modelUsed": "Local Rule Engine",
+    "source": "ข่าวสด",
+    "impact": "-0.54",
+    "primaryContext": {
+      "context": "scandal",
+      "label": "ข่าวฉาว",
+      "weight": 1.8
+    },
+    "target": "ทั่วไป",
+    "timestamp": "2026-01-17T20:45:19.615Z"
+  },
+  {
+    "headline": "‘อนุทิน’ ชี้ ‘ไชยชนก’ พูดจับมือ ‘พรรคส้ม-กล้าธรรม’ ได้ เป็นความเห็นส่วนตัว",
+    "link": "https://www.khaosod.co.th/politics/news_10101404",
+    "pubDate": "Sat, 17 Jan 2026 04:36:51 +0000",
+    "sentiment": "neu",
+    "confidence": 90,
+    "modelUsed": "Local Rule Engine",
+    "source": "ข่าวสด",
+    "impact": "0.00",
+    "primaryContext": null,
+    "target": "พรรคภูมิใจไทย",
+    "timestamp": "2026-01-17T20:45:15.327Z"
+  },
+  {
+    "headline": "‘ยศชนัน’ อ้อนชลบุรีขอเป็นตัวแทนพา 10 ผู้สมัครสส.เข้าสภา-ส่งตัวเองเข้าทำเนียบ",
+    "link": "https://www.khaosod.co.th/politics/news_10101429",
+    "pubDate": "Sat, 17 Jan 2026 04:44:54 +0000",
+    "sentiment": "neu",
+    "confidence": 90,
+    "modelUsed": "Local Rule Engine",
+    "source": "ข่าวสด",
+    "impact": "0.00",
+    "primaryContext": null,
+    "target": "พรรคเพื่อไทย",
+    "timestamp": "2026-01-17T20:45:13.962Z"
+  },
+  {
     "headline": "ธรรมนัส ช่วย ‘ลูกเดชอิศม์’ หาเสียง ลั่นกธ.ปักหมุดสงขลา ‘นฤมล’ เมินพรรคอื่นประกาศไม่จับมือ",
     "link": "https://www.matichon.co.th/politics/election69/news_5554172",
     "pubDate": "Sat, 17 Jan 2026 15:35:40 +0000",
@@ -14,6 +74,40 @@
       "weight": 1.5
     },
     "target": "ทั่วไป",
-    "timestamp": "2026-01-17T17:29:53.913Z"
+    "timestamp": "2026-01-17T20:45:09.318Z"
+  },
+  {
+    "headline": "‘นายกฯ’ เผย ’ถนนพระราม2’ ยุบตัว เกิดจากท่อน้ำแตก ไม่เกี่ยวกับแบบ-วิธีก่อสร้าง",
+    "link": "https://www.khaosod.co.th/politics/news_10101436",
+    "pubDate": "Sat, 17 Jan 2026 04:55:43 +0000",
+    "sentiment": "pos",
+    "confidence": 91.6,
+    "modelUsed": "Local Rule Engine",
+    "source": "ข่าวสด",
+    "impact": "0.24",
+    "primaryContext": {
+      "context": "policy",
+      "label": "นโยบาย",
+      "weight": 0.8
+    },
+    "target": "ทั่วไป",
+    "timestamp": "2026-01-17T20:45:08.858Z"
+  },
+  {
+    "headline": "‘ยศชนัน’ ไม่ห่วงบ้านใหญ่ ชี้ อยู่ที่ใครชนะใจปชช. ปัดดีลลับ",
+    "link": "https://www.khaosod.co.th/politics/news_10101453",
+    "pubDate": "Sat, 17 Jan 2026 05:13:16 +0000",
+    "sentiment": "pos",
+    "confidence": 94,
+    "modelUsed": "Local Rule Engine",
+    "source": "ข่าวสด",
+    "impact": "0.60",
+    "primaryContext": {
+      "context": "performance",
+      "label": "ผลงาน",
+      "weight": 2
+    },
+    "target": "พรรคเพื่อไทย",
+    "timestamp": "2026-01-17T20:45:04.647Z"
   }
 ]
