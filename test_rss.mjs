@@ -4,9 +4,7 @@
 const RSS_FEEDS = [
     { url: 'https://www.matichon.co.th/politics/feed', source: 'มติชนออนไลน์' },
     { url: 'https://www.prachachat.net/politics/feed', source: 'ประชาชาติธุรกิจ' },
-    { url: 'https://www.matichon.co.th/feed', source: 'มติชน (ทั่วไป)' },
-    { url: 'https://www.prachachat.net/feed', source: 'ประชาชาติ (ทั่วไป)' },
-    { url: 'https://www.khaosod.co.th/feed', source: 'ข่าวสด' },
+    { url: 'https://www.khaosod.co.th/politics/feed', source: 'ข่าวสด' },
     { url: 'https://prachatai.com/rss.xml', source: 'ประชาไท' },
     { url: 'https://thestandard.co/feed/', source: 'THE STANDARD' },
     { url: 'https://www.bangkokpost.com/rss/data/most-recent.xml', source: 'Bangkok Post' },

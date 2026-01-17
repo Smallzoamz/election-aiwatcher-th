@@ -1,7 +1,6 @@
 const SOCIAL_FEEDS = [
     { url: 'https://www.reddit.com/r/Thailand/search.rss?q=politics&restrict_sr=on&sort=new&t=all', source: 'Reddit (r/Thailand Politics)' },
-    { url: 'http://pantip.com/forum/rajdamnern/feed', source: 'Pantip (Rajdamnern)' },
-    { url: 'https://www.thairath.co.th/rss/opinion', source: 'ไทยรัฐ (บทความ/ความคิดเห็น)' },
+    { url: 'http://pantip.com/forum/rajdamnern/feed', source: 'Pantip (ราชดำเนิน)' },
     { url: 'https://www.matichon.co.th/politics/feed', source: 'มติชน (การเมือง)' },
     { url: 'https://www.prachachat.net/politics/feed', source: 'ประชาชาติ (การเมือง)' },
     { url: 'https://prachatai.com/rss.xml', source: 'ประชาไท (Social/Political)' },

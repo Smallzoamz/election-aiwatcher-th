@@ -302,3 +302,16 @@
 [2026-01-17 23:40] | File: lib/ai-engine.js, app/page.js | Keyword: UX Persistence | Status: Migrated | Change: Moved news history to server-side (Global analyzedHistory) ensuring a stable 7-item timeline across refreshes.
 [2026-01-17 23:45] | File: lib/ai-engine.js | Keyword: Deduplication | Status: Fixed | Change: Standardized normalization keys for `markNewsAsRead` and added strict guards to `analyzedHistory` to kill news duplication once and for all.
 [2026-01-18 00:13] | File: lib/ai-engine.js | Keyword: UX Stats | Status: Fixed | Change: Stabilized 'Social Sentiment' counter by reporting total 48h news pool volume instead of immediate queue length.
+[2026-01-18 00:25] | File: lib/ai-engine.js | Keyword: Audit | Status: Fixed | Change: Completed comprehensive audit fixes: Updated broken RSS feeds, expanded political keywords (ทุจริต, พรป, ส.ส. etc.), and implemented URL-based duplicate detection.
+[2026-01-18 00:27] | File: lib/db.js | Keyword: Sync | Status: Edited | Change: Synchronized `markNewsAsRead` with Supabase schema to save `sentiment` and `impact` columns for historical analysis.
+[2026-01-18 00:35] | File: lib/ai-engine.js | Keyword: UX | Status: Added | Change: Implemented persistent news history using `analyzed-history.json`. News ticker now retains last 7 items across restarts.
+[2026-01-18 00:40] | File: app/methodology/page.js | Keyword: Docs | Status: Updated | Change: Upgraded methodology to v3.5, reflecting new RSS sources, URL-based deduplication, and persistence logic.
+[2026-01-18 00:45] | File: app/methodology/page.js | Keyword: Docs | Status: Refined | Change: Upgraded to v3.6. Restored detailed seat-type formulas (Party List vs Constituency) and comprehensive source weights while retaining v3.5 audit updates.
+[2026-01-18 00:50] | File: app/methodology/page.js | Keyword: Docs | Status: Finalized | Change: Upgraded to v3.7. Explicitly listed all 13 active news/social sources and synchronized with system configuration for 100% transparency.
+[2026-01-18 00:55] | File: app/methodology/page.js | Keyword: Ethics | Status: Enhanced | Change: Upgraded to v3.8. Added "Transparency & AI Ethics" section detailing Confidence logic, Margin of Error, and Victim Context fairness policy.
+[2026-01-18 01:05] | File: app/methodology/page.js | Keyword: UX | Status: Refined | Change: Upgraded to v3.9. Simplified language in ethics cards for general users and removed internal persona references (Papa).
+[2026-01-18 01:10] | File: lib/ai-engine.js | Keyword: Data | Status: Updated | Change: Updated NIDA Poll fallback to Dec 2025 results. Major shifts: PP (25.3%), DEM (11.8%), PT (11.0%), and BJT (9.9%).
+[2026-01-18 01:12] | File: app/methodology/page.js | Keyword: Docs | Status: Upgraded | Change: Bumped version to v4.0 (NIDA Poll 2025 Refresh).
+[2026-01-18 01:25] | File: lib/ai-engine.js | Keyword: Data | Status: Updated | Change: Updated NIDA Poll fallback to Jan 8-9, 2026 results. PP (30.4%), BJT (22.1% SURGE), PT (15.6%), DEM (12.3%).
+[2026-01-18 01:28] | File: app/methodology/page.js | Keyword: Docs | Status: Upgraded | Change: Bumped version to v4.1 (NIDA Poll 2026 Refresh).
+[2026-01-18 01:45] | File: lib/ai-engine.js | Keyword: News | Status: Optimized | Change: Implemented batch news processing (3 items/cycle if history low) and 7-item padded fallback to ensure ticker density.
