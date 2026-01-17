@@ -6,6 +6,7 @@ import { ComposedChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Respons
 import { RefreshCw, TrendingUp, TrendingDown, Activity, Radio, AlertCircle, Info, ExternalLink, Calendar } from 'lucide-react';
 import Link from 'next/link';
 import ShareButton from './components/ShareButton';
+import Monetization from './components/Monetization'
 import ThemeToggle from './components/ThemeToggle';
 import { CandidateLink } from './components/CandidateModal';
 
@@ -510,6 +511,10 @@ export default function Home() {
                                 </div>
                             </div>
                         ))}
+                    </div>
+
+                    <div className="mt-4 pt-2 border-t border-slate-800/50">
+                        <Monetization />
                     </div>
                 </div>
 

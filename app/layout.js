@@ -21,7 +21,8 @@ export const metadata = {
     keywords: [
         'เลือกตั้ง 2569', 'การเมืองไทย', 'AI วิเคราะห์', 'พรรคการเมือง',
         'ผลเลือกตั้ง', 'โพล', 'sentiment analysis', 'election prediction',
-        'พรรคประชาชน', 'พรรคเพื่อไทย', 'real-time analysis'
+        'พรรคประชาชน', 'พรรคเพื่อไทย', 'real-time analysis',
+        'กรุงเทพฯ', 'ภาคอีสาน', 'ภาคเหนือ', 'ภาคใต้', 'เชียงใหม่', 'ภูเก็ต'
     ],
     authors: [{ name: 'Bonchon-Studio', url: 'https://bonchon-studio.com' }],
     creator: 'Bonchon-Studio',

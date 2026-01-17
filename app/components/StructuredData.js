@@ -80,6 +80,44 @@ export default function StructuredData() {
         ]
     };
 
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "ระบบ AI Watch คำนวณคะแนนอย่างไร?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "ระบบใช้สูตร Quad-Weighted Hybrid Score (QWHS) โดยถ่วงน้ำหนักจาก นิด้าโพล, กระแสข่าวสาร, โซเชียลมีเดีย (Reddit, Pantip) และความสนใจใน Wikipedia"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "ข้อมูลมีความแม่นยำแค่ไหน?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "เป็นการประมาณการเชิงสถิติด้วย AI เพื่อการวิจัยเท่านั้น ข้อมูลมีความคลาดเคลื่อน (Margin of Error) ประมาณ 3-5% และไม่ใช่ผลการเลือกตั้งจริง"
+                }
+            }
+        ]
+    };
+
+    const datasetSchema = {
+        "@context": "https://schema.org",
+        "@type": "Dataset",
+        "name": "ดัชนีความนิยมพรรคการเมืองไทย 2569 (AI Projections)",
+        "description": "ชุดข้อมูลโครงการประมาณการที่นั่ง ส.ส. และคะแนนนิยมรายวัน วิเคราะห์จากฐานข้อมูลข่าวสารและโพลสาธารณะ",
+        "url": "https://election-aiwatcher-th.vercel.app",
+        "keywords": ["การเมืองไทย", "เลือกตั้ง 2569", "ผลโพล", "AI Predictions"],
+        "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+        "isAccessibleForFree": true,
+        "creator": {
+            "@type": "Organization",
+            "name": "Bonchon-Studio"
+        }
+    };
+
     return (
         <>
             <script
@@ -93,6 +131,14 @@ export default function StructuredData() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(datasetSchema) }}
             />
         </>
     );
