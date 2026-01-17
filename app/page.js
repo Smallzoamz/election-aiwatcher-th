@@ -168,6 +168,63 @@ const ElectionCountdown = () => {
     );
 };
 
+// RSS Node Status Component
+const RSSNodeStatus = ({ feedStatus }) => {
+    if (!feedStatus || !feedStatus.nodes) return null;
+
+    return (
+        <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-3 backdrop-blur-sm">
+            <div className="flex items-center justify-between mb-3 px-1">
+                <div className="flex items-center gap-2">
+                    <Activity className="w-4 h-4 text-cyan-500 animate-pulse" />
+                    <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-cyan-400">DATA SOURCE NODES</h3>
+                </div>
+                <div className="flex items-center gap-2 text-[10px] text-slate-500 font-mono">
+                    <span className="flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-green-500" /> ACTIVE
+                    </span>
+                    <span className="flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-500" /> ERROR
+                    </span>
+                </div>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
+                {feedStatus.nodes.map((node, i) => (
+                    <div
+                        key={i}
+                        className={`flex items-center gap-2 p-1.5 rounded-lg border transition-all duration-300 group cursor-help
+                            ${node.status === 'active'
+                                ? 'bg-green-500/5 border-green-500/10 hover:border-green-500/40'
+                                : node.status === 'error'
+                                    ? 'bg-red-500/5 border-red-500/10 hover:border-red-500/40'
+                                    : 'bg-slate-800/30 border-slate-700/30'
+                            }`}
+                        title={node.error || `${node.name}: ${node.items} items found`}
+                    >
+                        <div className="relative">
+                            <div className={`w-1.5 h-1.5 rounded-full ${node.status === 'active' ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]' :
+                                    node.status === 'error' ? 'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.6)]' : 'bg-slate-600'
+                                }`} />
+                            {node.status === 'active' && <div className="absolute inset-0 w-1.5 h-1.5 rounded-full bg-green-500 animate-ping opacity-75" />}
+                        </div>
+                        <span className={`text-[10px] font-bold truncate ${node.status === 'active' ? 'text-slate-300 group-hover:text-green-400' :
+                                node.status === 'error' ? 'text-red-400' : 'text-slate-500'
+                            }`}>
+                            {node.name}
+                        </span>
+                        {node.items > 0 && (
+                            <span className="ml-auto text-[9px] font-mono text-slate-600 bg-slate-800/50 px-1 rounded flex shrink-0">
+                                {node.items}
+                            </span>
+                        )}
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
+
 export default function Home() {
     const [data, setData] = useState(null);
     const [history, setHistory] = useState([]);
@@ -700,8 +757,10 @@ export default function Home() {
                                     ))}
                             </div>
                         </div>
-                    </div>
 
+                        {/* RSS Node Status Grid */}
+                        <RSSNodeStatus feedStatus={data?.feedStatus} />
+                    </div>
                 </div>
             </div >
 

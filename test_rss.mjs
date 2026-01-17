@@ -13,6 +13,8 @@ const RSS_FEEDS = [
     { url: 'https://theisaanrecord.co/feed/', source: 'The Isaan Record' },
     { url: 'https://www.thephuketnews.com/rss-xml/news.xml', source: 'The Phuket News' },
     { url: 'https://www.chiangmaicitylife.com/feed/', source: 'Chiang Mai Citylife' },
+    { url: 'https://www.reddit.com/r/Thailand/search.rss?q=politics&restrict_sr=on&sort=new&t=all', source: 'Reddit (r/Thailand)' },
+    { url: 'http://pantip.com/forum/rajdamnern/feed', source: 'Pantip (ราชดำเนิน)' },
 ];
 
 async function auditRSS() {

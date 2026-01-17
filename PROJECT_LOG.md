@@ -289,3 +289,5 @@
 [2026-01-17 22:00] | File: app/page.js, methodology/page.js | Keyword: UI | Status: Edited | Change: Displayed AI Model and Confidence badges in news feed for full transparency.
 [2026-01-17 22:30] | File: lib/gemini-client.js, lib/ai-engine.js | Keyword: Audit | Status: Fixed | Change: Reconnected calculateConfidence logic and restored news-db.json fallback.
 [2026-01-17 22:45] | File: app/page.js | Keyword: UI | Status: Synced | Change: Updated news source count and tooltips to 12/12. Optimized Gemini with full article content.
+[2026-01-17 22:50] | File: lib/ai-engine.js, app/page.js | Keyword: Monitoring | Status: Created | Change: Implemented real-time RSS Source Monitoring (Node Status) with heartbeat UI.
+[2026-01-17 22:55] | File: lib/ai-engine.js | Keyword: RSS | Status: Fixed | Change: Updated User-Agent to Chrome 120 to fix 403 Forbidden errors on Reddit and other sources.
