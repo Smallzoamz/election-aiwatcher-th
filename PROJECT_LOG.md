@@ -301,3 +301,4 @@
 [2026-01-17 23:35] | File: lib/ai-engine.js | Keyword: News Fallback | Status: Created | Change: Implemented "Best Effort" fallback to show top 7 most recent political items if 48h filter results in empty feed.
 [2026-01-17 23:40] | File: lib/ai-engine.js, app/page.js | Keyword: UX Persistence | Status: Migrated | Change: Moved news history to server-side (Global analyzedHistory) ensuring a stable 7-item timeline across refreshes.
 [2026-01-17 23:45] | File: lib/ai-engine.js | Keyword: Deduplication | Status: Fixed | Change: Standardized normalization keys for `markNewsAsRead` and added strict guards to `analyzedHistory` to kill news duplication once and for all.
+[2026-01-18 00:13] | File: lib/ai-engine.js | Keyword: UX Stats | Status: Fixed | Change: Stabilized 'Social Sentiment' counter by reporting total 48h news pool volume instead of immediate queue length.
