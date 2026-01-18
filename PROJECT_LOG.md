@@ -322,3 +322,5 @@
 [18/01/2026 19:35] | File: lib/ai-engine.js | Line: 512, 620, 660 | Keyword: Logic Fix | Status: Fixed | Change: Solved false positive party detection for 'Peoples Party' and improved anti-corruption sentiment logic using modifiers (ปราบ/ต้าน).
 [2026-01-18 20:43] | File: lib/ai-engine.js | Line: 865 | Keyword: fetchLiveNewsLocal | Status: Fixed | Change: Enhanced RSS headers (Referer, User-Agent) to bypass 403 Forbidden from news sources.
 [2026-01-18 20:43] | File: lib/ai-engine.js | Line: 1035 | Keyword: simulateMarket | Status: Improved | Change: Added Re-Sync logic to allow 'read' news from Supabase to repopulate local UI history if history is empty.
+[18/01/2026 21:00] | File: multiple | Line: N/A | Keyword: Audit/Cleanup | Status: Completed | Change: Removed junk files (pantip_agent, debug logs), deleted unused dependencies (google-trends-api, pg), and purged dead code in ai-engine.js/db.js. Verified system stability.
+
