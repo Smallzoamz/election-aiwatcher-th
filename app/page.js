@@ -272,7 +272,7 @@ export default function Home() {
 
         const startPolling = () => {
             fetchData();
-            interval = setInterval(fetchData, 3000);
+            interval = setInterval(fetchData, 15000);
         };
 
         const stopPolling = () => {

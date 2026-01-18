@@ -1,113 +1,117 @@
 [
   {
-    "headline": "‘ณัฐวุฒิ’ แนะชาวชลบุรีเลือกเพื่อไทยยกจังหวัด ตัดปัญหาบ้านใหญ่",
-    "link": "https://www.khaosod.co.th/politics/news_10101324",
-    "pubDate": "Sat, 17 Jan 2026 03:41:54 +0000",
-    "sentiment": "neu",
-    "confidence": 90.4,
-    "modelUsed": "Local Rule Engine",
-    "source": "ข่าวสด",
-    "impact": "-0.06",
-    "primaryContext": {
-      "context": "policy",
-      "label": "นโยบาย",
-      "weight": 1.8
-    },
-    "target": "พรรคเพื่อไทย",
-    "timestamp": "2026-01-17T20:45:21.715Z"
-  },
-  {
-    "headline": "“เจษฏ์” แฉดีลลับ “ส้ม-เทา” เตือนอย่าหลงกลเกมแก้รธน. หวังล้างผิดนักการเมืองชั่ว",
-    "link": "https://www.khaosod.co.th/politics/news_10101349",
-    "pubDate": "Sat, 17 Jan 2026 04:01:11 +0000",
+    "headline": "สุดารัตน์ ลุยอุบลฯ ดัน ปราบโกง วาระแห่งชาติ ลั่นใครโกง ประชาชนเข้าชื่อไล่ออกทันที",
+    "link": "https://www.khaosod.co.th/politics/news_10102596",
+    "pubDate": "Sun, 18 Jan 2026 09:18:32 +0000",
     "sentiment": "neg",
-    "confidence": 93.6,
+    "confidence": 93,
     "modelUsed": "Local Rule Engine",
     "source": "ข่าวสด",
-    "impact": "-0.54",
+    "impact": "-0.45",
     "primaryContext": {
       "context": "scandal",
       "label": "ข่าวฉาว",
-      "weight": 1.8
+      "weight": 2.5
     },
-    "target": "ทั่วไป",
-    "timestamp": "2026-01-17T20:45:19.615Z"
+    "target": "พรรคประชาชน",
+    "timestamp": "2026-01-18T09:56:13.380Z"
   },
   {
-    "headline": "‘อนุทิน’ ชี้ ‘ไชยชนก’ พูดจับมือ ‘พรรคส้ม-กล้าธรรม’ ได้ เป็นความเห็นส่วนตัว",
-    "link": "https://www.khaosod.co.th/politics/news_10101404",
-    "pubDate": "Sat, 17 Jan 2026 04:36:51 +0000",
-    "sentiment": "neu",
-    "confidence": 90,
-    "modelUsed": "Local Rule Engine",
-    "source": "ข่าวสด",
-    "impact": "0.00",
-    "primaryContext": null,
-    "target": "พรรคภูมิใจไทย",
-    "timestamp": "2026-01-17T20:45:15.327Z"
-  },
-  {
-    "headline": "‘ยศชนัน’ อ้อนชลบุรีขอเป็นตัวแทนพา 10 ผู้สมัครสส.เข้าสภา-ส่งตัวเองเข้าทำเนียบ",
-    "link": "https://www.khaosod.co.th/politics/news_10101429",
-    "pubDate": "Sat, 17 Jan 2026 04:44:54 +0000",
-    "sentiment": "neu",
-    "confidence": 90,
-    "modelUsed": "Local Rule Engine",
-    "source": "ข่าวสด",
-    "impact": "0.00",
-    "primaryContext": null,
-    "target": "พรรคเพื่อไทย",
-    "timestamp": "2026-01-17T20:45:13.962Z"
-  },
-  {
-    "headline": "ธรรมนัส ช่วย ‘ลูกเดชอิศม์’ หาเสียง ลั่นกธ.ปักหมุดสงขลา ‘นฤมล’ เมินพรรคอื่นประกาศไม่จับมือ",
-    "link": "https://www.matichon.co.th/politics/election69/news_5554172",
-    "pubDate": "Sat, 17 Jan 2026 15:35:40 +0000",
+    "headline": "เชตวัน-เสธ.โบว์ ปั่นจักรยานหาเสียงชุมชนทหาร ย้ำนโยบายปชน.ช่วยกองทัพดีขึ้น ดันแก้หนี้กำลังพล",
+    "link": "https://www.matichon.co.th/politics/election69/news_5554879",
+    "pubDate": "Sun, 18 Jan 2026 09:14:07 +0000",
     "sentiment": "pos",
-    "confidence": 93,
+    "confidence": 93.6,
     "modelUsed": "Local Rule Engine",
     "source": "มติชนออนไลน์",
-    "impact": "0.45",
+    "impact": "0.54",
     "primaryContext": {
       "context": "policy",
       "label": "นโยบาย",
+      "weight": 1.8
+    },
+    "target": "พรรคประชาชน",
+    "timestamp": "2026-01-18T09:56:09.047Z"
+  },
+  {
+    "headline": "‘อนุทิน’ หาเสียงตลาดวังหลัง อ้อนแม่ค้าช่วยเลือก ‘น้องหนู’ รับปากสานต่อคนละครึ่ง",
+    "link": "https://www.khaosod.co.th/politics/news_10102552",
+    "pubDate": "Sun, 18 Jan 2026 09:06:51 +0000",
+    "sentiment": "pos",
+    "confidence": 92,
+    "modelUsed": "Local Rule Engine",
+    "source": "ข่าวสด",
+    "impact": "0.30",
+    "primaryContext": {
+      "context": "policy",
+      "label": "นโยบาย",
+      "weight": 1
+    },
+    "target": "พรรคภูมิใจไทย",
+    "timestamp": "2026-01-18T09:56:09.047Z"
+  },
+  {
+    "headline": "เลือกตั้ง 2569 : พิพัฒน์ นำทัพภูมิใจไทย ปราศรัยสงขลาเขต 6 คนแห่ฟังกว่า 2,500 ชูถนน-วงแหวน ดันเศรษฐกิจ",
+    "link": "https://thestandard.co/phiphat-bhumjaithai-songkhla-roads-economy/",
+    "pubDate": "Sun, 18 Jan 2026 09:06:03 +0000",
+    "sentiment": "pos",
+    "confidence": 92,
+    "modelUsed": "Local Rule Engine",
+    "source": "THE STANDARD",
+    "impact": "0.30",
+    "primaryContext": {
+      "context": "person",
+      "label": "ตัวบุคคล",
+      "weight": 1
+    },
+    "target": "พรรคภูมิใจไทย",
+    "timestamp": "2026-01-18T09:56:09.046Z"
+  },
+  {
+    "headline": "ซูเปอร์โพลเผยเกือบ 40 ล้านคนพร้อมใช้สิทธิ รัฐสวิสดิการยุคใหม่ ‘บัตรทองน้องหมา-แมว’ มาแรง ",
+    "link": "https://www.matichon.co.th/politics/election69/news/news_5554812",
+    "pubDate": "Sun, 18 Jan 2026 09:05:38 +0000",
+    "sentiment": "neu",
+    "confidence": 90,
+    "modelUsed": "Local Rule Engine",
+    "source": "มติชนออนไลน์",
+    "impact": "0.00",
+    "primaryContext": null,
+    "target": "ทั่วไป",
+    "timestamp": "2026-01-18T09:56:09.046Z"
+  },
+  {
+    "headline": "เลือกตั้ง 2569 : อนุทิน นำภูมิใจไทยลงพื้นที่ตลาดวังหลัง รับฟังเสียงพ่อค้าแม่ค้าหนุน ‘คนละครึ่ง’ ไปต่อ บอกตอนนั้นมอบคะแนนให้ลุงตู่ ตอนนี้ให้น้องหนู",
+    "link": "https://thestandard.co/anutin-visits-wang-lang-half-half/",
+    "pubDate": "Sun, 18 Jan 2026 09:00:16 +0000",
+    "sentiment": "pos",
+    "confidence": 95,
+    "modelUsed": "Local Rule Engine",
+    "source": "THE STANDARD",
+    "impact": "0.75",
+    "primaryContext": {
+      "context": "support",
+      "label": "แรงสนับสนุน",
       "weight": 1.5
     },
-    "target": "ทั่วไป",
-    "timestamp": "2026-01-17T20:45:09.318Z"
+    "target": "พรรครวมไทยสร้างชาติ",
+    "timestamp": "2026-01-18T09:56:13.451Z"
   },
   {
-    "headline": "‘นายกฯ’ เผย ’ถนนพระราม2’ ยุบตัว เกิดจากท่อน้ำแตก ไม่เกี่ยวกับแบบ-วิธีก่อสร้าง",
-    "link": "https://www.khaosod.co.th/politics/news_10101436",
-    "pubDate": "Sat, 17 Jan 2026 04:55:43 +0000",
-    "sentiment": "pos",
-    "confidence": 91.6,
+    "headline": "ศึกเลือกตั้งแข่งเดือด ‘3 พรรค’ พลิกกลยุทธ์ โกยแต้มโค้งสุดท้าย",
+    "link": "https://www.matichon.co.th/politics/news_5552764",
+    "pubDate": "Sun, 18 Jan 2026 06:14:32 +0000",
+    "sentiment": "neg",
+    "confidence": 92.6,
     "modelUsed": "Local Rule Engine",
-    "source": "ข่าวสด",
-    "impact": "0.24",
+    "source": "มติชนออนไลน์",
+    "impact": "-0.39",
     "primaryContext": {
-      "context": "policy",
-      "label": "นโยบาย",
-      "weight": 0.8
+      "context": "conflict",
+      "label": "ความขัดแย้ง",
+      "weight": 1.3
     },
     "target": "ทั่วไป",
-    "timestamp": "2026-01-17T20:45:08.858Z"
-  },
-  {
-    "headline": "‘ยศชนัน’ ไม่ห่วงบ้านใหญ่ ชี้ อยู่ที่ใครชนะใจปชช. ปัดดีลลับ",
-    "link": "https://www.khaosod.co.th/politics/news_10101453",
-    "pubDate": "Sat, 17 Jan 2026 05:13:16 +0000",
-    "sentiment": "pos",
-    "confidence": 94,
-    "modelUsed": "Local Rule Engine",
-    "source": "ข่าวสด",
-    "impact": "0.60",
-    "primaryContext": {
-      "context": "performance",
-      "label": "ผลงาน",
-      "weight": 2
-    },
-    "target": "พรรคเพื่อไทย",
-    "timestamp": "2026-01-17T20:45:04.647Z"
+    "timestamp": "2026-01-18T09:56:13.451Z"
   }
 ]
