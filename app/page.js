@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import dynamic from 'next/dynamic';
 import { ComposedChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
-import { RefreshCw, TrendingUp, TrendingDown, Activity, Radio, AlertCircle, Info, ExternalLink, Calendar } from 'lucide-react';
+import { RefreshCw, TrendingUp, TrendingDown, Activity, Radio, AlertCircle, Info, ExternalLink, Calendar, Calculator } from 'lucide-react';
 import Link from 'next/link';
 import ShareButton from './components/ShareButton';
 import Monetization from './components/Monetization'
@@ -12,6 +12,11 @@ import { CandidateLink } from './components/CandidateModal';
 
 // Lazy load heavy components
 const PartyDetailModal = dynamic(() => import('./components/PartyDetailModal'), {
+    ssr: false,
+    loading: () => null
+});
+
+const SeatCalculationModal = dynamic(() => import('./components/SeatCalculationModal'), {
     ssr: false,
     loading: () => null
 });
@@ -231,6 +236,7 @@ export default function Home() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [selectedParty, setSelectedParty] = useState(null);
+    const [showSeatCalculation, setShowSeatCalculation] = useState(false);
 
     const fetchData = useCallback(async () => {
         try {
@@ -511,7 +517,7 @@ export default function Home() {
                                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-1 mt-1 sm:mt-2">
                                                 <div className="flex items-center gap-2">
                                                     <div className="w-1.5 h-1.5 rounded-full bg-slate-600" />
-                                                    <span className="text-slate-500 text-xs">ส.ส. (คาดการณ์)</span>
+                                                    <span className="text-slate-500 text-xs">ส.ส. คาดการณ์สูงสุด</span>
                                                     <span className="text-white font-mono font-bold">{party.projectedSeats ?? Math.round((party.score ?? party.baseScore) / 100 * 500)}</span>
                                                 </div>
                                                 <div className="flex items-center gap-2">
@@ -563,6 +569,22 @@ export default function Home() {
                             </div>
                         ))}
                     </div>
+
+                    {/* Seat Calculation Button */}
+                    <button
+                        onClick={() => setShowSeatCalculation(true)}
+                        className="w-full mt-3 mb-3 bg-gradient-to-r from-cyan-600/20 to-blue-600/20 hover:from-cyan-600/30 hover:to-blue-600/30 border border-cyan-700/50 hover:border-cyan-500/50 rounded-lg p-3 transition-all group"
+                    >
+                        <div className="flex items-center justify-center gap-2">
+                            <Calculator className="w-5 h-5 text-cyan-400 group-hover:scale-110 transition-transform" />
+                            <span className="text-sm font-medium text-cyan-300">
+                                ดูสูตรคำนวณ ส.ส. (Proportional)
+                            </span>
+                        </div>
+                        <div className="text-xs text-slate-500 mt-1 text-center">
+                            คำนวณจากสัดส่วนคะแนนรวม 500 ที่นั่ง
+                        </div>
+                    </button>
 
                     <div className="mt-4 pt-2 border-t border-slate-800/50">
                         <Monetization />
@@ -856,6 +878,13 @@ export default function Home() {
                 isOpen={!!selectedParty
                 }
                 onClose={() => setSelectedParty(null)}
+            />
+
+            {/* Seat Calculation Modal */}
+            <SeatCalculationModal
+                parties={data?.parties || []}
+                isOpen={showSeatCalculation}
+                onClose={() => setShowSeatCalculation(false)}
             />
         </main >
     );

@@ -1,1 +1,109 @@
-[]
+[
+  {
+    "headline": "ยศชนัน ลุยเชียงราย เผยเรียนที่นี่ตั้งแต่อนุบาล ลั่นติดหนี้บุญคุณอยู่ จึงขอมารับใช้ทั้ง 7 เขต",
+    "link": "https://www.matichon.co.th/politics/election69/news_5574125",
+    "pubDate": "Fri, 30 Jan 2026 12:57:19 +0000",
+    "sentiment": "pos",
+    "confidence": 92,
+    "modelUsed": "Local Rule Engine",
+    "source": "มติชนออนไลน์",
+    "impact": "0.30",
+    "primaryContext": {
+      "context": "performance",
+      "label": "ผลงาน",
+      "weight": 1
+    },
+    "target": "พรรคเพื่อไทย",
+    "timestamp": "2026-01-30T12:59:25.380Z"
+  },
+  {
+    "headline": "‘ศุภจี’ ชี้ ชีวิตหลังเลือกตั้งอยู่ในมือทุกคน จะเลือกความขัดแย้ง หรือเลือกความหวัง",
+    "link": "https://www.khaosod.co.th/politics/news_10119521",
+    "pubDate": "Fri, 30 Jan 2026 12:46:27 +0000",
+    "sentiment": "neg",
+    "confidence": 93,
+    "modelUsed": "Local Rule Engine",
+    "source": "ข่าวสด",
+    "impact": "-0.45",
+    "primaryContext": {
+      "context": "conflict",
+      "label": "ความขัดแย้ง",
+      "weight": 1.5
+    },
+    "target": "ทั่วไป",
+    "timestamp": "2026-01-30T12:59:25.380Z"
+  },
+  {
+    "headline": "ศุภจี ขึ้นเวทีปราศรัยใหญ่ บอก ไม่ใช่นางแบกภูมิใจไทย แต่ทำเพื่อทุกคน ชี้จะเลือกความหวังหรือขัดแย้ง",
+    "link": "https://www.matichon.co.th/politics/election69/news_5574128",
+    "pubDate": "Fri, 30 Jan 2026 12:42:21 +0000",
+    "sentiment": "neg",
+    "confidence": 93,
+    "modelUsed": "Local Rule Engine",
+    "source": "มติชนออนไลน์",
+    "impact": "-0.45",
+    "primaryContext": {
+      "context": "conflict",
+      "label": "ความขัดแย้ง",
+      "weight": 1.5
+    },
+    "target": "พรรคภูมิใจไทย",
+    "timestamp": "2026-01-30T12:43:37.107Z"
+  },
+  {
+    "headline": "เอกนิติ โชว์บริหาร 73 วัน พาเศรษฐกิจไทยขึ้นจากหล่ม ขอสานงานต่อทำให้คนไทยมีชีวิตดีขึ้น 10 เท่า",
+    "link": "https://www.prachachat.net/politics/news-1958172",
+    "pubDate": "Fri, 30 Jan 2026 12:40:31 +0000",
+    "sentiment": "neu",
+    "confidence": 90,
+    "modelUsed": "Local Rule Engine",
+    "source": "ประชาชาติธุรกิจ",
+    "impact": "0.00",
+    "primaryContext": null,
+    "target": "พรรคเศรษฐกิจ",
+    "timestamp": "2026-01-30T12:43:37.106Z"
+  },
+  {
+    "headline": "ศุภจี ชี้ชีวิตหลังเลือกตั้ง “เลือกความหวังหรือขัดแย้ง” ขอ ภท.ปลดล็อกอนาคตไทย",
+    "link": "https://www.prachachat.net/politics/news-1958161",
+    "pubDate": "Fri, 30 Jan 2026 12:39:25 +0000",
+    "sentiment": "neg",
+    "confidence": 93,
+    "modelUsed": "Local Rule Engine",
+    "source": "ประชาชาติธุรกิจ",
+    "impact": "-0.45",
+    "primaryContext": {
+      "context": "conflict",
+      "label": "ความขัดแย้ง",
+      "weight": 1.5
+    },
+    "target": "พรรคภูมิใจไทย",
+    "timestamp": "2026-01-30T12:41:24.654Z"
+  },
+  {
+    "headline": "ซาบีดา ขอคนไทยสามัคคี อยากให้เป็นการเมืองสร้างสรรค์ เลือก ภท.พาประเทศเดินไปข้างหน้า",
+    "link": "https://www.matichon.co.th/politics/election69/news_5574155",
+    "pubDate": "Fri, 30 Jan 2026 12:38:35 +0000",
+    "sentiment": "neu",
+    "confidence": 90,
+    "modelUsed": "Local Rule Engine",
+    "source": "มติชนออนไลน์",
+    "impact": "0.00",
+    "primaryContext": null,
+    "target": "พรรคภูมิใจไทย",
+    "timestamp": "2026-01-30T12:41:24.654Z"
+  },
+  {
+    "headline": "เลือกตั้ง 2569 : ภูมิธรรมเผยพบซื้อเสียงมหาศาล ผู้บริหารบางพรรคใช้อำนาจรัฐสั่งการ-ชักจูง แลกผลประโยชน์ตำแหน่งหน้าที่ ข่มขู่คุกคามผู้สมัครฝ่ายตรงข้าม",
+    "link": "https://thestandard.co/phumtham-reveals-vote-buying-election-threat/",
+    "pubDate": "Fri, 30 Jan 2026 12:28:19 +0000",
+    "sentiment": "neu",
+    "confidence": 90,
+    "modelUsed": "Local Rule Engine",
+    "source": "THE STANDARD",
+    "impact": "0.00",
+    "primaryContext": null,
+    "target": "ทั่วไป",
+    "timestamp": "2026-01-30T12:41:19.823Z"
+  }
+]
