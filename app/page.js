@@ -237,6 +237,10 @@ export default function Home() {
     const [error, setError] = useState(null);
     const [selectedParty, setSelectedParty] = useState(null);
     const [showSeatCalculation, setShowSeatCalculation] = useState(false);
+    const [isElectionStarted, setIsElectionStarted] = useState(() => {
+        // Check if election has started on initial render
+        return new Date() >= new Date(ELECTION_DATE);
+    });
 
     const fetchData = useCallback(async () => {
         try {
@@ -275,10 +279,32 @@ export default function Home() {
 
     useEffect(() => {
         let interval = null;
+        const electionTarget = new Date(ELECTION_DATE);
+
+        const checkElectionStarted = () => {
+            const now = new Date();
+            if (now >= electionTarget) {
+                setIsElectionStarted(true);
+                return true;
+            }
+            return false;
+        };
 
         const startPolling = () => {
+            // Stop immediately if election has started
+            if (checkElectionStarted()) {
+                return;
+            }
+
             fetchData();
-            interval = setInterval(fetchData, 15000);
+            interval = setInterval(() => {
+                // Check every cycle if election started
+                if (checkElectionStarted()) {
+                    stopPolling();
+                    return;
+                }
+                fetchData();
+            }, 15000);
         };
 
         const stopPolling = () => {
@@ -292,7 +318,7 @@ export default function Home() {
         const handleVisibilityChange = () => {
             if (document.hidden) {
                 stopPolling();
-            } else {
+            } else if (!isElectionStarted) {
                 startPolling();
             }
         };
@@ -305,7 +331,7 @@ export default function Home() {
             stopPolling();
             document.removeEventListener('visibilitychange', handleVisibilityChange);
         };
-    }, [fetchData]);
+    }, [fetchData, isElectionStarted]);
 
     // Memoize chart data to prevent unnecessary re-renders
     const chartData = useMemo(() => {
@@ -515,16 +541,25 @@ export default function Home() {
 
                                             {/* Stats Grid */}
                                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-1 mt-1 sm:mt-2">
-                                                <div className="flex items-center gap-2">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-slate-600" />
-                                                    <span className="text-slate-500 text-xs">ส.ส. คาดการณ์สูงสุด</span>
-                                                    <span className="text-white font-mono font-bold">{party.projectedSeats ?? Math.round((party.score ?? party.baseScore) / 100 * 500)}</span>
-                                                </div>
-                                                <div className="flex items-center gap-2">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-slate-600" />
-                                                    <span className="text-slate-500 text-xs">คะแนนเสียง (คาดการณ์)</span>
-                                                    <span className="text-white font-mono font-bold">{party.projectedVotes ?? Math.floor((party.score ?? party.baseScore) / 100 * 39000000).toLocaleString('th-TH')}</span>
-                                                </div>
+                                                {isElectionStarted ? (
+                                                    <div className="col-span-2 flex items-center gap-2 bg-amber-900/30 border border-amber-700/50 rounded-lg px-3 py-2">
+                                                        <span className="text-lg">🗳️</span>
+                                                        <span className="text-amber-400 text-sm font-bold">รอผลการเลือกตั้ง 17.00</span>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <div className="flex items-center gap-2">
+                                                            <div className="w-1.5 h-1.5 rounded-full bg-slate-600" />
+                                                            <span className="text-slate-500 text-xs">ส.ส. คาดการณ์สูงสุด</span>
+                                                            <span className="text-white font-mono font-bold">{party.projectedSeats ?? Math.round((party.score ?? party.baseScore) / 100 * 500)}</span>
+                                                        </div>
+                                                        <div className="flex items-center gap-2">
+                                                            <div className="w-1.5 h-1.5 rounded-full bg-slate-600" />
+                                                            <span className="text-slate-500 text-xs">คะแนนเสียง (คาดการณ์)</span>
+                                                            <span className="text-white font-mono font-bold">{party.projectedVotes ?? Math.floor((party.score ?? party.baseScore) / 100 * 39000000).toLocaleString('th-TH')}</span>
+                                                        </div>
+                                                    </>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
@@ -684,11 +719,20 @@ export default function Home() {
                         </div>
 
                         {/* AI Console / News Ticker */}
-                        <div className="bg-black border border-green-900/50 rounded-lg p-2 sm:p-3 md:p-4 font-mono text-xs sm:text-sm news-ticker overflow-y-auto relative custom-scrollbar">
-                            <div className="absolute top-0 left-0 w-full h-1 bg-green-500 animate-pulse sticky z-10" />
-                            <h3 className="text-green-500 mb-2 flex items-center gap-2 sticky top-0 bg-black/90 pb-2 z-10 border-b border-green-900/50 w-full">
-                                <RefreshCw className="w-4 h-4 animate-spin" />
-                                กระแสข้อมูล AI (ล่าสุด)
+                        <div className={`bg-black border rounded-lg p-2 sm:p-3 md:p-4 font-mono text-xs sm:text-sm news-ticker overflow-y-auto relative custom-scrollbar ${isElectionStarted ? 'border-amber-700/50' : 'border-green-900/50'}`}>
+                            <div className={`absolute top-0 left-0 w-full h-1 sticky z-10 ${isElectionStarted ? 'bg-amber-500' : 'bg-green-500 animate-pulse'}`} />
+                            <h3 className={`mb-2 flex items-center gap-2 sticky top-0 bg-black/90 pb-2 z-10 border-b w-full ${isElectionStarted ? 'text-amber-500 border-amber-900/50' : 'text-green-500 border-green-900/50'}`}>
+                                {isElectionStarted ? (
+                                    <>
+                                        <span className="text-lg">🗳️</span>
+                                        หยุดการวิเคราะห์แล้ว - รอผลการเลือกตั้ง 17.00
+                                    </>
+                                ) : (
+                                    <>
+                                        <RefreshCw className="w-4 h-4 animate-spin" />
+                                        กระแสข้อมูล AI (ล่าสุด)
+                                    </>
+                                )}
                             </h3>
                             <div className="space-y-4 text-green-300/80 mt-2">
                                 {history.length === 0 && !data?.recentNews && (

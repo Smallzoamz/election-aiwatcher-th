@@ -1,4 +1,5 @@
 [16/01/2026 00:08] | File: lib/rss-fetcher.js | Line: 15 | Keyword: fetchLiveNews | Status: Edited | Change: Removed slice limit, reduced cache to 60s
+[07/02/2026 19:51] | File: app/page.js | Line: 237-328, 516-542, 690-710 | Keyword: Countdown Freeze | Status: Implemented | Change: Added `isElectionStarted` state, stop polling when election starts, replaced Stats Grid with 'รอผลการเลือกตั้ง 17.00', updated News Ticker header to show 'หยุดการวิเคราะห์แล้ว' when countdown ends.
 [16/01/2026 00:08] | File: lib/ai-engine.js | Line: 40 | Keyword: simulateMarket | Status: Edited | Change: Implemented unique news tracking using headline text
 [16/01/2026 00:08] | File: lib/db.js | Line: 1 | Keyword: DB Logic | Status: Created | Change: Implemented JSON file-based database for persistence
 [16/01/2026 00:08] | File: lib/ai-engine.js | Line: 38 | Keyword: DB Integration | Status: Edited | Change: Connected to lib/db.js, added party-based categorization
