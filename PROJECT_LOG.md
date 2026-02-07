@@ -1,5 +1,11 @@
 [16/01/2026 00:08] | File: lib/rss-fetcher.js | Line: 15 | Keyword: fetchLiveNews | Status: Edited | Change: Removed slice limit, reduced cache to 60s
 [07/02/2026 19:51] | File: app/page.js | Line: 237-328, 516-542, 690-710 | Keyword: Countdown Freeze | Status: Implemented | Change: Added `isElectionStarted` state, stop polling when election starts, replaced Stats Grid with 'รอผลการเลือกตั้ง 17.00', updated News Ticker header to show 'หยุดการวิเคราะห์แล้ว' when countdown ends.
+[07/02/2026 21:05] | File: app/components/LiveStreamOverlay.js | Line: 1-170 | Keyword: Live Stream Mode | Status: Created | Change: Created fullscreen overlay component with 11 streaming channel links (กกต., Thai PBS, Nation TV, etc.)
+[07/02/2026 21:05] | File: app/api/election-mode/route.js | Line: 1-75 | Keyword: Election Mode API | Status: Created | Change: API route for detecting election mode (prediction/live_stream/final_results) with Supabase integration
+[07/02/2026 21:05] | File: app/api/final-results/route.js | Line: 1-45 | Keyword: Final Results API | Status: Created | Change: API route for fetching official election results from Supabase
+[07/02/2026 21:05] | File: migrations/election_tables.sql | Line: 1-50 | Keyword: Supabase Migration | Status: Created | Change: SQL migration for election_config and final_results tables
+[07/02/2026 21:05] | File: app/page.js | Line: 12, 244-268, 414-416 | Keyword: Mode Detection | Status: Edited | Change: Added electionMode state, mode detection useEffect, LiveStreamOverlay conditional render
+[07/02/2026 21:28] | File: app/page.js | Line: 246, 260-268, 590-612 | Keyword: Final Results Mode | Status: Implemented | Change: Added finalResults state, fetch logic for official results from Supabase, Stats Grid conditional rendering with green "ผลจริง" labels
 [16/01/2026 00:08] | File: lib/ai-engine.js | Line: 40 | Keyword: simulateMarket | Status: Edited | Change: Implemented unique news tracking using headline text
 [16/01/2026 00:08] | File: lib/db.js | Line: 1 | Keyword: DB Logic | Status: Created | Change: Implemented JSON file-based database for persistence
 [16/01/2026 00:08] | File: lib/ai-engine.js | Line: 38 | Keyword: DB Integration | Status: Edited | Change: Connected to lib/db.js, added party-based categorization

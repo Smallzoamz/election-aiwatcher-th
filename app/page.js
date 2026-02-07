@@ -9,6 +9,7 @@ import ShareButton from './components/ShareButton';
 import Monetization from './components/Monetization'
 import ThemeToggle from './components/ThemeToggle';
 import { CandidateLink } from './components/CandidateModal';
+import LiveStreamOverlay from './components/LiveStreamOverlay';
 
 // Lazy load heavy components
 const PartyDetailModal = dynamic(() => import('./components/PartyDetailModal'), {
@@ -241,6 +242,40 @@ export default function Home() {
         // Check if election has started on initial render
         return new Date() >= new Date(ELECTION_DATE);
     });
+    const [electionMode, setElectionMode] = useState('prediction'); // prediction, live_stream, final_results
+    const [finalResults, setFinalResults] = useState(null); // Stores official results from Supabase
+
+    // Fetch election mode from API
+    useEffect(() => {
+        const fetchElectionMode = async () => {
+            try {
+                const res = await fetch('/api/election-mode');
+                if (res.ok) {
+                    const json = await res.json();
+                    setElectionMode(json.mode);
+                    if (json.mode !== 'prediction') {
+                        setIsElectionStarted(true);
+                    }
+
+                    // Fetch final results when in final_results mode
+                    if (json.mode === 'final_results') {
+                        const resultsRes = await fetch('/api/final-results');
+                        if (resultsRes.ok) {
+                            const resultsJson = await resultsRes.json();
+                            setFinalResults(resultsJson.results);
+                        }
+                    }
+                }
+            } catch (err) {
+                console.error('Failed to fetch election mode:', err);
+            }
+        };
+
+        fetchElectionMode();
+        // Check mode every 30 seconds
+        const interval = setInterval(fetchElectionMode, 30000);
+        return () => clearInterval(interval);
+    }, []);
 
     const fetchData = useCallback(async () => {
         try {
@@ -385,6 +420,9 @@ export default function Home() {
 
     return (
         <main className="min-h-screen bg-slate-950 text-white p-2 sm:p-3 md:p-4 lg:p-5 relative overflow-hidden flex flex-col safe-area-padding">
+            {/* Live Stream Overlay - Shows when mode is 'live_stream' */}
+            {electionMode === 'live_stream' && <LiveStreamOverlay />}
+
             {/* Background Cyber Grid */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
 
@@ -541,7 +579,28 @@ export default function Home() {
 
                                             {/* Stats Grid */}
                                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-1 mt-1 sm:mt-2">
-                                                {isElectionStarted ? (
+                                                {electionMode === 'final_results' && finalResults ? (
+                                                    // Final Results Mode - Show official results
+                                                    (() => {
+                                                        const partyResult = finalResults.find(r => r.party_id === party.id);
+                                                        return partyResult ? (
+                                                            <>
+                                                                <div className="flex items-center gap-2">
+                                                                    <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                                                                    <span className="text-green-400 text-xs font-bold">ส.ส. (ผลจริง)</span>
+                                                                    <span className="text-white font-mono font-bold">{partyResult.seats}</span>
+                                                                </div>
+                                                                <div className="flex items-center gap-2">
+                                                                    <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                                                                    <span className="text-green-400 text-xs font-bold">คะแนน (ผลจริง)</span>
+                                                                    <span className="text-white font-mono font-bold">{partyResult.votes?.toLocaleString('th-TH') || 0}</span>
+                                                                </div>
+                                                            </>
+                                                        ) : (
+                                                            <div className="col-span-2 text-slate-500 text-xs">รอข้อมูล...</div>
+                                                        );
+                                                    })()
+                                                ) : isElectionStarted ? (
                                                     <div className="col-span-2 flex items-center gap-2 bg-amber-900/30 border border-amber-700/50 rounded-lg px-3 py-2">
                                                         <span className="text-lg">🗳️</span>
                                                         <span className="text-amber-400 text-sm font-bold">รอผลการเลือกตั้ง 17.00</span>
